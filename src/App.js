@@ -1,5 +1,5 @@
-import Forecast from './components/forecast.js'
-import React, { useEffect, useState } from 'react'
+import DailyWeather from './components/dailyWeather.js'
+import WeeklyWeather from './components/weeklyWeather.js'
 import myImage from './assets/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png'
 
 function App() {
@@ -8,8 +8,10 @@ function App() {
   return (
     <div className='home-component'>
       <h1>Is It Raining... ?</h1>
-      <Forecast />
+      <DailyWeather />
+      {/* <WeeklyWeather /> */}
       <img src={myImage} alt='t=rex'></img>
+
     </div>
   );
 }
