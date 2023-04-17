@@ -1,32 +1,15 @@
 import Forecast from './components/forecast.js'
 import React, { useEffect, useState } from 'react'
+import myImage from './assets/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png'
 
 function App() {
-  const [lat, setLat] = useState([])
-  const [long, setLong] = useState([])
-  const [data, setData] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-      });
-
-      await fetch(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
-      .then(res => res.json())
-      .then(result => {
-        setData(result)
-        console.log(result);
-      });
-    }
-    fetchData();
-  }, [lat,long])
 
   return (
     <div className='home-component'>
       <h1>Is It Raining... ?</h1>
       <Forecast />
+      <img src={myImage} alt='t=rex'></img>
     </div>
   );
 }
