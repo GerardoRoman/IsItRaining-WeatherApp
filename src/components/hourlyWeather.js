@@ -17,8 +17,8 @@ export default function WeeklyWeather() {
                 setLong(position.coords.longitude);
             });
 
-            // await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&${process.env.REACT_APP_API_KEY}`)
-            await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`).then(res => res.json())
+            await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&${process.env.REACT_APP_API_KEY}`)
+                // await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=zip=${zip}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`).then(res => res.json())
                 .then(result => {
                     setData(result.list)
                     setCity(result.city.name)

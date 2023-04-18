@@ -16,8 +16,8 @@ export default function WeeklyWeather() {
                 setLong(position.coords.longitude);
             });
 
-            // await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&${process.env.REACT_APP_API_KEY}`)
-            await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
+            await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&${process.env.REACT_APP_API_KEY}`)
+                // await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=zip=${zip}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
                 .then(res => res.json())
                 .then(result => {
                     setData(result.list)
@@ -49,13 +49,13 @@ export default function WeeklyWeather() {
                         {forecast.weather[0].icon}
                     </div>
                     <div>
-                        Day: {moment().format('dddd')}
+                        Day: {moment(forecast.dt_txt).format('dddd')}
                     </div>
                     <div>
-                        Date: {moment().format('LL')}
+                        Date: {moment(forecast.dt_txt).format('LL')}
                     </div>
                     <div>
-                        Time: {moment().format('h:ma')}
+                        Time: {moment(forecast.dt_txt).format('h:mma')}
                     </div>
                 </>
             )))) : (
