@@ -4,7 +4,7 @@ import './styles.css';
 
 
 
-export default function DailyWeather() {
+export default function CurrentWeather() {
     const [lat, setLat] = useState([])
     const [long, setLong] = useState([])
     const [data, setData] = useState([])

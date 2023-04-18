@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 
-export default function WeeklyWeather() {
+export default function HourlyWeather() {
     const [lat, setLat] = useState([])
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
     const [city, setCity] = useState([])
-    const [high, setHigh] = useState([])
-    const [low, setLow] = useState([])
+    const [date, setDate] = useState([])
     const [zip, setZip] = useState([])
 
     useEffect(() => {
@@ -17,17 +16,19 @@ export default function WeeklyWeather() {
                 setLong(position.coords.longitude);
             });
 
-            await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&${process.env.REACT_APP_API_KEY}`)
-                // await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=zip=${zip}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`).then(res => res.json())
+            // await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
+            await fetch(`https://api.openweathermap.org/data/2.5/forecast/?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
+                .then(res => res.json())
                 .then(result => {
                     setData(result.list)
                     setCity(result.city.name)
-                    setHigh(Math.round(result.main.temp))
                     console.log(result);
                 });
         }
         fetchData();
     }, [lat, long])
+
+
 
     return (
         (data.length > 0) ? (
@@ -40,19 +41,22 @@ export default function WeeklyWeather() {
                         {forecast.weather[0].description}
                     </div>
                     <div>
-                        High: {forecast.main.temp_max}
+                        High: {Math.round(forecast.main.temp_max)}°F
                     </div>
                     <div>
-                        Low: {forecast.main.temp_min}
+                        Low: {Math.round(forecast.main.temp_min)}°F
                     </div>
                     <div>
                         {forecast.weather[0].icon}
                     </div>
                     <div>
-                        Day: {moment().format('dddd')}
+                        Day: {moment(forecast.dt_txt).format('dddd')}
                     </div>
                     <div>
-                        Date: {moment().format('LL')}
+                        Date: {moment(forecast.dt_txt).format('LL')}
+                    </div>
+                    <div>
+                        Time: {moment(forecast.dt_txt).format('h:mma')}
                     </div>
                 </>
             )))) : (
