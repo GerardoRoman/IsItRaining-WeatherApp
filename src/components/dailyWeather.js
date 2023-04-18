@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
+import './styles.css';
+
 
 
 export default function DailyWeather() {
@@ -31,29 +33,34 @@ export default function DailyWeather() {
 
     return (
         (typeof data.main != 'undefined') ? (
-            <>
-                <div>
-                    Your Location: {data.name}
+
+            <div className="weatherCard">
+                <div className="header">
+                    {data.name}
                 </div>
-                <div>
-                    Current Temp: {Math.round(data.main.temp)}°F
+                <div className="cardBody">
+                    <div className="temp">
+                        {Math.round(data.main.temp)}°F
+                    </div>
+                    <div className="description">
+                        {data.weather[0].description}
+                    </div>
+                    <div className="icon">
+                        {data.weather[0].icon}
+                    </div>
+                    <div className="flexBox">
+                        <div className="high">
+                            High: {Math.round(data.main.temp_max)}°F
+                        </div>
+                        <div className="low">
+                            Low: {Math.round(data.main.temp_min)}°F
+                        </div>
+                    </div>
+                    <div className="humidity">
+                        Humidity: {data.main.humidity}%
+                    </div>
                 </div>
-                <div>
-                    {data.weather[0].description}
-                </div>
-                <div>
-                    High: {Math.round(data.main.temp_max)}°F
-                </div>
-                <div>
-                    Low: {Math.round(data.main.temp_min)}°F
-                </div>
-                <div>
-                    Humidity: {data.main.humidity}%
-                </div>
-                <div>
-                    {data.weather[0].icon}
-                </div>
-            </>
+            </div>
         ) : (
             <div> "Loading" </div>
         )

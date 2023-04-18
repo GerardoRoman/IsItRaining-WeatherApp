@@ -1,3 +1,4 @@
+import 'semantic-ui-css/semantic.min.css'
 import DailyWeather from './components/dailyWeather.js'
 import WeeklyWeather from './components/weeklyWeather.js'
 import HourlyWeather from './components/dailyWeather.js'
@@ -9,9 +10,9 @@ function App() {
   return (
     <div className='home-component'>
       <h1>Is It Raining... ?</h1>
-      {/* <DailyWeather /> */}
+      <DailyWeather />
       {/* <HourlyWeather /> */}
-      <WeeklyWeather />
+      {/* <WeeklyWeather /> */}
       <img src={myImage} alt='t=rex'></img>
 
     </div>

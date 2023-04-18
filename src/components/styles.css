@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap')
+
+/* WEEKLY WEATHER */
+.weatherCard {
+    width: 250px;
+    border-radius: 15px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #a9dce0;
+    align-items: center;
+    justify-content: center;
+}
+
+.weatherCard {
+    width: 250px;
+    border-radius: 15px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #a9dce0;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    background-color: #7b9ed7;
+    color: rgb(3, 7, 88);
+    padding: 10px;
+    font-size: 28px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.cardBody {
+    padding: 15px;
+}
+
+.temp {
+    padding-left: 15px;
+    text-align: center;
+    color: rgb(16, 4, 78);
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
+}
+
+.description {
+    text-align: center;
+}
+
+.icon {
+    text-align: center;
+    padding: 10px;
+}
+
+.flexBox {
+    display: flex;
+    justify-content: space-between;
+}
