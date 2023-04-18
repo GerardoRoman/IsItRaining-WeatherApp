@@ -6,6 +6,7 @@ export default function WeeklyWeather() {
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
     const [city, setCity] = useState([])
+    const [date, setDate] = useState([])
     const [zip, setZip] = useState([])
 
     useEffect(() => {
@@ -26,6 +27,7 @@ export default function WeeklyWeather() {
         }
         fetchData();
     }, [lat, long])
+
 
     return (
         (data.length > 0) ? (
