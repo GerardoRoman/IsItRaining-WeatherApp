@@ -7,10 +7,10 @@ function App() {
 
   return (
     <div className='home-component'>
-      <h1>Is It Raining... ?</h1>
+      <h1 className='app-title'>Is It Raining... ?</h1>
       {/* <DailyWeather /> */}
       {/* <WeeklyWeather /> */}
-      <img src={myImage} alt='t=rex'></img>
+      <img className='t-rex' src={myImage} alt='t=rex'></img>
 
     </div>
   );
