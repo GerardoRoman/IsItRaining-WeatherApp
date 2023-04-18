@@ -6,6 +6,8 @@ export default function WeeklyWeather() {
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
     const [city, setCity] = useState([])
+    const [high, setHigh] = useState([])
+    const [low, setLow] = useState([])
     const [zip, setZip] = useState([])
 
     useEffect(() => {
@@ -16,11 +18,11 @@ export default function WeeklyWeather() {
             });
 
             // await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&${process.env.REACT_APP_API_KEY}`)
-            await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
-                .then(res => res.json())
+            await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`).then(res => res.json())
                 .then(result => {
                     setData(result.list)
                     setCity(result.city.name)
+                    setHigh(Math.round(result.main.temp))
                     console.log(result);
                 });
         }
@@ -38,10 +40,10 @@ export default function WeeklyWeather() {
                         {forecast.weather[0].description}
                     </div>
                     <div>
-                        High: {Math.round(forecast.main.temp_max)}°F
+                        High: {forecast.main.temp_max}
                     </div>
                     <div>
-                        Low: {Math.round(forecast.main.temp_min)}°F
+                        Low: {forecast.main.temp_min}
                     </div>
                     <div>
                         {forecast.weather[0].icon}
@@ -51,9 +53,6 @@ export default function WeeklyWeather() {
                     </div>
                     <div>
                         Date: {moment().format('LL')}
-                    </div>
-                    <div>
-                        Time: {moment().format('h:ma')}
                     </div>
                 </>
             )))) : (
