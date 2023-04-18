@@ -1,0 +1,83 @@
+.home-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.t-rex {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app-title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: antiquewhite;
+    position: absolute;
+    top: 20px;
+    left: center;
+    z-index: 1;
+}
+
+.background-image {
+    background-image: url('./assets/4_by_cleopatrawolf_dfuq86t.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+/* CURRENT WEATHER COMPONENT*/
+.weatherCard {
+    width: 250px;
+    border-radius: 15px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #a9dce0;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    background-color: #7b9ed7;
+    color: rgb(3, 7, 88);
+    padding: 10px;
+    font-size: 28px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.cardBody {
+    padding: 15px;
+}
+
+.temp {
+    padding-left: 15px;
+    text-align: center;
+    color: rgb(16, 4, 78);
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
+}
+
+.description {
+    text-align: center;
+}
+
+.icon {
+    text-align: center;
+    padding: 10px;
+}
+
+.flexBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* HOURLY WEATHER COMPONENT*/
+
+/* WEEKLY WEATHER COMPONENT*/

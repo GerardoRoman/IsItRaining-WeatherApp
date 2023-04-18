@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
-import './styles.css';
+import '../App.css';
 
 
 

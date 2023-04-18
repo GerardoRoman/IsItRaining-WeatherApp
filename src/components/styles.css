@@ -1,15 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap')
-
 /* WEEKLY WEATHER */
-.weatherCard {
-    width: 250px;
-    border-radius: 15px;
-    margin-left: 25%;
-    margin-right: 25%;
-    background-color: #a9dce0;
-    align-items: center;
-    justify-content: center;
-}
 
 .weatherCard {
     width: 250px;
