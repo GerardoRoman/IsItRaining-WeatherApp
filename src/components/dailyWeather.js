@@ -36,16 +36,16 @@ export default function DailyWeather() {
                     Your Location: {data.name}
                 </div>
                 <div>
-                    Current Temp: {data.main.temp}°F
+                    Current Temp: {Math.round(data.main.temp)}°F
                 </div>
                 <div>
                     {data.weather[0].description}
                 </div>
                 <div>
-                    High: {data.main.temp_max}
+                    High: {Math.round(data.main.temp_max)}°F
                 </div>
                 <div>
-                    Low: {data.main.temp_min}
+                    Low: {Math.round(data.main.temp_min)}°F
                 </div>
                 <div>
                     Humidity: {data.main.humidity}%
@@ -53,12 +53,6 @@ export default function DailyWeather() {
                 <div>
                     {data.weather[0].icon}
                 </div>
-                {/* <div>
-                    Day: {moment({ dt }).format('dddd')}
-                </div>
-                <div>
-                    Date: {moment(dt).format('LL')}
-                </div> */}
             </>
         ) : (
             <div> "Loading" </div>
