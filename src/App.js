@@ -9,7 +9,7 @@ function App() {
     <div className='home-component'>
       <h1>Is It Raining... ?</h1>
       {/* <DailyWeather /> */}
-      <WeeklyWeather />
+      {/* <WeeklyWeather /> */}
       <img src={myImage} alt='t=rex'></img>
 
     </div>
