@@ -8,8 +8,8 @@ function App() {
   return (
     <div className='home-component'>
       <h1>Is It Raining... ?</h1>
-      <DailyWeather />
-      {/* <WeeklyWeather /> */}
+      {/* <DailyWeather /> */}
+      <WeeklyWeather />
       <img src={myImage} alt='t=rex'></img>
 
     </div>

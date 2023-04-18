@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import moment from 'moment';
 
 export default function WeeklyWeather() {
     const [lat, setLat] = useState([])
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
+    const [city, setCity] = useState([])
     const [zip, setZip] = useState([])
 
     useEffect(() => {
@@ -17,44 +19,57 @@ export default function WeeklyWeather() {
             await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
                 .then(res => res.json())
                 .then(result => {
-                    setData(result)
+                    setData(result.list)
+                    setCity(result.city.name)
                     console.log(result);
                 });
         }
         fetchData();
-        console.log("Latitude is:", lat)
-        console.log("Longitude is:", long)
     }, [lat, long])
+
+    // console.log(data.city.name)
+    // console.log(data.list[0].main.temp)
+    // console.log(data.list[0].weather[0].description)
+    // console.log(data.list[0].main.temp_max)
+    // console.log(data.list[0].main.temp_min)
+    // console.log(data.list[0].main.humidity)
+    // console.log(data.list[0].weather[0].icon)
 
 
     return (
-        (typeof data.main != 'undefined') ? (
-            <>
-                <div>
-                    Your Location: {data.name}
-                </div>
-                <div>
-                    Current Temp: {data.main.temp}°F
-                </div>
-                <div>
-                    {data.weather[0].description}
-                </div>
-                <div>
-                    High: {data.main.temp_max}
-                </div>
-                <div>
-                    Low: {data.main.temp_min}
-                </div>
-                <div>
-                    Humidity: {data.main.humidity}%
-                </div>
-                <div>
-                    {data.weather[0].icon}
-                </div>
-            </>
-        ) : (
+        (data.length > 0) ? (
+            data.map((forecast => (
+                <>
+                    <div>
+                        Your Location: {city}
+                    </div>
+                    <div>
+                        Current Temp: {forecast.main.temp}°F
+                    </div>
+                    <div>
+                        {forecast.weather[0].description}
+                    </div>
+                    <div>
+                        High: {forecast.main.temp_max}
+                    </div>
+                    <div>
+                        Low: {forecast.main.temp_min}
+                    </div>
+                    <div>
+                        Humidity: {forecast.main.humidity}%
+                    </div>
+                    <div>
+                        {forecast.weather[0].icon}
+                    </div>
+                    <div>
+                        Day: {moment().format('dddd')}
+                    </div>
+                    <div>
+                        Date: {moment().format('LL')}
+                    </div>
+                </>
+            )))) : (
             <div> "Loading" </div>
         )
     );
-
 }

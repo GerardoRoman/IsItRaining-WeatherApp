@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import moment from 'moment';
+
 
 export default function DailyWeather() {
     const [lat, setLat] = useState([])
@@ -13,8 +15,8 @@ export default function DailyWeather() {
                 setLong(position.coords.longitude);
             });
 
-            await fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
-                // await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
+            // await fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+            await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
                 .then(res => res.json())
                 .then(result => {
                     setData(result)
@@ -51,6 +53,12 @@ export default function DailyWeather() {
                 <div>
                     {data.weather[0].icon}
                 </div>
+                {/* <div>
+                    Day: {moment({ dt }).format('dddd')}
+                </div>
+                <div>
+                    Date: {moment(dt).format('LL')}
+                </div> */}
             </>
         ) : (
             <div> "Loading" </div>
