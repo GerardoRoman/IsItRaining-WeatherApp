@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 
 
-export default function CurrentWeather() {
-    const [lat, setLat] = useState([])
-    const [long, setLong] = useState([])
+export default function CurrentWeather({ lat, long }) {
     const [data, setData] = useState([])
-    const [zip, setZip] = useState([])
 
     useEffect(() => {
-        const fetchData = async () => {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                setLat(position.coords.latitude);
-                setLong(position.coords.longitude);
-            });
-
-            await fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
-                // await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
-                .then(res => res.json())
-                .then(result => {
-                    setData(result)
-                    console.log(result);
-                });
+        if (lat && long) {
+            const URL = (`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+            axios.get(URL).then(result => {
+                setData(result.data);
+                console.log(result.data);
+            })
         }
-        fetchData();
-        console.log("Latitude is:", lat)
-        console.log("Longitude is:", long)
     }, [lat, long])
-
 
     return (
         (typeof data.main != 'undefined') ? (
