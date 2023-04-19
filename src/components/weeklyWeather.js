@@ -6,6 +6,7 @@ export default function WeeklyWeather() {
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
     const [city, setCity] = useState([])
+    const [date, setDate] = useState([])
     const [zip, setZip] = useState([])
 
     useEffect(() => {
@@ -15,8 +16,8 @@ export default function WeeklyWeather() {
                 setLong(position.coords.longitude);
             });
 
-            // await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&${process.env.REACT_APP_API_KEY}`)
-            await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
+            // await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
+            await fetch(`https://api.openweathermap.org/data/2.5/forecast/?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
                 .then(res => res.json())
                 .then(result => {
                     setData(result.list)
@@ -26,6 +27,8 @@ export default function WeeklyWeather() {
         }
         fetchData();
     }, [lat, long])
+
+
 
     return (
         (data.length > 0) ? (
@@ -47,13 +50,13 @@ export default function WeeklyWeather() {
                         {forecast.weather[0].icon}
                     </div>
                     <div>
-                        Day: {moment().format('dddd')}
+                        Day: {moment(forecast.dt_txt).format('dddd')}
                     </div>
                     <div>
-                        Date: {moment().format('LL')}
+                        Date: {moment(forecast.dt_txt).format('LL')}
                     </div>
                     <div>
-                        Time: {moment().format('h:ma')}
+                        Time: {moment(forecast.dt_txt).format('h:mma')}
                     </div>
                 </>
             )))) : (
