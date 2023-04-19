@@ -7,7 +7,6 @@ import css from './App.css'
 
 function App() {
 
-
   return (
     <div className='home-component'>
       <CurrentWeather />
