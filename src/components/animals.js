@@ -1,7 +1,5 @@
 
-function Animals() {
-    
-export const trexImages = {
+const trexImages = {
         blueTrexRoar: './assets/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png',
         blueTrexClosed: 'assets/trex_a_2_by_cleopatrawolf_dfujqzr-350t.png',
         greenTrexRoar: 'assets/trex_b_1_by_cleopatrawolf_dfujqzp-350t.png',
@@ -12,7 +10,7 @@ export const trexImages = {
         redTrexClosed: 'assets/trex_d_2_by_cleopatrawolf_dfujqz8-350t.png',
     }
 
-export const toucanImages = {
+const toucanImages = {
         blueToucanRoar: './assets/toucan_a_1_by_cleopatrawolf_dfujr0f-350t.png',
         blueToucanClosed: './assets/toucan_a_2_by_cleopatrawolf_dfujr0c-350t.png',
         purpToucanRoar: './assets/toucan_b_1_by_cleopatrawolf_dfujr08-350t.png',
@@ -21,7 +19,7 @@ export const toucanImages = {
         yellowToucanClosed: './assets/toucan_c_2_by_cleopatrawolf_dfujqzx-350t.png',
     }
 
-export const stegoImages = {
+const stegoImages = {
         greenStegoClosed: './assets/stego_a_1_by_cleopatrawolf_dfujr15-350t.png',
         greenStegoRoar: './assets/stego_a_2_by_cleopatrawolf_dfujr13-350t.png',
         purpStegoClosed: './assets/stego_b_1_by_cleopatrawolf_dfujr0z-350t.png',
@@ -32,7 +30,7 @@ export const stegoImages = {
         brownStegoRoar: './assets/stego_d_2_by_cleopatrawolf_dfujr0i-350t.png',
     }
 
-export const goatImages = {
+const goatImages = {
         blueGoatRoar: './assets/goat_a_1_by_cleopatrawolf_dfujr1n-350t.png',
         blueGoatClosed: './assets/goat_a_2_by_cleopatrawolf_dfujr1j-350t.png',
         greenGoatRoar: './assets/goat_b_1_by_cleopatrawolf_dfujr1h-350t.png',
@@ -40,7 +38,7 @@ export const goatImages = {
         pinkGoatRoar: './assets/goat_c_1_by_cleopatrawolf_dfujr1b-350t.png',
         pinkGoatClosed: './assets/goat_c_2_by_cleopatrawolf_dfujr18-350t.png',
     }
-}
+
 
     // /Users/dorito_roman/Desktop/finalproject/friez/src/assets/stego_d_1_by_cleopatrawolf_dfujr0m-350t.png
     // src/assets/stego_d_1_by_cleopatrawolf_dfujr0m-350t.png

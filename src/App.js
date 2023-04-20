@@ -1,7 +1,6 @@
 import CurrentWeather from './components/currentWeather.js'
 import WeeklyWeather from './components/weeklyWeather.js'
 import HourlyWeather from './components/hourlyWeather.js'
-import css from './App.css'
 import blueTrexRoar from './assets/trexImages/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png'
 import mainBackgroundImage from './assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
 
