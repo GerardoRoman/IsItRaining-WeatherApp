@@ -6,24 +6,15 @@
     position: relative;
 }
 
-.t-rex {
+.blue-trex-roar {
     position: absolute;
-    top: 40%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.app-title {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: antiquewhite;
-    position: absolute;
-    top: 20px;
-    left: center;
-    z-index: 1;
-}
-
 .background-image {
-    background-image: url('./assets/4_by_cleopatrawolf_dfuq86t.png');
+    background-image: url('./assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png');
     background-repeat: no-repeat;
     background-size: contain;
     height: 100%;
@@ -40,6 +31,10 @@
     background-color: #a9dce0;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    transform: translate(-50%, -50%);
 }
 
 .header {
@@ -81,3 +76,12 @@
 /* HOURLY WEATHER COMPONENT*/
 
 /* WEEKLY WEATHER COMPONENT*/
+
+/* .app-title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: antiquewhite;
+    position: absolute;
+    top: 20px;
+    left: center;
+    z-index: 1;
+} */
