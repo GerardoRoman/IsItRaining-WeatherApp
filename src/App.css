@@ -9,7 +9,7 @@
 .blue-trex-roar {
     position: absolute;
     top: 70%;
-    left: 50%;
+    left: 70%;
     transform: translate(-50%, -50%);
 }
 
@@ -24,7 +24,7 @@
 
 /* CURRENT WEATHER COMPONENT*/
 .weatherCard {
-    width: 250px;
+    width: 350px;
     border-radius: 15px;
     margin-left: 25%;
     margin-right: 25%;
@@ -33,7 +33,7 @@
     justify-content: center;
     position: absolute;
     top: 20%;
-    left: 30%;
+    left: 45%;
     transform: translate(-50%, -50%);
 }
 
@@ -68,6 +68,10 @@
     padding: 10px;
 }
 
+.humidity {
+    text-align: center;
+
+}
 .flexBox {
     display: flex;
     justify-content: space-between;
