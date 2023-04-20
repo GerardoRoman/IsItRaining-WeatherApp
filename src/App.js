@@ -3,9 +3,9 @@ import axios from 'axios';
 import CurrentWeather from './components/currentWeather.js'
 import WeeklyWeather from './components/weeklyWeather.js'
 import HourlyWeather from './components/hourlyWeather.js'
-import myImage from './assets/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png'
-import image from './assets/4_by_cleopatrawolf_dfuq86t.png'
 import css from './App.css'
+import blueTrexRoar from './assets/trexImages/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png'
+import mainBackgroundImage from './assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
 
 
 function App() {
@@ -29,11 +29,11 @@ function App() {
 
   return (
     <div className='home-component'>
-      {/* <CurrentWeather lat={lat} long={long} /> */}
-      <HourlyWeather lat={lat} long={long} />
+      <CurrentWeather lat={lat} long={long} />
+      {/* <HourlyWeather lat={lat} long={long} /> */}
       {/* <WeeklyWeather lat={lat} long={long} /> */}
-      <img className='t-rex' src={myImage} alt='t=rex'></img>
-      <div style={{ backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
+      <img className='blue-trex-roar' src={blueTrexRoar} alt="Blue T-Rex Roaring"></img>
+      <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
 
     </div>
   );
