@@ -1,66 +1,49 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import moment from 'moment';
 
-export default function HourlyWeather() {
-    const [lat, setLat] = useState([])
-    const [long, setLong] = useState([])
-    const [data, setData] = useState([])
-    const [city, setCity] = useState([])
-    const [date, setDate] = useState([])
-    const [zip, setZip] = useState([])
+export default function HourlyWeather({ lat, long }) {
+    const [hourlyData, setHourlyData] = useState([])
 
     useEffect(() => {
-        const fetchData = async () => {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                setLat(position.coords.latitude);
-                setLong(position.coords.longitude);
-            });
-
-            // await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
-            await fetch(`https://api.openweathermap.org/data/2.5/forecast/?zip=70117&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
-                .then(res => res.json())
-                .then(result => {
-                    setData(result.list)
-                    setCity(result.city.name)
-                    console.log(result);
+        if (lat && long) {
+            const URL = (`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY2}&q=${lat},${long}&days=2&aqi=no&alerts=no`)
+            axios.get(URL).then(result => {
+                setHourlyData(result.data.forecast)
+                console.log(result.data)
+                const day1 = result.data.forecast.forecastday[0].hour
+                const day1Forecast = day1.map((forecast) => {
+                    return ([forecast.temp_f, forecast.time])
                 });
+                const day2 = result.data.forecast.forecastday[1].hour
+                const day2Forecast = day2.map((forecast) => {
+                    return ([forecast.temp_f, forecast.time])
+                });
+                console.log(day1Forecast)
+                console.log(day2Forecast)
+                const twentyFourHourForecast = [...day1Forecast, ...day2Forecast]
+                console.log(twentyFourHourForecast)
+                const date = new Date();
+                const showTime = date.getHours()
+                    + ':' + date.getMinutes()
+                console.log(showTime)
+                console.log(date)
+            })
         }
-        fetchData();
     }, [lat, long])
 
-
-
     return (
-        (data.length > 0) ? (
-            data.map((forecast => (
-                <>
-                    <div>
-                        Your Location: {city}
+        // hourlyData.length > 0 && (
+        //     hourlyData.map((data => (
+        <>
+            {/* <div>
+                        Time: {hourlyData.hour[0].time}
                     </div>
                     <div>
-                        {forecast.weather[0].description}
-                    </div>
-                    <div>
-                        High: {Math.round(forecast.main.temp_max)}°F
-                    </div>
-                    <div>
-                        Low: {Math.round(forecast.main.temp_min)}°F
-                    </div>
-                    <div>
-                        {forecast.weather[0].icon}
-                    </div>
-                    <div>
-                        Day: {moment(forecast.dt_txt).format('dddd')}
-                    </div>
-                    <div>
-                        Date: {moment(forecast.dt_txt).format('LL')}
-                    </div>
-                    <div>
-                        Time: {moment(forecast.dt_txt).format('h:mma')}
-                    </div>
-                </>
-            )))) : (
-            <div> "Loading" </div>
-        )
+                        Temp: {hourlyData.hour[0].temp_f}°F
+                    </div> */}
+        </>
+        // )))
+        // )
     );
 }
