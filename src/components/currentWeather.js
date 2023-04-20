@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 import '../App.css';
 
-
-
 export default function CurrentWeather() {
     const [lat, setLat] = useState([])
     const [long, setLong] = useState([])
