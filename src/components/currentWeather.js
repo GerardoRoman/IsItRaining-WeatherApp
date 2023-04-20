@@ -9,6 +9,7 @@ import { WeatherIcon } from 'weather-react-icons';
 export default function CurrentWeather({ lat, long }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
+    const [weatherID, setWeatherID] = useState([])
 
     useEffect(() => {
         if (lat && long) {
@@ -16,10 +17,12 @@ export default function CurrentWeather({ lat, long }) {
             axios.get(URL).then(result => {
                 setData(result.data);
                 setWeatherIcon(result.data.weather[0].icon)
+                setWeatherID(result.data.weather[0].id)
             })
         }
     }, [lat, long])
 
+    console.log(weatherID)
     const iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
 
     return (
@@ -39,10 +42,10 @@ export default function CurrentWeather({ lat, long }) {
                     {/* <div className="icon">
                         <WeatherIcon iconId={weatherIcon} name="owm" />
                     </div> */}
-
+                    {/* 
                     <div>
                         {<iconUrl />}
-                    </div>
+                    </div> */}
                     <div className="flexBox">
                         <div className="high">
                             High: {Math.round(data.main.temp_max)}°F
