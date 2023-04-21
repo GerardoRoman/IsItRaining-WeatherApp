@@ -32,7 +32,7 @@ export default function HourlyWeather({ lat, long }) {
                 const fourtyEightHourForecast = [...day1Forecast, ...day2Forecast]
                 console.log(fourtyEightHourForecast)
                 setForecast(fourtyEightHourForecast)
-                const currentTimeDate = forecast[1]
+                // const currentTimeDate = forecast[1]
                 // console.log(day1)
 
                 const date = new Date();
@@ -50,25 +50,15 @@ export default function HourlyWeather({ lat, long }) {
                 // let output = result.data.forecast.forecastday[0].hour.filter(time => moment(time.time) < timeAdds && moment(time.time) > date)
                 // console.log(output)
 
-                let futureForecast = forecast.filter(time => moment(time[1]) < timeAdds && moment(time[1]) > date)
+                let futureForecast = fourtyEightHourForecast.filter(time => moment(time[1]) < timeAddTwelve && moment(time[1]) > date)
+                setForecast(futureForecast)
                 console.log(futureForecast)
             })
         }
     }, [lat, long])
 
 
-    useEffect(() => {
-        if (forecast && timeAdds) {
-            const date = new Date();
-            let twelveHourForecast = forecast.filter(time => time[1] < timeAdds && time[1] > date)
-            console.log(twelveHourForecast)
-            console.log(date)
-            console.log(timeAdds)
-        }
-    }, [forecast, timeAdds])
-
-
-    // console.log(forecast)
+    console.log(forecast)
     console.log(currentHour)
     const timeRoundUp = currentHour + 1
     console.log(timeRoundUp)
