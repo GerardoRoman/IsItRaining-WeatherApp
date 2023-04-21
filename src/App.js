@@ -39,3 +39,21 @@ function App() {
 }
 
 export default App;
+
+// import React from 'react';
+// import getAnimalImages from './getAnimalImages';
+
+// function AnimalImages({ animal }) {
+//   const images = getAnimalImages(animal);
+
+//   return (
+//     <div>
+//       {Object.keys(images).map((key) => (
+//         <img key={key} src={images[key]} alt={key} />
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default AnimalImages;
+

@@ -20,6 +20,8 @@
     background-attachment: fixed;
     background-position: center center;
     position: relative;
+    height: 100vh;
+    width: 110vw;
 }
 
 /* CURRENT WEATHER COMPONENT*/
