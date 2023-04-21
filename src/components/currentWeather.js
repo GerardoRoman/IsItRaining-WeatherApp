@@ -23,7 +23,7 @@ export default function CurrentWeather({ lat, long }) {
     }, [lat, long])
 
     console.log(weatherID)
-    const iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
+
 
     return (
         (typeof data.main != 'undefined') ? (
@@ -33,32 +33,30 @@ export default function CurrentWeather({ lat, long }) {
                     {data.name}
                 </div>
                 <div className="cardBody">
-                    <div className="temp">
-                        {Math.round(data.main.temp)}°F
+                    <div className="tempIconBucket">
+                        <div className='icon'>
+                            <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="icon"></img>
+                        </div>
+                        <div className="temp">
+                            {Math.round(data.main.temp)}°F
+                        </div>
                     </div>
                     <div className="description">
                         {data.weather[0].description}
                     </div>
-                    {/* <div className="icon">
-                        <WeatherIcon iconId={weatherIcon} name="owm" />
-                    </div> */}
-                    {/* 
-                    <div>
-                        {<iconUrl />}
-                    </div> */}
-                    <div className="flexBox">
+                    <div className="highLowBox">
                         <div className="high">
-                            High: {Math.round(data.main.temp_max)}°F
+                            ↑ {Math.round(data.main.temp_max)}°F
                         </div>
                         <div className="low">
-                            Low: {Math.round(data.main.temp_min)}°F
+                            ↓ {Math.round(data.main.temp_min)}°F
                         </div>
                     </div>
                     <div className="humidity">
                         Humidity: {data.main.humidity}%
                     </div>
                 </div>
-            </div>
+            </div >
         ) : (
             <div> "Loading" </div>
         )
