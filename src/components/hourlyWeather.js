@@ -19,7 +19,7 @@ export default function HourlyWeather({ lat, long }) {
 
                 // console.log(result.data)
                 const day1 = result.data.forecast.forecastday[0].hour
-                console.log(day1)
+                // console.log(day1)
                 const day1Forecast = day1.map((forecast) => {
                     return ([forecast.temp_f, forecast.time, forecast.condition])
                 });
@@ -30,26 +30,43 @@ export default function HourlyWeather({ lat, long }) {
                 });
 
                 const fourtyEightHourForecast = [...day1Forecast, ...day2Forecast]
-                // console.log(fourtyEightHourForecast)
+                console.log(fourtyEightHourForecast)
                 setForecast(fourtyEightHourForecast)
                 const currentTimeDate = forecast[1]
                 // console.log(day1)
+
                 const date = new Date();
                 // console.log(date)
-                setTimeAdds(moment(date).add(12, 'hours'))
+                const timeAddTwelve = (moment(date).add(12, 'hours'))
+                console.log(timeAddTwelve)
 
-                console.log(moment(date).format('YYYY-MM-DD hh:mm'))
+                // console.log(moment(date).format('YYYY-MM-DD hh:mm'))
                 // require('moment-round');
                 // console.log(date.ceil(1, 'hours'))
-                setCurrentHour(moment(date).format('hh'))
+                // setCurrentHour(moment(date).format('hh'))
                 // console.log(moment(date).format('h:mma'))
-                // console.log(fourtyEightHourForecast)
 
-                let output = result.data.forecast.forecastday[0].hour.filter(time => moment(time.time) < timeAdds && moment(time.time) > date)
-                console.log(output)
+
+                // let output = result.data.forecast.forecastday[0].hour.filter(time => moment(time.time) < timeAdds && moment(time.time) > date)
+                // console.log(output)
+
+                let futureForecast = forecast.filter(time => moment(time[1]) < timeAdds && moment(time[1]) > date)
+                console.log(futureForecast)
             })
         }
     }, [lat, long])
+
+
+    useEffect(() => {
+        if (forecast && timeAdds) {
+            const date = new Date();
+            let twelveHourForecast = forecast.filter(time => time[1] < timeAdds && time[1] > date)
+            console.log(twelveHourForecast)
+            console.log(date)
+            console.log(timeAdds)
+        }
+    }, [forecast, timeAdds])
+
 
     // console.log(forecast)
     console.log(currentHour)
