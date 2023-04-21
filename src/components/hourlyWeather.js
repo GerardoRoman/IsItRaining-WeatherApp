@@ -69,22 +69,24 @@ export default function HourlyWeather({ lat, long }) {
             forecast.map((data => (
                 <>
                     <div>
-                        {moment(data[1]).format('dddd')} at {moment(data[1]).format('h:mma')}
+                        <div>
+                            {moment(data[1]).format('dddd')} at {moment(data[1]).format('h:mma')}
+                        </div>
+                        <div>
+                            Temp: {Math.round(data[0])}°F
+                        </div>
+                        <div>
+                            {data[2].text}
+                        </div>
+                        <div>
+                        </div>
+                        {/* <div>
+                            {data[2].icon}
+                        </div>
+                        <div>
+                            {data[2].code}
+                        </div> */}
                     </div>
-                    <div>
-                        Temp: {Math.round(data[0])}°F
-                    </div>
-                    <div>
-                        {data[2].text}
-                    </div>
-                    <div>
-                    </div>
-                    {/* <div>
-                        {data[2].icon}
-                    </div>
-                    <div>
-                        {data[2].code}
-                    </div> */}
                 </>
             )
             ))
