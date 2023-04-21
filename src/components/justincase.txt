@@ -47,7 +47,7 @@ default:
 return {
     blueTrexRoar: './assets/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png',
 }
-}}
+}
 
 export default getAnimalImages 
     /Users/dorito_roman/Desktop/finalproject/friez/src/assets/stego_d_1_by_cleopatrawolf_dfujr0m-350t.png

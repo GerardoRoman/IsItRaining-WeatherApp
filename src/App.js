@@ -3,8 +3,9 @@ import axios from 'axios';
 import CurrentWeather from './components/currentWeather.js'
 import WeeklyWeather from './components/weeklyWeather.js'
 import HourlyWeather from './components/hourlyWeather.js'
-import blueTrexRoar from './assets/trexImages/trex_a_1_by_cleopatrawolf_dfujqzu-350t.png'
 import mainBackgroundImage from './assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
+import Animal from './components/animals.js'
+
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
       <CurrentWeather lat={lat} long={long} />
       {/* <HourlyWeather lat={lat} long={long} /> */}
       {/* <WeeklyWeather lat={lat} long={long} /> */}
-      <img className='blue-trex-roar' src={blueTrexRoar} alt="Blue T-Rex Roaring"></img>
+      <Animal />
       <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
 
     </div>
@@ -39,21 +40,3 @@ function App() {
 }
 
 export default App;
-
-// import React from 'react';
-// import getAnimalImages from './getAnimalImages';
-
-// function AnimalImages({ animal }) {
-//   const images = getAnimalImages(animal);
-
-//   return (
-//     <div>
-//       {Object.keys(images).map((key) => (
-//         <img key={key} src={images[key]} alt={key} />
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default AnimalImages;
-
