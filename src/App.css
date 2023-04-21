@@ -65,6 +65,7 @@
 .icon {
     text-align: center;
     padding: 10px;
+    /* height: 300px; */
 }
 
 .temp {
@@ -102,6 +103,10 @@
 }
 
 /* HOURLY WEATHER COMPONENT*/
+.hourlyCard {
+    /* display: flex; */
+    font-size: 10px;
+}
 
 /* .app-title {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

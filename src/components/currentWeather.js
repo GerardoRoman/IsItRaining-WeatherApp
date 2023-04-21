@@ -35,7 +35,7 @@ export default function CurrentWeather({ lat, long }) {
                 <div className="cardBody">
                     <div className="tempIconBucket">
                         <div className='icon'>
-                            <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="Blue T-Rex Roaring"></img>
+                            <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="icon"></img>
                         </div>
                         <div className="temp">
                             {Math.round(data.main.temp)}°F
