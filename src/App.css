@@ -24,58 +24,89 @@
 
 /* CURRENT WEATHER COMPONENT*/
 .weatherCard {
-    width: 250px;
+    width: 85%;
+    height: 275px;
     border-radius: 15px;
     margin-left: 25%;
     margin-right: 25%;
-    background-color: #a9dce0;
+    /* border: 2px solid black; */
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 30%;
     transform: translate(-50%, -50%);
 }
 
 .header {
-    background-color: #7b9ed7;
-    color: rgb(3, 7, 88);
+    /* background-color: #7b9ed7; */
+    color: rgb(239, 239, 245);
     padding: 10px;
+    margin-bottom: 0px;
     font-size: 28px;
     border-radius: 15px;
     text-align: center;
     font-family: 'Hind Siliguri', sans-serif;
+    /* border: 1px solid grey; */
+
 }
 
 .cardBody {
     padding: 15px;
 }
 
-.temp {
-    padding-left: 15px;
-    text-align: center;
-    color: rgb(16, 4, 78);
-    font-family: 'Hind Siliguri', sans-serif;
-    font-size: 18px;
-}
-
-.description {
-    text-align: center;
+.tempIconBucket {
+    margin-top: 0px;
+    justify-content: center;
+    display: flex;
+    /* border: 1px solid grey; */
 }
 
 .icon {
     text-align: center;
     padding: 10px;
+    /* height: 300px; */
 }
 
-.flexBox {
+.temp {
+    padding-left: 15px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 60px;
+}
+
+.description {
+    text-align: center;
+    color: rgba(231, 233, 234, 0.633)
+}
+
+.humidity {
+    text-align: center;
+    color: antiquewhite;
+    font-size: 14px;
+}
+
+.highLowBox {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.high {
+    padding-right: 3px;
+    color: antiquewhite;
+}
+
+.low {
+    padding-left: 3px;
+    color: antiquewhite;
 }
 
 /* HOURLY WEATHER COMPONENT*/
-
-/* WEEKLY WEATHER COMPONENT*/
+.hourlyCard {
+    /* display: flex; */
+    font-size: 10px;
+}
 
 /* .app-title {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
