@@ -23,7 +23,7 @@ export default function CurrentWeather({ lat, long }) {
     }, [lat, long])
 
     console.log(weatherID)
-    const iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
+
 
     return (
         (typeof data.main != 'undefined') ? (
@@ -34,8 +34,8 @@ export default function CurrentWeather({ lat, long }) {
                 </div>
                 <div className="cardBody">
                     <div className="tempIconBucket">
-                        <div className="icon">
-                            {weatherIcon}
+                        <div className='icon'>
+                            <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="Blue T-Rex Roaring"></img>
                         </div>
                         <div className="temp">
                             {Math.round(data.main.temp)}°F
@@ -43,12 +43,6 @@ export default function CurrentWeather({ lat, long }) {
                     </div>
                     <div className="description">
                         {data.weather[0].description}
-                    </div>
-                    {/* <div className="icon">
-                        <WeatherIcon iconId={weatherIcon} name="owm" />
-                    </div> */}
-                    <div>
-                        {<img src={iconUrl}> </img>}
                     </div>
                     <div className="highLowBox">
                         <div className="high">
