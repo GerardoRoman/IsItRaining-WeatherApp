@@ -4,11 +4,11 @@ import CurrentWeather from './components/currentWeather.js'
 import WeeklyWeather from './components/weeklyWeather.js'
 import HourlyWeather from './components/hourlyWeather.js'
 import mainBackgroundImage from './assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
-import Animal from './components/animals.js'
+// import Animal from './components/animals.js'
 
 
 
-function App({ weatherID }) {
+function App() { // { weatherID }
   const [lat, setLat] = useState(null)
   const [long, setLong] = useState(null)
   const [userPos, setUserPos] = useState({ lat: null, long: null })
@@ -32,7 +32,7 @@ function App({ weatherID }) {
       <CurrentWeather lat={lat} long={long} />
       {/* <HourlyWeather lat={lat} long={long} /> */}
       {/* <WeeklyWeather lat={lat} long={long} /> */}
-      <Animal weatherID={weatherID} />
+      {/* <Animal weatherID={weatherID} /> */}
       <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
 
     </div>
