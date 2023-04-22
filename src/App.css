@@ -9,7 +9,7 @@
 .blue-trex-roar {
     position: absolute;
     top: 70%;
-    left: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
 }
 
@@ -17,9 +17,11 @@
     background-image: url('./assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png');
     background-repeat: no-repeat;
     background-size: contain;
-    height: 100%;
-    width: 100%;
+    background-attachment: fixed;
+    background-position: center center;
     position: relative;
+    height: 100vh;
+    width: 110vw;
 }
 
 /* CURRENT WEATHER COMPONENT*/

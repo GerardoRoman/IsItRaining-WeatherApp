@@ -4,6 +4,7 @@ import '../App.css';
 import 'weather-react-icons/lib/css/weather-icons.css';
 import 'weather-react-icons/lib/css/weather-icons-wind.css';
 import { WeatherIcon } from 'weather-react-icons';
+import Animal from './animals.js'
 
 
 export default function CurrentWeather({ lat, long }) {
@@ -20,7 +21,7 @@ export default function CurrentWeather({ lat, long }) {
                 setWeatherID(result.data.weather[0].id)
             })
         }
-    }, [lat, long])
+    }, [lat, long, weatherID])
 
     console.log(weatherID)
 
@@ -55,6 +56,7 @@ export default function CurrentWeather({ lat, long }) {
                     <div className="humidity">
                         Humidity: {data.main.humidity}%
                     </div>
+                    <Animal weatherID={weatherID} />
                 </div>
             </div >
         ) : (
