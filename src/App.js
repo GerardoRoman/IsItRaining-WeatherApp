@@ -29,8 +29,8 @@ function App() {
 
   return (
     <div className='home-component'>
-      {/* <CurrentWeather lat={lat} long={long} /> */}
-      <HourlyWeather lat={lat} long={long} />
+      <CurrentWeather lat={lat} long={long} />
+      {/* <HourlyWeather lat={lat} long={long} /> */}
       {/* <WeeklyWeather lat={lat} long={long} /> */}
       <img className='blue-trex-roar' src={blueTrexRoar} alt="Blue T-Rex Roaring"></img>
       <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>

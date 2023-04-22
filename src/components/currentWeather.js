@@ -29,7 +29,7 @@ export default function CurrentWeather({ lat, long }) {
         (typeof data.main != 'undefined') ? (
 
             <div className="weatherCard">
-                <div className="header">
+                <div className="header" data-drag-scroll-enabled="true">
                     {data.name}
                 </div>
                 <div className="cardBody">
