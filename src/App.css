@@ -103,16 +103,16 @@
 }
 
 /* HOURLY WEATHER COMPONENT*/
-.hourlyCard {
-    /* display: flex; */
-    font-size: 10px;
+.hourlyWeatherMap {
+    display: flex;
+    overflow-x: scroll;
+    border: 1px solid purple;
 }
 
-/* .app-title {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: antiquewhite;
-    position: absolute;
-    top: 20px;
-    left: center;
-    z-index: 1;
-} */
+.hourlyWeatherCard {
+    height: 100px;
+    width: 150px;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid grey;
+}

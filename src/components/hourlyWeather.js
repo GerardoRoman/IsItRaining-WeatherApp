@@ -38,8 +38,6 @@ export default function HourlyWeather({ lat, long }) {
                 let futureForecast = fourtyEightHourForecast.filter(time => moment(time[1]) < timeAddTwelve && moment(time[1]) > date)
                 setForecast(futureForecast)
                 console.log(futureForecast)
-
-                // setWeatherIcon(futureForecast.)
             })
         }
     }, [lat, long])
@@ -49,30 +47,29 @@ export default function HourlyWeather({ lat, long }) {
 
     return (
         forecast.length > 0 && (
-            forecast.map((data => (
-                <div className="hourlyCard">
-                    <>
-                        <div>
-                            {moment(data[1]).format('dddd')} at {moment(data[1]).format('h:mma')}
+            <div className="hourlyWeatherMap">
+                {
+                    forecast.map((data => (
+                        <div className="hourlyWeatherCard">
+                            <>
+                                <div className="hourlyTime">
+                                    {moment(data[1]).format('h:mma')}
+                                </div>
+                                <div className="hourlyTemp">
+                                    {Math.round(data[0])}°F
+                                </div>
+                                <div className="hourlyWeatherCondition">
+                                    {data[2].text}
+                                </div>
+
+                                <div className="hourlyIconCode">
+                                    {data[2].code}
+                                </div>
+                            </>
                         </div>
-                        <div>
-                            Temp: {Math.round(data[0])}°F
-                        </div>
-                        <div>
-                            {data[2].text}
-                        </div>
-                        <div>
-                        </div>
-                        {/* <div>
-                            {data[2].icon}
-                        </div> */}
-                        <div>
-                            {/* <img src={`http://openweathermap.org/img/w/${data[2].code}.png`} alt="icon"></img> */}
-                            {data[2].code}
-                        </div>
-                    </>
-                </div>
-            )
-            ))
+                    )
+                    ))
+                }
+            </div>
         ));
 }
