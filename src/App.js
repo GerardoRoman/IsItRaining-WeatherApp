@@ -8,7 +8,7 @@ import Animal from './components/animals.js'
 
 
 
-function App() {
+function App({ weatherID }) {
   const [lat, setLat] = useState(null)
   const [long, setLong] = useState(null)
   const [userPos, setUserPos] = useState({ lat: null, long: null })
@@ -32,7 +32,7 @@ function App() {
       <CurrentWeather lat={lat} long={long} />
       {/* <HourlyWeather lat={lat} long={long} /> */}
       {/* <WeeklyWeather lat={lat} long={long} /> */}
-      <Animal />
+      <Animal weatherID={weatherID} />
       <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
 
     </div>
