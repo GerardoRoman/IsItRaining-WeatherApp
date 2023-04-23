@@ -18,9 +18,11 @@
     "react-animated-weather": "^4.0.1",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
+    "use-local-storage-state": "^18.3.2",
     "weather-react-icons": "^4.0.2",
     "web-vitals": "^2.1.4"
   },

@@ -1,11 +1,3 @@
-.home-component {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
 .blue-trex-roar {
     position: absolute;
     top: 70%;
@@ -31,6 +23,7 @@
     border-radius: 15px;
     margin-left: 25%;
     margin-right: 25%;
+    padding-top: 100px;
     /* border: 2px solid black; */
     align-items: center;
     justify-content: center;

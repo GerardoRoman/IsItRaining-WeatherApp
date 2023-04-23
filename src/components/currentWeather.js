@@ -7,7 +7,7 @@ import { WeatherIcon } from 'weather-react-icons';
 import Animal from './animals.js'
 
 
-export default function CurrentWeather({ lat, long }) {
+export default function CurrentWeather({ lat, long, token }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
@@ -15,13 +15,19 @@ export default function CurrentWeather({ lat, long }) {
     useEffect(() => {
         if (lat && long) {
             const URL = (`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
-            axios.get(URL).then(result => {
-                setData(result.data);
-                setWeatherIcon(result.data.weather[0].icon)
-                setWeatherID(result.data.weather[0].id)
+            axios.get(URL, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                }
             })
+                .then(result => {
+                    setData(result.data);
+                    setWeatherIcon(result.data.weather[0].icon)
+                    setWeatherID(result.data.weather[0].id)
+                })
         }
-    }, [lat, long, weatherID])
+    }, [lat, long, weatherID, token])
 
     console.log(weatherID)
 

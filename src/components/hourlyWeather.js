@@ -3,7 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 // import round from 'moment-round';
 
-export default function HourlyWeather({ lat, long }) {
+export default function HourlyWeather({ lat, long, token }) {
     const [forecast, setForecast] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
 
@@ -11,7 +11,13 @@ export default function HourlyWeather({ lat, long }) {
     useEffect(() => {
         if (lat && long) {
             const URL = (`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY2}&q=${lat},${long}&days=2&aqi=no&alerts=no`)
-            axios.get(URL).then(result => {
+            axios.get(URL, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                }
+
+            }).then(result => {
 
                 const day1 = result.data.forecast.forecastday[0].hour
                 const day1Forecast = day1.map((forecast) => {
@@ -40,7 +46,7 @@ export default function HourlyWeather({ lat, long }) {
                 console.log(futureForecast)
             })
         }
-    }, [lat, long])
+    }, [lat, long, token])
 
 
     console.log(forecast)
