@@ -41,9 +41,9 @@ function App() {
     <>
       <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} />
       <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
+      <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
       {/* <Login setAuth={setAuth} />
       <Registration setAuth={setAuth} /> */}
-      <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
     </>
   );
 }
