@@ -44,6 +44,10 @@ export default function Profile({ username }) { //add token
                     <CgProfile />
                 </div>
             </IconContext.Provider>
+            <h2>{username}</h2>
+            <div className='display-animals'>
+
+            </div>
             <div className='profile-background-image'>
                 <img src={charactersMenuBackgroundImage} alt='profile-background'></img>
             </div>

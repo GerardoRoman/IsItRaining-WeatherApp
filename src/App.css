@@ -20,6 +20,11 @@ body {
     width: 75%;
 }
 
+.animal img:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 10px black;
+}
+
 /* CURRENT WEATHER COMPONENT*/
 .weatherCard {
     width: 85%;
