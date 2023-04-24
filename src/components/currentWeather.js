@@ -61,8 +61,14 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
                     <div className="humidity">
                         Humidity: {data.main.humidity}%
                     </div>
+                </div>
+                <div className="hourlyForecastLabel">
+                    Swipe for hourly forecast →
+                </div>
+                <div>
                     <Animal weatherID={weatherID} />
                 </div>
+
             </div >
         ) : (
             <div> "Loading" </div>
