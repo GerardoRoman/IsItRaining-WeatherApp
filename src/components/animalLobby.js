@@ -46,7 +46,9 @@ export default function AnimalLobby({ username }) { //add token
             </IconContext.Provider>
             <h2>{username}</h2>
             <div className='display-animals'>
-
+                <div>
+                    
+                </div>
             </div>
             <div className='profile-background-image'>
                 <img src={charactersMenuBackgroundImage} alt='profile-background'></img>
