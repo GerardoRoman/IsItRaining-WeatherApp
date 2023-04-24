@@ -40,7 +40,7 @@ function App() {
     <>
       {token ? (
         <>
-          {/* <CurrentWeather lat={lat} long={long} token={token} /> */}
+          <CurrentWeather lat={lat} long={long} token={token} />
           <HourlyWeather lat={lat} long={long} token={token} />
         </>
       ) : (

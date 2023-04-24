@@ -22,7 +22,7 @@ function Animal({ weatherID }) {
     }, [weatherID])
 
     return (
-        <div>
+        <div className='animal'>
             <img src={image} alt='corresponding-weather-animal'></img>
         </div>
     )
