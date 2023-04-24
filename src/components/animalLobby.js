@@ -4,9 +4,9 @@ import charactersMenuBackgroundImage from './assets/backgroundImages/8_png_by_cl
 import { CgProfile } from 'react-icons/cg'
 import { IconContext } from 'react-icons'
 import "../styles/profile-icon.css"
-import "../styles/profile.css"
+import "../styles/animalLobby.css"
 
-export default function Profile({ username }) { //add token 
+export default function AnimalLobby({ username }) { //add token 
     const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
 
