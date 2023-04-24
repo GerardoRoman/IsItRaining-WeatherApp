@@ -40,9 +40,8 @@ function App() {
     <>
       {token ? (
         <>
-          <CurrentWeather lat={lat} long={long} token={token} />
+          {/* <CurrentWeather lat={lat} long={long} token={token} /> */}
           <HourlyWeather lat={lat} long={long} token={token} />
-          <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
         </>
       ) : (
         <>
@@ -51,6 +50,7 @@ function App() {
         </>
       )
       }
+      <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
     </>
   );
 }

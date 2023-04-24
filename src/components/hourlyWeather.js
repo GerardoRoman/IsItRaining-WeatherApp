@@ -6,6 +6,7 @@ import moment from 'moment';
 export default function HourlyWeather({ lat, long, token }) {
     const [forecast, setForecast] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
+    const [dayNight, setDayNight] = useState([])
 
 
     useEffect(() => {
@@ -16,7 +17,6 @@ export default function HourlyWeather({ lat, long, token }) {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ${token}`
                 }
-
             }).then(result => {
 
                 const day1 = result.data.forecast.forecastday[0].hour
@@ -47,6 +47,7 @@ export default function HourlyWeather({ lat, long, token }) {
             })
         }
     }, [lat, long, token])
+
 
 
     console.log(forecast)

@@ -16,10 +16,10 @@ export default function CurrentWeather({ lat, long, token }) {
         if (lat && long) {
             const URL = (`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
             axios.get(URL, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Token ${token}`
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Token ${token}`
+                // }
             })
                 .then(result => {
                     setData(result.data);
