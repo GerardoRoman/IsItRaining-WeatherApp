@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 import CurrentWeather from './components/currentWeather.js'
 import HourlyWeather from './components/hourlyWeather.js'
-import Login from './components/login.js'
-import Logout from './components/logout.js'
+// import Login from './components/login.js'
+// import Logout from './components/logout.js'
 import Registration from './components/registration.js'
 import mainBackgroundImage from './assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
 
@@ -38,7 +38,6 @@ function App() {
 
 
   return (
-
     <>
       <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} />
       <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />

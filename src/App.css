@@ -14,7 +14,7 @@ body {
 
 .animal img {
     position: absolute;
-    top: 200%;
+    top: 250%;
     left: 45%;
     transform: translate(-50%, -65%);
     width: 75%;
@@ -27,12 +27,12 @@ body {
 
 /* CURRENT WEATHER COMPONENT*/
 .weatherCard {
-    width: 85%;
+    width: 507px;
     height: 275px;
     border-radius: 15px;
-    margin-left: 25%;
+    margin-left: 250px;
     margin-right: 25%;
-    padding-top: 100px;
+    margin-top: 135px;
     /* border: 2px solid black; */
     align-items: center;
     justify-content: center;
@@ -51,12 +51,12 @@ body {
     border-radius: 15px;
     text-align: center;
     font-family: 'Hind Siliguri', sans-serif;
-    /* border: 1px solid grey; */
 
 }
 
 .cardBody {
-    padding: 15px;
+    padding: 15px, 15px, 15px, 15px;
+    margin-bottom: 27px;
 }
 
 .tempIconBucket {
@@ -85,11 +85,6 @@ body {
     color: rgba(231, 233, 234, 0.633)
 }
 
-.humidity {
-    text-align: center;
-    color: antiquewhite;
-    font-size: 14px;
-}
 
 .highLowBox {
     display: flex;
@@ -106,29 +101,44 @@ body {
     color: antiquewhite;
 }
 
+.humidity {
+    text-align: center;
+    color: antiquewhite;
+    font-size: 14px;
+    padding-bottom: 0px;
+}
+
+.hourlyForecastLabel {
+    color: aliceblue;
+    margin-top: 0px;
+    background-color: rgba(0, 0, 0, .25);
+    color: #fff;
+    padding-left: 2px;
+    width: 200px;
+}
+
 /* HOURLY WEATHER COMPONENT*/
 .divForHourlyMap {
     justify-content: center;
-    border: 1px solid yellow;
-    padding-left: 125px;
-    padding-top: 300px;
-    width: 460px;
+    padding-left: 110px;
+    width: 500px;
 }
 
 .hourlyWeatherMap {
     display: flex;
-    border: 1px solid purple;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    padding-top: 20px;
+    margin-top: 300px;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
 }
 
 .hourlyWeatherCard {
-    height: 200px;
-    width: 150px;
+    height: 130px;
+    width: 125px;
+    padding-top: 10px;
     flex: 0 0 auto;
     text-align: center;
-    border: 1px solid grey;
+    background-color: rgba(0, 0, 0, .25);
+    color: #fff;
 }

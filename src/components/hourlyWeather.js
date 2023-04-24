@@ -49,32 +49,31 @@ export default function HourlyWeather({ lat, long, setHourlyTemps }) {
     console.log(forecast)
 
     return (
+
         forecast.length > 0 && (
-            <div className="divForHourlyMap">
-                <div className="hourlyWeatherMap">
-                    {
-                        forecast.map((data => (
-                            <div className="hourlyWeatherCard">
-                                <>
-                                    <div className="hourlyTime">
-                                        {moment(data[1]).format('h:mma')}
-                                    </div>
-                                    <div className="hourlyTemp">
-                                        {Math.round(data[0])}°F
-                                    </div>
-                                    <div className="hourlyWeatherCondition">
-                                        {data[2].text}
-                                    </div>
-                                    <div className="hourlyIcon">
-                                        {/* {data[2].icon} */}
-                                        <img src={`http:${data[2].icon}`} alt="icon"></img>
-                                    </div>
-                                </>
-                            </div>
-                        )
-                        ))
-                    }
+            <>
+                <div className="divForHourlyMap">
+                    <div className="hourlyWeatherMap">
+                        {
+                            forecast.map((data => (
+                                <div className="hourlyWeatherCard">
+                                    <>
+                                        <div className="hourlyTime">
+                                            {moment(data[1]).format('h:mma')}
+                                        </div>
+                                        <div className="hourlyIcon">
+                                            <img src={`http:${data[2].icon}`} alt="icon"></img>
+                                        </div>
+                                        <div className="hourlyTemp">
+                                            {Math.round(data[0])}°F
+                                        </div>
+                                    </>
+                                </div>
+                            )
+                            ))
+                        }
+                    </div>
                 </div>
-            </div>
+            </>
         ));
 }
