@@ -65,11 +65,6 @@ export default function HourlyWeather({ lat, long, setHourlyTemps }) {
                                     <div className="hourlyWeatherCondition">
                                         {data[2].text}
                                     </div>
-
-                                    <div className="hourlyIconCode">
-                                        {data[2].code}
-                                    </div>
-
                                     <div className="hourlyIcon">
                                         {/* {data[2].icon} */}
                                         <img src={`http:${data[2].icon}`} alt="icon"></img>
