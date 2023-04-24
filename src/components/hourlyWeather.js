@@ -3,9 +3,10 @@ import axios from 'axios';
 import moment from 'moment';
 // import round from 'moment-round';
 
-export default function HourlyWeather({ lat, long }) {
+export default function HourlyWeather({ lat, long, setHourlyTemps }) {
     const [forecast, setForecast] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
+    const [dayNight, setDayNight] = useState([])
 
 
     useEffect(() => {
@@ -38,38 +39,42 @@ export default function HourlyWeather({ lat, long }) {
                 let futureForecast = fourtyEightHourForecast.filter(time => moment(time[1]) < timeAddTwelve && moment(time[1]) > date)
                 setForecast(futureForecast)
                 console.log(futureForecast)
+                let hourlyTemps = futureForecast.map((forecast) => forecast[0])
+                console.log(hourlyTemps)
+                setHourlyTemps(hourlyTemps)
             })
         }
-    }, [lat, long])
-
+    }, [lat, long, setHourlyTemps])
 
     console.log(forecast)
 
     return (
         forecast.length > 0 && (
-            <div className="hourlyWeatherMap">
-                {
-                    forecast.map((data => (
-                        <div className="hourlyWeatherCard">
-                            <>
-                                <div className="hourlyTime">
-                                    {moment(data[1]).format('h:mma')}
-                                </div>
-                                <div className="hourlyTemp">
-                                    {Math.round(data[0])}°F
-                                </div>
-                                <div className="hourlyWeatherCondition">
-                                    {data[2].text}
-                                </div>
-
-                                <div className="hourlyIconCode">
-                                    {data[2].code}
-                                </div>
-                            </>
-                        </div>
-                    )
-                    ))
-                }
+            <div className="divForHourlyMap">
+                <div className="hourlyWeatherMap">
+                    {
+                        forecast.map((data => (
+                            <div className="hourlyWeatherCard">
+                                <>
+                                    <div className="hourlyTime">
+                                        {moment(data[1]).format('h:mma')}
+                                    </div>
+                                    <div className="hourlyTemp">
+                                        {Math.round(data[0])}°F
+                                    </div>
+                                    <div className="hourlyWeatherCondition">
+                                        {data[2].text}
+                                    </div>
+                                    <div className="hourlyIcon">
+                                        {/* {data[2].icon} */}
+                                        <img src={`http:${data[2].icon}`} alt="icon"></img>
+                                    </div>
+                                </>
+                            </div>
+                        )
+                        ))
+                    }
+                </div>
             </div>
         ));
 }
