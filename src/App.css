@@ -107,6 +107,14 @@ body {
 }
 
 /* HOURLY WEATHER COMPONENT*/
+.divForHourlyMap {
+    justify-content: center;
+    border: 1px solid yellow;
+    padding-left: 125px;
+    padding-top: 300px;
+    width: 460px;
+}
+
 .hourlyWeatherMap {
     display: flex;
     border: 1px solid purple;
@@ -118,7 +126,7 @@ body {
 }
 
 .hourlyWeatherCard {
-    height: 100px;
+    height: 200px;
     width: 150px;
     flex: 0 0 auto;
     text-align: center;

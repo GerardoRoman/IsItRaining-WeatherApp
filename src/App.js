@@ -15,6 +15,7 @@ function App() {
   const [long, setLong] = useState(null)
   const [token, setToken] = useLocalStorageState('loginToken', '')
   const [username, setUsername] = useLocalStorageState('userUsername', '')
+  const [hourlyTemps, setHourlyTemps] = useState([])
 
 
   const setAuth = (token, username) => {
@@ -37,19 +38,12 @@ function App() {
 
 
   return (
+
     <>
-      {token ? (
-        <>
-          <CurrentWeather lat={lat} long={long} token={token} />
-          <HourlyWeather lat={lat} long={long} token={token} />
-        </>
-      ) : (
-        <>
-          <Login setAuth={setAuth} />
-          <Registration setAuth={setAuth} />
-        </>
-      )
-      }
+      <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} />
+      <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
+      {/* <Login setAuth={setAuth} />
+      <Registration setAuth={setAuth} /> */}
       <div style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
     </>
   );

@@ -3,7 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 // import round from 'moment-round';
 
-export default function HourlyWeather({ lat, long, token }) {
+export default function HourlyWeather({ lat, long, setHourlyTemps }) {
     const [forecast, setForecast] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [dayNight, setDayNight] = useState([])
@@ -12,12 +12,7 @@ export default function HourlyWeather({ lat, long, token }) {
     useEffect(() => {
         if (lat && long) {
             const URL = (`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY2}&q=${lat},${long}&days=2&aqi=no&alerts=no`)
-            axios.get(URL, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Token ${token}`
-                }
-            }).then(result => {
+            axios.get(URL).then(result => {
 
                 const day1 = result.data.forecast.forecastday[0].hour
                 const day1Forecast = day1.map((forecast) => {
@@ -44,39 +39,47 @@ export default function HourlyWeather({ lat, long, token }) {
                 let futureForecast = fourtyEightHourForecast.filter(time => moment(time[1]) < timeAddTwelve && moment(time[1]) > date)
                 setForecast(futureForecast)
                 console.log(futureForecast)
+                let hourlyTemps = futureForecast.map((forecast) => forecast[0])
+                console.log(hourlyTemps)
+                setHourlyTemps(hourlyTemps)
             })
         }
-    }, [lat, long, token])
-
-
+    }, [lat, long, setHourlyTemps])
 
     console.log(forecast)
 
     return (
         forecast.length > 0 && (
-            <div className="hourlyWeatherMap">
-                {
-                    forecast.map((data => (
-                        <div className="hourlyWeatherCard">
-                            <>
-                                <div className="hourlyTime">
-                                    {moment(data[1]).format('h:mma')}
-                                </div>
-                                <div className="hourlyTemp">
-                                    {Math.round(data[0])}°F
-                                </div>
-                                <div className="hourlyWeatherCondition">
-                                    {data[2].text}
-                                </div>
+            <div className="divForHourlyMap">
+                <div className="hourlyWeatherMap">
+                    {
+                        forecast.map((data => (
+                            <div className="hourlyWeatherCard">
+                                <>
+                                    <div className="hourlyTime">
+                                        {moment(data[1]).format('h:mma')}
+                                    </div>
+                                    <div className="hourlyTemp">
+                                        {Math.round(data[0])}°F
+                                    </div>
+                                    <div className="hourlyWeatherCondition">
+                                        {data[2].text}
+                                    </div>
 
-                                <div className="hourlyIconCode">
-                                    {data[2].code}
-                                </div>
-                            </>
-                        </div>
-                    )
-                    ))
-                }
+                                    <div className="hourlyIconCode">
+                                        {data[2].code}
+                                    </div>
+
+                                    <div className="hourlyIcon">
+                                        {/* {data[2].icon} */}
+                                        <img src={`http:${data[2].icon}`} alt="icon"></img>
+                                    </div>
+                                </>
+                            </div>
+                        )
+                        ))
+                    }
+                </div>
             </div>
         ));
 }
