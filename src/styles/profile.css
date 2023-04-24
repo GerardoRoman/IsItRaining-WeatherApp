@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('./assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.profile-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.profile-background-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
