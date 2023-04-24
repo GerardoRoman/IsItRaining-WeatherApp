@@ -1,27 +1,28 @@
 .home-component {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    overflow: hidden;
 }
 
-.blue-trex-roar {
-    position: absolute;
-    top: 70%;
-    left: 75%;
-    transform: translate(-50%, -50%);
-}
-
-.background-image {
+body {
     background-image: url('./assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png');
     background-repeat: no-repeat;
-    background-size: contain;
-    background-attachment: fixed;
-    background-position: center center;
-    position: relative;
-    height: 100vh;
-    width: 110vw;
+    background-size: cover;
+}
+
+.animal img {
+    position: absolute;
+    top: 200%;
+    left: 45%;
+    transform: translate(-50%, -65%);
+    width: 75%;
+}
+
+.animal img:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 10px black;
 }
 
 /* CURRENT WEATHER COMPONENT*/

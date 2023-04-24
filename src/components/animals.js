@@ -25,7 +25,7 @@ function Animal( {weatherID} ) { //add token beside weatherID
 }, [weatherID]) //add token beside weatherID
 
 return (
-    <div>
+    <div className='animal'>
         <img src={image} alt='corresponding-weather-animal'></img>
     </div>
 )
