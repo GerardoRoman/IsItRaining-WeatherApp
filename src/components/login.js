@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 const Login = ({ setAuth }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const navigate = useNavigate();
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -62,6 +65,11 @@ const Login = ({ setAuth }) => {
                         <a className="signUpLink" href="/register">Sign Up!</a>
                     </div>
                 </form>
+            </div>
+            <div>
+                <Link to='/'>
+                    <button>Back to the weather!</button>
+                </Link>
             </div>
         </>
     )
