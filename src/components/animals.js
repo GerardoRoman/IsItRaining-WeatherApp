@@ -66,9 +66,7 @@ function Animal({ weatherID }) {
 
     return (
         <div className='animal'>
-            <button className="animalButton" onClick={openModal}>
-                <img src={image} alt='corresponding-weather-animal'></img>
-            </button>
+            <img src={image} alt='corresponding-weather-animal' onClick={openModal}></img>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
