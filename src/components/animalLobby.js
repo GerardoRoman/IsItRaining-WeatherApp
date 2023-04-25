@@ -14,30 +14,30 @@ export default function AnimalLobby() { //add token, { username }
 
     // console.log(username.username)
     
-    // useEffect(() => {
-    //     axios.get('https://is-it-raining.herokuapp.com/my-animals/', {
-    //         // headers: {
-    //         //     'Authorization': `Token ${token}`
-    //         // }
-    //     }).then((response) => {
-    //         setAnimalList(response.data)
-    //     })
+    useEffect(() => {
+        axios.get('https://is-it-raining.herokuapp.com/my-animals', {
+            // headers: {
+            //     'Authorization': `Token ${token}`
+            // }
+        }).then((response) => {
+            setAnimalList(response.data.random_image)
+        })
 
-    //     setAnimalId(animalList.id)
-    // }, [])
+        setAnimalId(animalList.id.name)
+    }, [])
 
     console.log(animalList)
     console.log(animalId)
 
-    // function deleteAnimal(animalId) {
-    //     console.log(animalId)
-    //     axios.delete(`https://is-it-raining.herokuapp.com/captured/${animalId}`, {
-    //         // headers: {
-    //         //     'Authorization': `Token ${token}`
-    //         // }
-    //     })
-    //         .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
-    // }
+    function deleteAnimal(animalId) {
+        console.log(animalId)
+        axios.delete(`https://is-it-raining.herokuapp.com/captured/${animalId}`, {
+            // headers: {
+            //     'Authorization': `Token ${token}`
+            // }
+        })
+            .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
+    }
 
     return (
         <div>
@@ -51,10 +51,12 @@ export default function AnimalLobby() { //add token, { username }
                 <div>
                     
                 </div>
-                <Link to='/'>
-                    <button>To Weather!</button>
-                </Link>
             </div>
+                <div className='button-container'>
+                <Link to='/'>
+                    <button className='back-to-weather'>Back to Weather!</button>
+                </Link>
+                </div>
             <div className='lobby-background-image'>
                 <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
             </div>

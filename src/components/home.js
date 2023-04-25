@@ -4,6 +4,7 @@ import HourlyWeather from './hourlyWeather.js'
 import Login from './login.js'
 import mainBackgroundImage from '../assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
 import { Link } from 'react-router-dom'
+import '../styles/home.css'
 
 function Home() {
     const [lat, setLat] = useState(null)
@@ -30,10 +31,10 @@ function Home() {
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
             <Link to='/animal-lobby'>
-                <button>Go to Animal Lobby!</button>
+                <button className='to-animal-lobby'>Go to Animal Lobby!</button>
             </Link>
             <Link to='/login'>
-                <button>Login!</button>
+                <button className='login'>Login!</button>
             </Link>
         </>
     );
