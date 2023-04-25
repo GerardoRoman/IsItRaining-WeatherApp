@@ -6,6 +6,7 @@ import AnimalLobby from './components/animalLobby.js'
 import Home from './components/home.js'
 
 
+
 function App() {
   const [token, setToken] = useLocalStorageState('loginToken', '')
   const [username, setUsername] = useLocalStorageState('userUsername', '')
@@ -21,8 +22,8 @@ function App() {
     <>
       <div>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/animal-lobby' element={<AnimalLobby />} />
+          <Route path='/' element={<Home token={token} />} />
+          <Route path='/animal-lobby' element={<AnimalLobby token={token} username={username} />} />
           <Route path='/login' element={<Login setAuth={setAuth} />} />
           <Route path='/register' element={<Registration setAuth={setAuth} />} />
         </Routes>
