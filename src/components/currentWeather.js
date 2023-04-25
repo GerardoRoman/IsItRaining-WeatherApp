@@ -5,6 +5,7 @@ import 'weather-react-icons/lib/css/weather-icons.css';
 import 'weather-react-icons/lib/css/weather-icons-wind.css';
 import { WeatherIcon } from 'weather-react-icons';
 import Animal from './animals.js'
+import Loading from './loading.js'
 
 
 export default function CurrentWeather({ lat, long, hourlyTemps }) {
@@ -75,7 +76,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
 
             </div >
         ) : (
-            <div> "Loading" </div>
+            <div> <Loading /> </div>
         )
     );
 

@@ -167,3 +167,9 @@
     font-size: 20px;
     ;
 }
+
+.loader {
+    position: absolute;
+    margin-left: 275px;
+    margin-top: 200px;
+}
