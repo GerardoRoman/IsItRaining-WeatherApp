@@ -43,7 +43,7 @@ function Animal({ weatherID }) {
     console.log(animal)
 
     const handleClick = (event) => {
-        // axios.post(`https://is-it-raining.herokuapp.com/weather-animal/captured/${animal}/`, {},)
+        // axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/`, {},)
         //     .then(res => {
         //         setCaptured(res.data.FILL_ME_IN);
         //     })

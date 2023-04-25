@@ -1,6 +1,5 @@
 import useLocalStorageState from 'use-local-storage-state'
-// import Login from './components/login.js'
-// import Logout from './components/logout.js'
+import Login from './components/login.js'
 import Registration from './components/registration.js'
 import { Routes, Route, Link } from 'react-router-dom'
 import AnimalLobby from './components/animalLobby.js'
@@ -12,22 +11,22 @@ function App() {
   const [username, setUsername] = useLocalStorageState('userUsername', '')
 
 
-  // const setAuth = (token, username) => {
-  //   setToken(token)
-  //   setUsername(username)
-  // }
+  const setAuth = (token, username) => {
+    setToken(token)
+    setUsername(username)
+  }
 
 
   return (
     <>
       <div>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/animal-lobby' element={<AnimalLobby />} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/animal-lobby' element={<AnimalLobby />} />
+          <Route path='/login' element={<Login setAuth={setAuth} />} />
+          <Route path='/register' element={<Registration setAuth={setAuth} />} />
+        </Routes>
       </div>
-      {/* <Login setAuth={setAuth} />
-      <Registration setAuth={setAuth} /> */}
     </>
   );
 }
