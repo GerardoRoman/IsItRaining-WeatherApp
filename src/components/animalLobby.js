@@ -60,7 +60,7 @@ export default function AnimalLobby() { //add token, { username }
                 <div>
                     
                 </div>
-                <Link to='/weather'>
+                <Link to='/'>
                     <button>To Weather!</button>
                 </Link>
             </div>
