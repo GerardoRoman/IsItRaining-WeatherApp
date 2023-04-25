@@ -1,13 +1,13 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('./assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png');
+    /* background-image: url('./assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.profile-background-image {
+.lobby-background-image {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,7 +16,7 @@ body {
     z-index: -1;
 }
 
-.profile-background-image img {
+.lobby-background-image img {
     height: 100%;
     width: 100%;
     object-fit: cover;
