@@ -5,6 +5,8 @@ import HourlyWeather from './components/hourlyWeather.js'
 // import Login from './components/login.js'
 // import Logout from './components/logout.js'
 import Registration from './components/registration.js'
+import { Route, Routes } from 'react-router-dom'
+import AnimalLobby from './components/animalLobby.js'
 import mainBackgroundImage from './assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
 
 

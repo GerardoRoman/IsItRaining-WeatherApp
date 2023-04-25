@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import charactersMenuBackgroundImage from './assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png'
+import animalLobbyBackgroundImage from '../assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png'
 import { CgProfile } from 'react-icons/cg'
 import { IconContext } from 'react-icons'
 import "../styles/profile-icon.css"
@@ -50,8 +50,11 @@ export default function AnimalLobby({ username }) { //add token
                     
                 </div>
             </div>
-            <div className='profile-background-image'>
-                <img src={charactersMenuBackgroundImage} alt='profile-background'></img>
+            <div className='lobby-background-image'>
+                <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+            </div>
+            <div className='back-to-weather'>
+                <button><a href={`/`}>back to weather</a></button>
             </div>
         </div>
     )
