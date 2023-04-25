@@ -5,12 +5,20 @@ import HourlyWeather from './components/hourlyWeather.js'
 // import Login from './components/login.js'
 // import Logout from './components/logout.js'
 import Registration from './components/registration.js'
-import { Route, Routes } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import AnimalLobby from './components/animalLobby.js'
 import mainBackgroundImage from './assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
+// import { useNavigate } from 'react-router-dom'
 
+// export const ToAL = () => {
+//   const navigate = useNavigate()
 
-
+//   return(
+//       <>
+//       <button onClick={() => navigate('animal-lobby', { replace: true })}>To animal lobby!</button>
+//       </>
+//   )
+// }
 
 function App() {
   const [lat, setLat] = useState(null)
@@ -20,10 +28,10 @@ function App() {
   const [hourlyTemps, setHourlyTemps] = useState([])
 
 
-  const setAuth = (token, username) => {
-    setToken(token)
-    setUsername(username)
-  }
+  // const setAuth = (token, username) => {
+  //   setToken(token)
+  //   setUsername(username)
+  // }
 
 
   useEffect(() => {
@@ -41,6 +49,14 @@ function App() {
 
   return (
     <>
+      <div>
+        <Link to='/about'>
+          <button>To Animal Lobby!</button>
+        </Link>
+      <Routes>
+      <Route path='/animal-lobby' element={<AnimalLobby />} />
+      </Routes>
+      </div>
       <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} />
       <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
       <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>

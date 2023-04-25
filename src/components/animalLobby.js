@@ -5,12 +5,23 @@ import { CgProfile } from 'react-icons/cg'
 import { IconContext } from 'react-icons'
 import "../styles/profile-icon.css"
 import "../styles/animalLobby.css"
+import { useNavigate } from 'react-router-dom'
 
-export default function AnimalLobby({ username }) { //add token 
+// export const GoBack = () => {
+//     const navigate = useNavigate()
+
+//     return(
+//         <>
+//         <button onClick={() => navigate()}>Back to weather</button>
+//         </>
+//     )
+// }
+
+export default function AnimalLobby() { //add token, { username }
     const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
 
-    console.log(username.username)
+    // console.log(username.username)
     
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals/', {
@@ -44,7 +55,7 @@ export default function AnimalLobby({ username }) { //add token
                     <CgProfile />
                 </div>
             </IconContext.Provider>
-            <h2>{username}</h2>
+            {/* <h2>{username}</h2> */}
             <div className='display-animals'>
                 <div>
                     
@@ -52,9 +63,6 @@ export default function AnimalLobby({ username }) { //add token
             </div>
             <div className='lobby-background-image'>
                 <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
-            </div>
-            <div className='back-to-weather'>
-                <button><a href={`/`}>back to weather</a></button>
             </div>
         </div>
     )
