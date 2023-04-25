@@ -5,6 +5,7 @@ import 'weather-react-icons/lib/css/weather-icons.css';
 import 'weather-react-icons/lib/css/weather-icons-wind.css';
 import { WeatherIcon } from 'weather-react-icons';
 import Animal from './animals.js'
+import Loading from './loading.js'
 
 
 export default function CurrentWeather({ lat, long, hourlyTemps }) {
@@ -24,12 +25,10 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
         }
     }, [lat, long, weatherID])
 
-    console.log(weatherID)
+    // console.log(weatherID)
 
     const high = Math.max(...hourlyTemps)
-    console.log(high)
     const low = Math.min(...hourlyTemps)
-    console.log(low)
 
     return (
         (typeof data.main != 'undefined') ? (
@@ -40,26 +39,30 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
                 </div>
                 <div className="cardBody">
                     <div className="tempIconBucket">
-                        <div className='icon'>
-                            <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="icon"></img>
+                        <div className="iconContainer">
+                            <div className='icon'>
+                                <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="icon"></img>
+                            </div>
                         </div>
                         <div className="temp">
-                            {Math.round(data.main.temp)}°F
+                            {Math.round(data.main.temp)}°
                         </div>
                     </div>
-                    <div className="description">
-                        {data.weather[0].description}
-                    </div>
-                    <div className="highLowBox">
-                        <div className="high">
-                            ↑ {Math.ceil(high)}°F
+                    <div className="currentWeatherInfo">
+                        <div className="description">
+                            {data.weather[0].description}
                         </div>
-                        <div className="low">
-                            ↓ {Math.floor(low)}°F
+                        <div className="highLowBox">
+                            <div className="high">
+                                ↑ {Math.ceil(high)}°F
+                            </div>
+                            <div className="low">
+                                ↓ {Math.floor(low)}°F
+                            </div>
                         </div>
-                    </div>
-                    <div className="humidity">
-                        Humidity: {data.main.humidity}%
+                        <div className="humidity">
+                            Humidity: {data.main.humidity}%
+                        </div>
                     </div>
                 </div>
                 <div className="hourlyForecastLabel">
@@ -71,7 +74,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
 
             </div >
         ) : (
-            <div> "Loading" </div>
+            <div> <Loading /> </div>
         )
     );
 

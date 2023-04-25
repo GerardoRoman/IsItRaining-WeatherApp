@@ -40,8 +40,8 @@ function App() {
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
       });
-      console.log("Latitude is:", lat)
-      console.log("Longitude is:", long)
+      // console.log("Latitude is:", lat)
+      // console.log("Longitude is:", long)
     }
     getData();
   }, [lat, long]);
