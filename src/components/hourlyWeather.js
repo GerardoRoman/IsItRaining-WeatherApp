@@ -38,16 +38,16 @@ export default function HourlyWeather({ lat, long, setHourlyTemps }) {
 
                 let futureForecast = fourtyEightHourForecast.filter(time => moment(time[1]) < timeAddTwelve && moment(time[1]) > date)
                 setForecast(futureForecast)
-                console.log(futureForecast)
+                // console.log(futureForecast)
 
                 let hourlyTemps = day1Forecast.map((forecast) => forecast[0])
-                console.log(hourlyTemps)
+                // console.log(hourlyTemps)
                 setHourlyTemps(hourlyTemps)
             })
         }
     }, [lat, long, setHourlyTemps])
 
-    console.log(forecast)
+    // console.log(forecast)
 
     return (
 

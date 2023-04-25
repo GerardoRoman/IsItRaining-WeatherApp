@@ -25,12 +25,10 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
         }
     }, [lat, long, weatherID])
 
-    console.log(weatherID)
+    // console.log(weatherID)
 
     const high = Math.max(...hourlyTemps)
-    console.log(high)
     const low = Math.min(...hourlyTemps)
-    console.log(low)
 
     return (
         (typeof data.main != 'undefined') ? (
