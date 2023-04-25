@@ -8,7 +8,7 @@ import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
 
 
-export default function AnimalLobby() { //add token, { username }
+export default function AnimalLobby({ handleLogout }) { //add token, { username }
     const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
 
@@ -39,27 +39,43 @@ export default function AnimalLobby() { //add token, { username }
             .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
     }
 
+
     return (
-        <div>
-            <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
-                <div className='profile-icon'>
-                    <CgProfile />
+        <>
+            <div>
+                <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
+                    <div className='profile-icon'>
+                        <CgProfile />
+                    </div>
+                </IconContext.Provider>
+
+                {/* <h2>{username}</h2> */}
+
+                <div className='animal-display'>
+                    <div>
+                    </div>
                 </div>
-            </IconContext.Provider>
-            {/* <h2>{username}</h2> */}
-            <div className='display-animals'>
-                <div>
-                    
+
+                <div className='lobby-background-image'>
+                    <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
                 </div>
-            </div>
+
                 <div className='button-container'>
-                <Link to='/'>
-                    <button className='back-to-weather'>Back to Weather!</button>
-                </Link>
+                    <Link to='/'>
+                        <button className='back-to-weather'>Back to Weather!</button>
+                    </Link>
                 </div>
+
             <div className='lobby-background-image'>
                 <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
             </div>
+
+
+            <div className='logout'>
+                <button onClick={handleLogout}>Logout</button>
+            </div>
+
         </div>
+        </>
     )
 }

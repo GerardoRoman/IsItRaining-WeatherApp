@@ -6,7 +6,7 @@ import mainBackgroundImage from '../assets/backgroundImages/4_edit_by_cleopatraw
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
 
-function Home() {
+function Home({ token }) {
     const [lat, setLat] = useState(null)
     const [long, setLong] = useState(null)
     const [hourlyTemps, setHourlyTemps] = useState([])
@@ -27,7 +27,7 @@ function Home() {
 
     return (
         <>
-            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} />
+            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
             <Link to='/animal-lobby'>

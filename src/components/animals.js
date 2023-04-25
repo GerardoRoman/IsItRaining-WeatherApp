@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom'
+
 
 
 
@@ -18,12 +20,13 @@ const customStyles = {
 // Modal.setAppElement('#animalButton');
 
 
-function Animal({ weatherID }) {
+function Animal({ weatherID, token }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
     const [captured, setCaptured] = useState('')
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -38,53 +41,61 @@ function Animal({ weatherID }) {
         }
 
     }, [weatherID])
-
     console.log(animal)
 
-    const handleClick = (event) => {
-        // axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/`, {},)
-        //     .then(res => {
-        //         setCaptured(res.data.FILL_ME_IN);
-        //     })
-        console.log('clicked')
+    const handleCapture = (event) => {
+        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/`, {},
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                }
+            }
+        )
+            .then(res => {
+                closeModal()
+                navigate('/animal-lobby')
+            })
     };
 
     function openModal() {
         setIsOpen(true);
     }
-
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
         subtitle.style.color = '#f00';
     }
-
     function closeModal() {
         setIsOpen(false);
     }
 
+    console.log(token)
 
     return (
-        <div className='animal'>
+        (token ? (
+
+            <div className='animal'>
+                <img src={image} alt='corresponding-weather-animal' onClick={openModal}></img>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>You caught a {animal}!</h2>
+                    <div className="modalImage">
+                        <img src={image} alt='your-new-animal'></img>
+                    </div>
+                    <div>Choose what you'd like to do with it!</div>
+                    <button onClick={closeModal}>release back to the wild</button>
+                    <button onClick={handleCapture}>capture to your collection</button>
+
+                </Modal>
+            </div>
+        ) : (<div className='animal'>
             <img src={image} alt='corresponding-weather-animal' onClick={openModal}></img>
-            <Modal
-                isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel="Example Modal"
-            >
-                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-                <button onClick={closeModal}>close</button>
-                <div>I am a modal</div>
-                <form>
-                    <input />
-                    <button>tab navigation</button>
-                    <button>stays</button>
-                    <button>inside</button>
-                    <button>the modal</button>
-                </form>
-            </Modal>
         </div>
+        ))
     )
 
 }

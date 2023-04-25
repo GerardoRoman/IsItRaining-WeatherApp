@@ -3,12 +3,11 @@ import axios from 'axios';
 import '../App.css';
 import 'weather-react-icons/lib/css/weather-icons.css';
 import 'weather-react-icons/lib/css/weather-icons-wind.css';
-import { WeatherIcon } from 'weather-react-icons';
 import Animal from './animals.js'
 import Loading from './loading.js'
 
 
-export default function CurrentWeather({ lat, long, hourlyTemps }) {
+export default function CurrentWeather({ lat, long, hourlyTemps, token }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
@@ -69,7 +68,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
                     Swipe for hourly forecast →
                 </div>
                 <div>
-                    <Animal weatherID={weatherID} />
+                    <Animal weatherID={weatherID} token={token} />
                 </div>
 
             </div >
