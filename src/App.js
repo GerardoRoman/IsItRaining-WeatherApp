@@ -19,7 +19,7 @@ function App() {
   }
 
   const handleLogout = () => {
-    axios.post('https://is-it-raining.herokuapp.com/auth/token/logout/',
+    axios.post('https://is-it-raining.herokuapp.com/auth/token/logout',
       {},
       {
         headers: {
