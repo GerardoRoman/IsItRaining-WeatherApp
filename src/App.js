@@ -4,25 +4,41 @@ import Registration from './components/registration.js'
 import { Routes, Route, Link } from 'react-router-dom'
 import AnimalLobby from './components/animalLobby.js'
 import Home from './components/home.js'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 
 function App() {
   const [token, setToken] = useLocalStorageState('loginToken', '')
   const [username, setUsername] = useLocalStorageState('userUsername', '')
-
+  const navigate = useNavigate();
 
   const setAuth = (token, username) => {
     setToken(token)
     setUsername(username)
   }
 
+  const handleLogout = () => {
+    axios.post('https://is-it-raining.herokuapp.com/auth/token/logout',
+      {},
+      {
+        headers: {
+          'Authorization': `Token ${token}`
+        },
+      }
+    ).then(() => {
+      setAuth('', null)
+      navigate('/')
+      console.log('loggedout')
+    })
+  }
 
   return (
     <>
       <div>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/animal-lobby' element={<AnimalLobby />} />
+          <Route path='/' element={<Home token={token} />} />
+          <Route path='/animal-lobby' element={<AnimalLobby token={token} username={username} handleLogout={handleLogout} />} />
           <Route path='/login' element={<Login setAuth={setAuth} />} />
           <Route path='/register' element={<Registration setAuth={setAuth} />} />
         </Routes>
