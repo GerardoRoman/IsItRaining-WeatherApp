@@ -7,15 +7,6 @@ import "../styles/profile-icon.css"
 import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
 
-// export const GoBack = () => {
-//     const navigate = useNavigate()
-
-//     return(
-//         <>
-//         <button onClick={() => navigate()}>Back to weather</button>
-//         </>
-//     )
-// }
 
 export default function AnimalLobby() { //add token, { username }
     const [animalList, setAnimalList] = useState([])

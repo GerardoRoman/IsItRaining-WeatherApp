@@ -27,10 +27,10 @@ function Home() {
     <>
         <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} />
         <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
+        <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
         <Link to='/animal-lobby'>
         <button>Go to Animal Lobby!</button>
         </Link>
-        <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
     </>
     );
 }
