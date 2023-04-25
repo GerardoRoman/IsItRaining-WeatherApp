@@ -17,12 +17,12 @@ import { Link } from 'react-router-dom'
 //     )
 // }
 
-export default function AnimalLobby() { //add token, { username }
+export default function AnimalLobby({ handleLogout }) { //add token, { username }
     const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
 
     // console.log(username.username)
-    
+
     // useEffect(() => {
     //     axios.get('https://is-it-raining.herokuapp.com/my-animals/', {
     //         // headers: {
@@ -48,25 +48,31 @@ export default function AnimalLobby() { //add token, { username }
     //         .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
     // }
 
+
     return (
-        <div>
-            <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
-                <div className='profile-icon'>
-                    <CgProfile />
+        <>
+            <div>
+                <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
+                    <div className='profile-icon'>
+                        <CgProfile />
+                    </div>
+                </IconContext.Provider>
+                {/* <h2>{username}</h2> */}
+                <div className='display-animals'>
+                    <div>
+
+                    </div>
+                    <Link to='/'>
+                        <button>To Weather!</button>
+                    </Link>
                 </div>
-            </IconContext.Provider>
-            {/* <h2>{username}</h2> */}
-            <div className='display-animals'>
-                <div>
-                    
+                <div className='lobby-background-image'>
+                    <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
                 </div>
-                <Link to='/'>
-                    <button>To Weather!</button>
-                </Link>
             </div>
-            <div className='lobby-background-image'>
-                <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+            <div>
+                <button onClick={handleLogout}>Logout</button>
             </div>
-        </div>
+        </>
     )
 }
