@@ -19,7 +19,7 @@
 
 /* CURRENT WEATHER COMPONENT*/
 .weatherCard {
-    width: 507px;
+    width: 558px;
     height: 275px;
     border-radius: 15px;
     margin-left: 250px;
@@ -36,7 +36,7 @@
 
 .header {
     color: rgb(239, 239, 245);
-    padding: 10px;
+    padding-top: 10px;
     margin-bottom: 0px;
     font-size: 35px;
     border-radius: 15px;
@@ -52,16 +52,21 @@
 .tempIconBucket {
     justify-content: center;
     display: flex;
+    /* border: 1px solid black; */
+
 }
 
 .iconContainer {
     width: 120px;
-    height: 120px;
+    height: 90px;
+    /* border: 1px solid black; */
 }
 
 .iconContainer img {
     width: 100%;
     height: auto;
+    /* border: 1px solid black; */
+
 }
 
 .temp {
@@ -71,6 +76,8 @@
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
     font-size: 80px;
+    /* border: 1px solid black; */
+
 }
 
 .description {
@@ -79,6 +86,7 @@
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     font-size: 25px;
+    padding-top: 0px;
 }
 
 
@@ -112,12 +120,12 @@
 
 .hourlyForecastLabel {
     color: aliceblue;
-    margin-top: 0px;
+    margin-top: 26px;
     background-color: rgba(0, 0, 0, .25);
     color: #fff;
     padding-left: 5px;
     padding-bottom: 1px;
-    width: 300px;
+    width: 280px;
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
     font-size: 20px;
@@ -125,17 +133,17 @@
 
 /* HOURLY WEATHER COMPONENT*/
 .divForHourlyMap {
-    justify-content: center;
+    align-content: center;
     position: absolute;
-    padding-left: 110px;
-    width: 500px;
+    padding-left: 85px;
+    width: 550px;
 
 }
 
 .hourlyWeatherMap {
     display: flex;
     padding-top: 70px;
-    margin-top: 299px;
+    margin-top: 274px;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;

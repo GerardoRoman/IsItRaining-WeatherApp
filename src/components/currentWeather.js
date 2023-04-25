@@ -49,19 +49,21 @@ export default function CurrentWeather({ lat, long, hourlyTemps }) {
                             {Math.round(data.main.temp)}°
                         </div>
                     </div>
-                    <div className="description">
-                        {data.weather[0].description}
-                    </div>
-                    <div className="highLowBox">
-                        <div className="high">
-                            ↑ {Math.ceil(high)}°F
+                    <div className="currentWeatherInfo">
+                        <div className="description">
+                            {data.weather[0].description}
                         </div>
-                        <div className="low">
-                            ↓ {Math.floor(low)}°F
+                        <div className="highLowBox">
+                            <div className="high">
+                                ↑ {Math.ceil(high)}°F
+                            </div>
+                            <div className="low">
+                                ↓ {Math.floor(low)}°F
+                            </div>
                         </div>
-                    </div>
-                    <div className="humidity">
-                        Humidity: {data.main.humidity}%
+                        <div className="humidity">
+                            Humidity: {data.main.humidity}%
+                        </div>
                     </div>
                 </div>
                 <div className="hourlyForecastLabel">
