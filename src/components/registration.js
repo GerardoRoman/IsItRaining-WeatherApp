@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
+import "../styles/registration.css"
 
 
 const Registration = ({ setAuth }) => {
@@ -34,40 +35,57 @@ const Registration = ({ setAuth }) => {
 
     return (
         <>
-            <h1>Sign Up</h1>
-            <div className='login-form'>
-                <form onFocus={() => setError(null)} onSubmit={handleRegister}>
-                    <div>
-                        <label><span>username: </span></label>
-                        <input
-                            type='text'
-                            name='username'
-                            id='username'
-                            value={userName}
-                            required
-                            onChange={(e) => setUserName(e.target.value)}
-                        >
-                        </input>
+            <div className="registrationPage">
+                <div className="RegistrationGreeting">
+                    <h1>
+                        <span>Sign Up</span>
+                    </h1>
+                    <div className="blobs">
+                        <div className="blobs_1"></div>
+                        <div className="blobs_2"></div>
+                        <div className="blobs_3"></div>
+                        <div className="blobs_4"></div>
+                        <div className="blobs_5"></div>
                     </div>
-                    <div>
-                        <label><span>password: </span></label>
-                        <input
-                            type='password'
-                            name='password'
-                            id='password'
-                            value={passWord}
-                            required
-                            onChange={(e) => setPassWord(e.target.value)}
-                        >
-                        </input>
-                    </div>
-                    <div className="disclaimerPassword">
-                        <p>* password must be a minimum of 8 characters *</p>
-                    </div>
-                    <div>
-                        <button type='submit'>Submit!</button>
-                    </div>
-                </form>
+                </div>
+                <div className='login-form'>
+                    <form onFocus={() => setError(null)} onSubmit={handleRegister}>
+                        <div>
+                            <label className="usernameRegister"><span>username: </span></label>
+                            <input
+                                type='text'
+                                name='username'
+                                id='username'
+                                value={userName}
+                                required
+                                onChange={(e) => setUserName(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <div>
+                            <label className="passwordRegister"><span>password: </span></label>
+                            <input
+                                type='password'
+                                name='password'
+                                id='password'
+                                value={passWord}
+                                required
+                                onChange={(e) => setPassWord(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <div className="disclaimerPassword">
+                            <p>* password must be a minimum of 8 characters *</p>
+                        </div>
+                        <div>
+                            <button className="submitButtonRegister" type='submit'>Submit!</button>
+                        </div>
+                        <div className="backToLogin">
+                            <a href="/login">Back to login</a>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </>
     )

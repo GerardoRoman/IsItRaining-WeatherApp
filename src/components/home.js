@@ -18,8 +18,8 @@ function Home({ token }) {
                 setLat(position.coords.latitude);
                 setLong(position.coords.longitude);
             });
-            // console.log("Latitude is:", lat)
-            // console.log("Longitude is:", long)
+            console.log("Latitude is:", lat)
+            console.log("Longitude is:", long)
         }
         getData();
     }, [lat, long]);
@@ -30,12 +30,14 @@ function Home({ token }) {
             <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
-            <Link to='/animal-lobby'>
-                <button className='to-animal-lobby'>Go to Animal Lobby!</button>
-            </Link>
-            <Link to='/login'>
-                <button className='login'>Login!</button>
-            </Link>
+            {token ? (
+                <Link to='/animal-lobby'>
+                    <button className='to-animal-lobby'>Go to Animal Lobby!</button>                </Link>
+            ) : (
+                <Link to='/login'>
+                    <button className='login'>Login!</button>
+                </Link>
+            )}
         </>
     );
 }

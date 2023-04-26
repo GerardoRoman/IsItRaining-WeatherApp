@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -17,16 +18,15 @@ const customStyles = {
     },
 };
 
-// Modal.setAppElement('#animalButton');
 
 
 function Animal({ weatherID, token }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
-    const [captured, setCaptured] = useState('')
-    let subtitle;
+    const [capturedAnimals, setCapturedAnimals] = useState('')
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const navigate = useNavigate();
+    let subtitle;
 
 
     useEffect(() => {
@@ -36,12 +36,9 @@ function Animal({ weatherID, token }) {
                     // console.log(response.data.random_image)
                     setAnimal(response.data.name)
                     setImage(response.data.random_image)
-                    console.log("weather:", { weatherID })
                 })
         }
-
     }, [weatherID])
-    console.log(animal)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/`, {},
@@ -81,6 +78,7 @@ function Animal({ weatherID, token }) {
                     onRequestClose={closeModal}
                     style={customStyles}
                     contentLabel="Example Modal"
+                    ariaHideApp={false}
                 >
                     <h2 ref={(_subtitle) => (subtitle = _subtitle)}>You caught a {animal}!</h2>
                     <div className="modalImage">
@@ -94,6 +92,24 @@ function Animal({ weatherID, token }) {
             </div>
         ) : (<div className='animal'>
             <img src={image} alt='corresponding-weather-animal' onClick={openModal}></img>
+            <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+                ariaHideApp={false}
+            >
+                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Login to capture this {animal}!</h2>
+                <div className="modalImage">
+                    <img src={image} alt='your-new-animal'></img>
+                </div>
+                <button onClick={closeModal}>Nevermind</button>
+                <Link to='/login'>
+                    <button>Login!</button>
+                </Link>
+
+            </Modal>
         </div>
         ))
     )
