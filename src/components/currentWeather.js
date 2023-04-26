@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../App.css';
 import 'weather-react-icons/lib/css/weather-icons.css';
 import 'weather-react-icons/lib/css/weather-icons-wind.css';
 import Animal from './animals.js'
