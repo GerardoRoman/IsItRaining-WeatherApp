@@ -142,7 +142,29 @@ h1 span:before {
     font-weight: 500;
 }
 
+.submitButtonLogin {
+    margin-top: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
 .signUpPrompt {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.signUpLink {
+    padding: 0px;
+    margin-top: 16px;
+    margin-left: 4px;
+    ;
+}
+
+.backToWeatherButton {
+    margin-top: 250px;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
 }

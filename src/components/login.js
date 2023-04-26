@@ -84,7 +84,7 @@ const Login = ({ setAuth }) => {
             </div>
             <div>
                 <Link to='/'>
-                    <button>Back to the weather!</button>
+                    <button className="backToWeatherButton">Back to the weather!</button>
                 </Link>
             </div>
         </>
