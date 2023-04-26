@@ -180,6 +180,10 @@
     ;
 }
 
+.hourlyTemp {
+    font-size: 25px;
+}
+
 .loader {
     position: absolute;
     margin-left: 290px;

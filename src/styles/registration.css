@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Titan+One');
+
+
+.registrationPage {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 100px;
+}
+
+.login-form {}
+
+
+.disclaimerPassword {
+    font-size: 10px;
+}
