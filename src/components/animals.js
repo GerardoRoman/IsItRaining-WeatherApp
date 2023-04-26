@@ -40,6 +40,10 @@ function Animal({ weatherID, token }) {
         }
     }, [weatherID])
 
+
+
+
+
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/`, {},
             {
