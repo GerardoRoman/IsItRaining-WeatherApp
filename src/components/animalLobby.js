@@ -12,8 +12,6 @@ export default function AnimalLobby({ handleLogout, token, username }) {
     const [animalList, setAnimalList] = useState(0)
     const [animalId, setAnimalId] = useState('')
 
-    console.log(username.username)
-    
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals', {
             headers: {
@@ -56,12 +54,12 @@ export default function AnimalLobby({ handleLogout, token, username }) {
                 <h2>{username}'s Animal Lobby</h2>
 
                 <div className='animal-display'>
-                {animalList && animalList.map((animal) => (
-                    <div key={animal.id}>
-                        <img src={animal.random_image} alt={animal.name} />
-                        <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
-                    </div>
-                ))}
+                    {animalList && animalList.map((animal) => (
+                        <div key={animal.id}>
+                            <img src={animal.random_image} alt={animal.name} />
+                            <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
+                        </div>
+                    ))}
                 </div>
 
                 <div className='lobby-background-image'>
@@ -74,16 +72,10 @@ export default function AnimalLobby({ handleLogout, token, username }) {
                     </Link>
                 </div>
 
-            <div className='lobby-background-image'>
-                <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+                <div className='lobby-background-image'>
+                    <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+                </div>
             </div>
-
-
-            <div className='logout'>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
-
-        </div>
         </>
     )
 }
