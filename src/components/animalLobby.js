@@ -9,10 +9,8 @@ import { Link } from 'react-router-dom'
 
 
 export default function AnimalLobby({ handleLogout, token, username }) {
-    const [animalList, setAnimalList] = useState(0)
+    const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
-
-    console.log(username.username)
     
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals', {
@@ -22,16 +20,16 @@ export default function AnimalLobby({ handleLogout, token, username }) {
         }).then((response) => {
             console.log(response)
             console.log(response.data)
-            console.log(response.data.random_image)
-            setAnimalList(response.data.random_image)
+            console.log(response.data[0].animal.id)
+            setAnimalList(response.data)
             setAnimalId(response.data.animal)
         })
 
         // setAnimalId(animalList.animal.name)
     }, [])
 
-    console.log(animalList)
-    console.log(animalId)
+    // console.log(animalList)
+    // console.log(animalId)
 
     function deleteAnimal(animalId) {
         console.log(animalId)
@@ -58,7 +56,9 @@ export default function AnimalLobby({ handleLogout, token, username }) {
                 <div className='animal-display'>
                 {animalList && animalList.map((animal) => (
                     <div key={animal.id}>
-                        <img src={animal.random_image} alt={animal.name} />
+                        {animal.id}
+                        {/* {console.log(animal.id)} */}
+                        {/* <img src={animal.random_image} alt={animal.name} /> */}
                         <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
                     </div>
                 ))}
