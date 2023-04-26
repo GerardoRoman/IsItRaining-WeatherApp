@@ -36,11 +36,22 @@ const Registration = ({ setAuth }) => {
     return (
         <>
             <div className="registrationPage">
-                <h1>Sign Up</h1>
+                <div className="RegistrationGreeting">
+                    <h1>
+                        <span>Sign Up</span>
+                    </h1>
+                    <div className="blobs">
+                        <div className="blobs_1"></div>
+                        <div className="blobs_2"></div>
+                        <div className="blobs_3"></div>
+                        <div className="blobs_4"></div>
+                        <div className="blobs_5"></div>
+                    </div>
+                </div>
                 <div className='login-form'>
                     <form onFocus={() => setError(null)} onSubmit={handleRegister}>
                         <div>
-                            <label><span>username: </span></label>
+                            <label className="usernameRegister"><span>username: </span></label>
                             <input
                                 type='text'
                                 name='username'
@@ -52,7 +63,7 @@ const Registration = ({ setAuth }) => {
                             </input>
                         </div>
                         <div>
-                            <label><span>password: </span></label>
+                            <label className="passwordRegister"><span>password: </span></label>
                             <input
                                 type='password'
                                 name='password'
@@ -67,8 +78,12 @@ const Registration = ({ setAuth }) => {
                             <p>* password must be a minimum of 8 characters *</p>
                         </div>
                         <div>
-                            <button type='submit'>Submit!</button>
+                            <button className="submitButtonRegister" type='submit'>Submit!</button>
                         </div>
+                        <div className="backToLogin">
+                            <a href="/login">Back to login</a>
+                        </div>
+
                     </form>
                 </div>
             </div>
