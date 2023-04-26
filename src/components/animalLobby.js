@@ -8,22 +8,23 @@ import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
 
 
-export default function AnimalLobby({ handleLogout }) { //add token, { username }
+export default function AnimalLobby({ handleLogout, token, username }) {
     const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
 
-    // console.log(username.username)
+    console.log(username.username)
     
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals', {
-            // headers: {
-            //     'Authorization': `Token ${token}`
-            // }
+            headers: {
+                'Authorization': `Token ${token}`
+            }
         }).then((response) => {
             setAnimalList(response.data.random_image)
+            setAnimalId(response.data.animal)
         })
 
-        setAnimalId(animalList.id.name)
+        // setAnimalId(animalList.animal.name)
     }, [])
 
     console.log(animalList)
@@ -32,9 +33,9 @@ export default function AnimalLobby({ handleLogout }) { //add token, { username 
     function deleteAnimal(animalId) {
         console.log(animalId)
         axios.delete(`https://is-it-raining.herokuapp.com/captured/${animalId}`, {
-            // headers: {
-            //     'Authorization': `Token ${token}`
-            // }
+            headers: {
+                'Authorization': `Token ${token}`
+            }
         })
             .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
     }
@@ -49,11 +50,15 @@ export default function AnimalLobby({ handleLogout }) { //add token, { username 
                     </div>
                 </IconContext.Provider>
 
-                {/* <h2>{username}</h2> */}
+                <h2>{username}'s Animal Lobby</h2>
 
                 <div className='animal-display'>
-                    <div>
+                {animalList && animalList.map((animal) => (
+                    <div key={animal.id}>
+                        <img src={animal.random_image} alt={animal.name} />
+                        <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
                     </div>
+                ))}
                 </div>
 
                 <div className='lobby-background-image'>
