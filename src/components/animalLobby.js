@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 
 export default function AnimalLobby({ handleLogout, token, username }) {
-    const [animalList, setAnimalList] = useState([])
+    const [animalList, setAnimalList] = useState(0)
     const [animalId, setAnimalId] = useState('')
 
     console.log(username.username)
@@ -20,6 +20,9 @@ export default function AnimalLobby({ handleLogout, token, username }) {
                 'Authorization': `Token ${token}`
             }
         }).then((response) => {
+            console.log(response)
+            console.log(response.data)
+            console.log(response.data.random_image)
             setAnimalList(response.data.random_image)
             setAnimalId(response.data.animal)
         })
