@@ -1,21 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-/* .backgroundImage {
-    background-image: url('./assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png');
-    object-fit: cover;
-} */
-
-.homeComponent {
-    /* background-image: url('./assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'); */
-    width: 100%;
-    height: 100%;
+.backgroundImage {
+    background-image: url('../assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png');
 }
-
-.homeComponent img {
-    width: 100%;
-    height: 100%;
-}
-
 .animal img {
     position: absolute;
     top: 300%;
@@ -24,10 +11,10 @@
     width: 65%;
 }
 
-/* .animal img:hover {
+.animal img:hover {
     opacity: 0.8;
     box-shadow: 0 0 10px black;
-} */
+}
 
 /* CURRENT WEATHER COMPONENT*/
 .weatherCard {
@@ -178,10 +165,6 @@
     font-weight: 500;
     font-size: 20px;
     ;
-}
-
-.hourlyTemp {
-    font-size: 25px;
 }
 
 .loader {
