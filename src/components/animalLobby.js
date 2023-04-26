@@ -12,6 +12,7 @@ export default function AnimalLobby({ handleLogout, token, username }) {
     const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
     
+
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals', {
             headers: {
@@ -74,16 +75,10 @@ export default function AnimalLobby({ handleLogout, token, username }) {
                     </Link>
                 </div>
 
-            <div className='lobby-background-image'>
-                <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+                <div className='lobby-background-image'>
+                    <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+                </div>
             </div>
-
-
-            <div className='logout'>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
-
-        </div>
         </>
     )
 }

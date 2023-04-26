@@ -65,8 +65,6 @@ function Animal({ weatherID, token }) {
         setIsOpen(false);
     }
 
-    console.log(token)
-
     return (
         (token ? (
 

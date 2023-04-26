@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import CurrentWeather from './currentWeather.js'
 import HourlyWeather from './hourlyWeather.js'
 import Login from './login.js'
 import mainBackgroundImage from '../assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
+import { useNavigate } from 'react-router-dom'
 
-function Home({ token }) {
+function Home({ token, setAuth }) {
     const [lat, setLat] = useState(null)
     const [long, setLong] = useState(null)
     const [hourlyTemps, setHourlyTemps] = useState([])
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getData = async () => {
@@ -18,11 +20,27 @@ function Home({ token }) {
                 setLat(position.coords.latitude);
                 setLong(position.coords.longitude);
             });
-            console.log("Latitude is:", lat)
-            console.log("Longitude is:", long)
+            // console.log("Latitude is:", lat)
+            // console.log("Longitude is:", long)
         }
         getData();
     }, [lat, long]);
+
+
+    const handleLogout = () => {
+        axios.post('https://is-it-raining.herokuapp.com/auth/token/logout',
+            {},
+            {
+                headers: {
+                    'Authorization': `Token ${token}`
+                },
+            }
+        ).then(() => {
+            setAuth('', null)
+            navigate('/')
+            // console.log('loggedout')
+        })
+    }
 
 
     return (
@@ -31,8 +49,13 @@ function Home({ token }) {
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
             {token ? (
-                <Link to='/animal-lobby'>
-                    <button className='to-animal-lobby'>Go to Animal Lobby!</button>                </Link>
+                <>
+                    <Link to='/animal-lobby'>
+                        <button className='to-animal-lobby'>Go to Animal Lobby!</button>                </Link>
+                    <div className='logout'>
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>
+                </>
             ) : (
                 <Link to='/login'>
                     <button className='login'>Login!</button>
