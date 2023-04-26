@@ -1,4 +1,4 @@
-import "../styles/login.css"
+import "./../styles/login.css"
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -14,16 +14,12 @@ const Login = ({ setAuth }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(event)
-        console.log(username)
-        console.log(password)
         axios.post('https://is-it-raining.herokuapp.com/auth/token/login', {
             username: username,
             password: password,
         }).then(res => {
             const token = res.data.auth_token;
             setAuth(token, username);
-            console.log(res.data);
             navigate("/");
         })
     };

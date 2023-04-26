@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-// import round from 'moment-round';
 
 export default function HourlyWeather({ lat, long, setHourlyTemps }) {
     const [forecast, setForecast] = useState([])
@@ -18,36 +17,29 @@ export default function HourlyWeather({ lat, long, setHourlyTemps }) {
                 const day1Forecast = day1.map((forecast) => {
                     return ([forecast.temp_f, forecast.time, forecast.condition])
                 });
-                // console.log(day1)
 
                 const day2 = result.data.forecast.forecastday[1].hour
                 const day2Forecast = day2.map((forecast) => {
                     return ([forecast.temp_f, forecast.time, forecast.condition])
                 });
-                // console.log(day2)
 
 
                 const fourtyEightHourForecast = [...day1Forecast, ...day2Forecast]
                 setForecast(fourtyEightHourForecast)
-                // console.log(fourtyEightHourForecast)
 
 
                 const date = new Date();
                 const timeAddTwelve = (moment(date).add(12, 'hours'))
-                // console.log(timeAddTwelve)
 
                 let futureForecast = fourtyEightHourForecast.filter(time => moment(time[1]) < timeAddTwelve && moment(time[1]) > date)
                 setForecast(futureForecast)
-                // console.log(futureForecast)
 
                 let hourlyTemps = day1Forecast.map((forecast) => forecast[0])
-                // console.log(hourlyTemps)
                 setHourlyTemps(hourlyTemps)
             })
         }
     }, [lat, long, setHourlyTemps])
 
-    // console.log(forecast)
 
     return (
 

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
-import "../styles/registration.css"
+import "./../styles/registration.css"
 
 
 const Registration = ({ setAuth }) => {
@@ -25,8 +25,6 @@ const Registration = ({ setAuth }) => {
                 }).then(res => {
                     const token = res.data.auth_token;
                     setAuth(token, userName);
-                    console.log(res.data);
-                    console.log('3rdAXIOS')
                     navigate("/");
                 });
         })
