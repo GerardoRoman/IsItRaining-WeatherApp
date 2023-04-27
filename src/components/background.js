@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-function BackgroundImages({ weatherID }) {
+function BackgroundImages({ weatherCode }) {
     const [image, setImage] = useState('')
 
     useEffect(() => {
-        if (weatherID) {
-            axios.get(`https://is-it-raining.herokuapp.com/background/`) //${weatherID} after 'background?'
+            axios.get(`https://is-it-raining.herokuapp.com/background/?code=${weatherCode}`) 
                 .then((response) => {
-                    setImage(response) // add mapping
+                    setImage(response.data[0].background_image) // add mapping
+                    console.log(response.data.background_image)
                 })
-        }
-    }, [weatherID])
+                .catch((err) => {
+                    console.log("error", err); 
+                })
+    }, [weatherCode])
 
     return (
         <div className='background-image'>
-            <img src={image} alt='corresponding-weather-background'></img>
+            <img src={image} alt='corresponding-weather-background' />
         </div>
     )
 
