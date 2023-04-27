@@ -1,7 +1,8 @@
+/* Lobby Background Imagee */
+
 body {
     margin: 0;
     padding: 0;
-    /* background-image: url('./assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -29,46 +30,46 @@ body {
     transform: translateX(-50%);
 }
 
-
-.back-to-weather {
-    background-color: #0077cc;
-    color: #fff;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
 h2 {
     text-align: center;
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
 }
 
-.animal-lobby-container {
+/* Animal Display */
+
+.divForAnimalLobbyMap {
+    align-content: center;
     position: absolute;
-    width: 80%;
-    height: 400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -40%);
+    max-width: 325px;
+    padding-left: 25px;
 }
 
-.animal-image img {
-    max-width: 100%;
+.animalLobbyMap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 190px;
+    justify-content: space-between;
+}
+
+.animalLobbyCard {
+    height: 60px;
+    width: 60px;
+}
+
+.animalImage {
+    height: 100px;
+    width: 100px;
+}
+
+.animalImage img {
+    width: 100%;
     height: auto;
-    margin: 10px;
 }
 
-.animal-name {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.delete-animal-button {
-    width: 100%;
-    text-align: center;
-}
+/* Navbar */
 
 .animalLobbyNavBar {
     position: absolute;
