@@ -31,47 +31,47 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
 
     return (
         (typeof data.main != 'undefined') ? (
-
-            <div className="weatherCard">
-                <div className="header" data-drag-scroll-enabled="true">
-                    {data.name}
-                </div>
-                <div className="cardBody">
-                    <div className="tempIconBucket">
-                        <div className="iconContainer">
-                            <div className='icon'>
-                                <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="icon"></img>
+            <>
+                <div className="weatherCard">
+                    <div className="header" data-drag-scroll-enabled="true">
+                        {data.name}
+                    </div>
+                    <div className="cardBody">
+                        <div className="tempIconBucket">
+                            <div className="iconContainer">
+                                <div className='icon'>
+                                    <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="icon"></img>
+                                </div>
+                            </div>
+                            <div className="temp">
+                                {Math.round(data.main.temp)}°
                             </div>
                         </div>
-                        <div className="temp">
-                            {Math.round(data.main.temp)}°
+                        <div className="currentWeatherInfo">
+                            <div className="description">
+                                {data.weather[0].description}
+                            </div>
+                            <div className="highLowBox">
+                                <div className="high">
+                                    ↑ {Math.ceil(high)}°F
+                                </div>
+                                <div className="low">
+                                    ↓ {Math.floor(low)}°F
+                                </div>
+                            </div>
+                            <div className="humidity">
+                                Humidity: {data.main.humidity}%
+                            </div>
                         </div>
                     </div>
-                    <div className="currentWeatherInfo">
-                        <div className="description">
-                            {data.weather[0].description}
-                        </div>
-                        <div className="highLowBox">
-                            <div className="high">
-                                ↑ {Math.ceil(high)}°F
-                            </div>
-                            <div className="low">
-                                ↓ {Math.floor(low)}°F
-                            </div>
-                        </div>
-                        <div className="humidity">
-                            Humidity: {data.main.humidity}%
-                        </div>
-                    </div>
-                </div>
+                </div >
                 <div className="hourlyForecastLabel">
                     Swipe for hourly forecast →
                 </div>
                 <div>
                     <Animal weatherID={weatherID} token={token} />
                 </div>
-
-            </div >
+            </>
         ) : (
             <div> <Loading /> </div>
         )
