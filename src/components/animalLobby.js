@@ -6,12 +6,14 @@ import { IconContext } from 'react-icons'
 import "../styles/profile-icon.css"
 import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
+import { BsFillCloudSunFill } from 'react-icons/bs'
+
 
 
 export default function AnimalLobby({ token, username }) {
     const [animalList, setAnimalList] = useState([])
     const [yourAnimals, setYourAnimals] = useState([])
-    
+
 
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals', {
@@ -52,32 +54,32 @@ export default function AnimalLobby({ token, username }) {
                 <h2>{username}'s Animal Lobby</h2>
 
                 <div className='animal-lobby-map'>
-                {
-                    yourAnimals.map((data => 
-                        <>
-                            <div className='animal-lobby-container'>
-                                <div className='animal-name'>
-                                    {data[0]}
+                    {
+                        yourAnimals.map((data =>
+                            <>
+                                <div className='animal-lobby-container'>
+                                    <div className='animal-name'>
+                                        {data[0]}
+                                    </div>
+                                    <div className='animal-image'>
+                                        <img src={data[1]} alt={data[0]}></img>
+                                    </div>
+                                    <div className='delete-animal-button'>
+                                        <button onClick={() => deleteAnimal(data[3])}>Delete</button>
+                                    </div>
                                 </div>
-                                <div className='animal-image'>
-                                    <img src={data[1]} alt={data[0]}></img>
-                                </div>
-                                <div className='delete-animal-button'>
-                                    <button onClick={() => deleteAnimal(data[3])}>Delete</button>
-                                </div>
-                            </div>
-                        </>
+                            </>
                         ))
                     }
                 </div>
-
                 <div className='lobby-background-image'>
                     <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
                 </div>
-
-                <div className='button-container'>
+                <div className='animalLobbyNavBar'>
                     <Link to='/'>
-                        <button className='back-to-weather'>Back to Weather!</button>
+                        <button className='backToWeather'>
+                            <div><BsFillCloudSunFill /></div>
+                        </button>
                     </Link>
                 </div>
 
