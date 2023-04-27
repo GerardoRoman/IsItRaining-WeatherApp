@@ -8,9 +8,9 @@ import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
 
 
-export default function AnimalLobby({ handleLogout, token, username }) {
+export default function AnimalLobby({ token, username }) {
     const [animalList, setAnimalList] = useState([])
-    const [animalId, setAnimalId] = useState('')
+    const [yourAnimals, setYourAnimals] = useState([])
     
 
     useEffect(() => {
@@ -19,18 +19,17 @@ export default function AnimalLobby({ handleLogout, token, username }) {
                 'Authorization': `Token ${token}`
             }
         }).then((response) => {
-            console.log(response)
             console.log(response.data)
-            console.log(response.data[0].animal.id)
-            setAnimalList(response.data)
-            setAnimalId(response.data.animal.id)
+            const animalMap = response.data
+            const animalArray = animalMap.map((response) => {
+                return ([response.animal.name, response.animal.image, response.animal.id])
+            })
+            setYourAnimals(animalArray)
+            console.log(animalArray)
         })
 
-        // setAnimalId(animalList.animal.name)
-    }, )
+    }, [])
 
-    // console.log(animalList)
-    console.log(animalId)
 
     function deleteAnimal(animalId) {
         console.log(animalId)
@@ -54,15 +53,24 @@ export default function AnimalLobby({ handleLogout, token, username }) {
 
                 <h2>{username}'s Animal Lobby</h2>
 
-                <div className='animal-display'>
-                {animalList && animalList.map((animal) => (
-                    <div key={animal.image}>
-                        {animal.image}
-                        {/* {console.log(animal.id)} */}
-                        {/* <img src={animal.random_image} alt={animal.name} /> */}
-                        <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
-                    </div>
-                ))}
+                <div className='animal-lobby-map'>
+                {
+                    yourAnimals.map((data => 
+                        <>
+                        <div className='animal-lobby-container'>
+                            <div className='animal-name'>
+                                {data[0]}
+                            </div>
+                        <div className='animal-image'>
+                            <img src={data[1]} alt={data[0]}></img>
+                        </div>
+                        <div className='delete-animal-button'>
+                        <button onClick={() => deleteAnimal(data[3])}>Delete</button>
+                        </div>
+                        </div>
+                        </>
+                        ) )
+                    }
                 </div>
 
                 <div className='lobby-background-image'>

@@ -10,9 +10,6 @@ function BackgroundImages({ weatherCode }) {
                     setImage(response.data[0].background_image) // add mapping
                     console.log(response.data.background_image)
                 })
-                .catch((err) => {
-                    console.log("error", err); 
-                })
     }, [weatherCode])
 
     return (
