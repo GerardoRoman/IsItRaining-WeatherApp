@@ -20,12 +20,16 @@ export default function Music() {
 
     return (
         <>
-            <button onClick={play}>
-                <div><AiFillPauseCircle /></div>
-            </button>
-            <button onClick={pause}>
-                <div><AiFillPlayCircle /></div>
-            </button>
+            <div className="playButton">
+                <button onClick={play}>
+                    <div><AiFillPauseCircle /></div>
+                </button>
+            </div>
+            <div className="pauseButton">
+                <button onClick={pause}>
+                    <div><AiFillPlayCircle /></div>
+                </button>
+            </div>
         </>
     )
 }

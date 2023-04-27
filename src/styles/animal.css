@@ -1,12 +1,62 @@
-/* .animal img {
-    position: absolute;
-    top: 300%;
-    left: 45%;
-    transform: translate(-50%, -65%);
-    width: 65%;
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.modalTitle {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: rgb(41, 41, 107);
 }
 
-.animal img:hover {
-    opacity: 0.8;
-    box-shadow: 0 0 10px black;
-} */
+.modalImageDiv {
+    max-width: 200px;
+    max-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalImageDiv img {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalChoice {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: rgb(41, 41, 107);
+    margin-bottom: 10px;
+}
+
+.modalButtonLeft {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    background-color: rgb(42, 150, 190);
+    color: rgb(248, 246, 243);
+    border: none;
+    text-align: center;
+    display: inline-block;
+    padding: 4px 6px;
+    border-radius: 12px;
+    margin-right: 20px;
+    font-size: 11px;
+}
+
+.modalButtonRight {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    background-color: rgb(42, 150, 190);
+    color: rgb(248, 246, 243);
+    border: none;
+    text-align: center;
+    display: inline-block;
+    padding: 4px 6px;
+    border-radius: 12px;
+    font-size: 11px;
+
+}
