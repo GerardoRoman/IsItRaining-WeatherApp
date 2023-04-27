@@ -32,7 +32,7 @@ body {
 
 .back-to-weather {
     background-color: #0077cc;
-    color: #fff; 
+    color: #fff;
     border-radius: 10px;
     padding: 10px 20px;
     cursor: pointer;
@@ -68,4 +68,28 @@ h2 {
 .delete-animal-button {
     width: 100%;
     text-align: center;
+}
+
+.animalLobbyNavBar {
+    position: absolute;
+    width: 375px;
+    height: 35px;
+    top: 635px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.backToWeather {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: rgb(248, 246, 243);
+    border: none;
+}
+
+.backToWeather svg {
+    width: 800%;
+    height: 800%;
 }

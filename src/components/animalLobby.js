@@ -6,6 +6,8 @@ import { IconContext } from 'react-icons'
 import "../styles/profile-icon.css"
 import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
+import { BsFillCloudSunFill } from 'react-icons/bs'
+
 
 
 export default function AnimalLobby({ token, username }) {
@@ -73,10 +75,11 @@ export default function AnimalLobby({ token, username }) {
                 <div className='lobby-background-image'>
                     <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
                 </div>
-                <div className='button-container'>
+                <div className='animalLobbyNavBar'>
                     <Link to='/'>
-                        BsFillCloudSunFill
-                        <button className='back-to-weather'>Back to Weather!</button>
+                        <button className='backToWeather'>
+                            <div><BsFillCloudSunFill /></div>
+                        </button>
                     </Link>
                 </div>
 
