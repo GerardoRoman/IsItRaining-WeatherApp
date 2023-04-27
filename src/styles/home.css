@@ -214,7 +214,7 @@
 
 .logoutButton button {
     position: absolute;
-    top: 631.5px;
+    top: 610px;
     left: 10px;
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
@@ -227,10 +227,24 @@
     border-radius: 12px;
 }
 
-.musicToggleButton button {
+.playButton button {
     position: absolute;
     top: 637px;
     right: 10px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: rgb(42, 150, 190);
+    color: rgb(248, 246, 243);
+    border: none;
+    text-align: center;
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 12px;
+}
+
+.pauseButton button {
+    position: absolute;
+    top: 637px;
+    right: 40px;
     font-family: 'Quicksand', sans-serif;
     background-color: rgb(42, 150, 190);
     color: rgb(248, 246, 243);
