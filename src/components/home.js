@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom'
 import '../styles/home.css'
 import { useNavigate } from 'react-router-dom'
 import BackgroundImages from './background.js'
+import { GiDinosaurRex } from 'react-icons/gi'
+import { IoMdLogOut } from 'react-icons/io'
+import { IoMdLogIn } from 'react-icons/io'
 
 function Home({ token, setAuth }) {
     const [lat, setLat] = useState(null)
@@ -45,29 +48,40 @@ function Home({ token, setAuth }) {
         })
     }
 
-
     return (
         <>
             <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <BackgroundImages weatherCode={weatherCode} />
-            <div className="musicToggleButton">
+            {/* <div className="musicToggleButton">
                 <Music />
-            </div>
+            </div> */}
             {token ? (
                 <>
-                    <Link to='/animal-lobby'>
-                        <button className='animalLobbyButton'>Go to Animal Lobby!</button>                </Link>
-                    <div className='logoutButton'>
-                        <button onClick={handleLogout}>Logout</button>
+                    <div className="loggedInNavBar">
+                        <Link to='/animal-lobby'>
+                            <button className='animalLobbyButton'>
+                                <div><GiDinosaurRex /></div>
+                            </button>
+                        </Link>
+                        <div className='logoutButton'>
+                            <button onClick={handleLogout}>
+                                <div><IoMdLogOut /></div>
+                            </button>
+                        </div>
                     </div>
                 </>
             ) : (
-                <Link to='/login'>
-                    <button className='loginButton'>Login!</button>
-                </Link>
+                <div className="loggedOutNavBar">
+                    <Link to='/login'>
+                        <button className='loginButton'>
+                            <div><IoMdLogIn /></div>
+                        </button>
+                    </Link>
+                </div>
             )}
         </>
     );
 }
+
 export default Home;
