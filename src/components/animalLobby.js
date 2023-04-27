@@ -19,13 +19,11 @@ export default function AnimalLobby({ token, username }) {
                 'Authorization': `Token ${token}`
             }
         }).then((response) => {
-            console.log(response.data)
             const animalMap = response.data
             const animalArray = animalMap.map((response) => {
                 return ([response.animal.name, response.animal.image, response.animal.id])
             })
             setYourAnimals(animalArray)
-            console.log(animalArray)
         })
 
     }, [])
@@ -57,19 +55,19 @@ export default function AnimalLobby({ token, username }) {
                 {
                     yourAnimals.map((data => 
                         <>
-                        <div className='animal-lobby-container'>
-                            <div className='animal-name'>
-                                {data[0]}
+                            <div className='animal-lobby-container'>
+                                <div className='animal-name'>
+                                    {data[0]}
+                                </div>
+                                <div className='animal-image'>
+                                    <img src={data[1]} alt={data[0]}></img>
+                                </div>
+                                <div className='delete-animal-button'>
+                                    <button onClick={() => deleteAnimal(data[3])}>Delete</button>
+                                </div>
                             </div>
-                        <div className='animal-image'>
-                            <img src={data[1]} alt={data[0]}></img>
-                        </div>
-                        <div className='delete-animal-button'>
-                        <button onClick={() => deleteAnimal(data[3])}>Delete</button>
-                        </div>
-                        </div>
                         </>
-                        ) )
+                        ))
                     }
                 </div>
 
