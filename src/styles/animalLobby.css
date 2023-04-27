@@ -44,17 +44,28 @@ h2 {
     font-weight: 700;
 }
 
-.logout {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.animal-lobby-container {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    max-height: 80vh;
+    background: #72A0C1;
+    opacity: .8;
 }
 
-.logout button {
-    background-color: #0077cc;
-    /* color: #fff;  */
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
+.animal-image img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+}
+
+.animal-name {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.delete-animal-button {
+    width: 100%;
+    text-align: center;
 }
