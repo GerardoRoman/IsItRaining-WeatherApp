@@ -7,12 +7,14 @@ import mainBackgroundImage from '../assets/backgroundImages/4_edit_by_cleopatraw
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
 import { useNavigate } from 'react-router-dom'
+import  BackgroundImages from './background.js'
 
 function Home({ token, setAuth }) {
     const [lat, setLat] = useState(null)
     const [long, setLong] = useState(null)
     const [hourlyTemps, setHourlyTemps] = useState([])
     const navigate = useNavigate();
+    const [weatherCode, setWeatherCode] = useState(null)
 
     useEffect(() => {
         const getData = async () => {
@@ -45,9 +47,10 @@ function Home({ token, setAuth }) {
 
     return (
         <>
-            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} />
+            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
-            <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
+            <BackgroundImages weatherCode={weatherCode} />
+            {/* <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div> */}
             {token ? (
                 <>
                     <Link to='/animal-lobby'>

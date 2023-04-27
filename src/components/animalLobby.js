@@ -23,14 +23,14 @@ export default function AnimalLobby({ handleLogout, token, username }) {
             console.log(response.data)
             console.log(response.data[0].animal.id)
             setAnimalList(response.data)
-            setAnimalId(response.data.animal)
+            setAnimalId(response.data.animal.id)
         })
 
         // setAnimalId(animalList.animal.name)
-    }, [])
+    }, )
 
     // console.log(animalList)
-    // console.log(animalId)
+    console.log(animalId)
 
     function deleteAnimal(animalId) {
         console.log(animalId)
@@ -56,8 +56,8 @@ export default function AnimalLobby({ handleLogout, token, username }) {
 
                 <div className='animal-display'>
                 {animalList && animalList.map((animal) => (
-                    <div key={animal.id}>
-                        {animal.id}
+                    <div key={animal.image}>
+                        {animal.image}
                         {/* {console.log(animal.id)} */}
                         {/* <img src={animal.random_image} alt={animal.name} /> */}
                         <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
