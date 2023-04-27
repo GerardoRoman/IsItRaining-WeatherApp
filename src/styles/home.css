@@ -18,7 +18,7 @@
 .animal img {
     position: absolute;
     top: 80%;
-    left: 64%;
+    left: 58%;
     transform: translate(-50%, -65%);
     width: 54%;
 }
@@ -120,7 +120,7 @@
     margin-top: 174px;
     padding-left: 25px;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 12px;
 }
 
