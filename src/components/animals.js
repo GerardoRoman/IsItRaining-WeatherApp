@@ -23,6 +23,7 @@ const customStyles = {
 function Animal({ weatherID, token }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
+    const [variation, setVariation] = useState([])
     const [capturedAnimals, setCapturedAnimals] = useState('')
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const navigate = useNavigate();
@@ -35,7 +36,9 @@ function Animal({ weatherID, token }) {
                 .then((response) => {
                     // console.log(response.data.random_image)
                     setAnimal(response.data.name)
-                    setImage(response.data.random_image)
+                    setImage(response.data.image)
+                    setVariation(response.data.variation_type)
+
                 })
         }
     }, [weatherID])
@@ -45,7 +48,7 @@ function Animal({ weatherID, token }) {
 
 
     const handleCapture = (event) => {
-        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/`, {},
+        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}`, {},
             {
                 headers: {
                     'Content-Type': 'application/json',

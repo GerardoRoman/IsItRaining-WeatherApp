@@ -9,7 +9,7 @@ export default function Loading() {
             <ReactLoading
                 type="spinningBubbles"
                 color="#ccc145"
-                height={250}
+                height={150}
                 width={150}
             />
         </div>

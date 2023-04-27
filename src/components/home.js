@@ -3,6 +3,7 @@ import axios from 'axios'
 import CurrentWeather from './currentWeather.js'
 import HourlyWeather from './hourlyWeather.js'
 import Login from './login.js'
+import Music from './music.js'
 import mainBackgroundImage from '../assets/backgroundImages/4_edit_by_cleopatrawolf_dfut2ry.png'
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
@@ -45,22 +46,29 @@ function Home({ token, setAuth }) {
 
     return (
         <>
-            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} />
-            <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
-            <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 1200, width: 720 }}></div>
-            {token ? (
-                <>
-                    <Link to='/animal-lobby'>
-                        <button className='to-animal-lobby'>Go to Animal Lobby!</button>                </Link>
-                    <div className='logout'>
-                        <button onClick={handleLogout}>Logout</button>
-                    </div>
-                </>
-            ) : (
-                <Link to='/login'>
-                    <button className='login'>Login!</button>
-                </Link>
-            )}
+            <div homeWrapper>
+                <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} />
+                <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
+                <div className="backgroundImageWrapper">
+                    <div className="backgroundImage" style={{ backgroundImage: `url(${mainBackgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", height: 667, width: 375 }}></div>
+                </div>
+                <div className="musicToggleButton">
+                    <Music />
+                </div>
+                {token ? (
+                    <>
+                        <Link to='/animal-lobby'>
+                            <button className='animalLobbyButton'>Go to Animal Lobby!</button>                </Link>
+                        <div className='logoutButton'>
+                            <button onClick={handleLogout}>Logout</button>
+                        </div>
+                    </>
+                ) : (
+                    <Link to='/login'>
+                        <button className='loginButton'>Login!</button>
+                    </Link>
+                )}
+            </div>
         </>
     );
 }
