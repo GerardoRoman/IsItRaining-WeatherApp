@@ -23,10 +23,8 @@ export default function HourlyWeather({ lat, long, setHourlyTemps }) {
                     return ([forecast.temp_f, forecast.time, forecast.condition])
                 });
 
-
                 const fourtyEightHourForecast = [...day1Forecast, ...day2Forecast]
                 setForecast(fourtyEightHourForecast)
-
 
                 const date = new Date();
                 const timeAddTwelve = (moment(date).add(12, 'hours'))

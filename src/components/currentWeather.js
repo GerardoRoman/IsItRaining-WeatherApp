@@ -6,7 +6,7 @@ import Animal from './animals.js'
 import Loading from './loading.js'
 
 
-export default function CurrentWeather({ lat, long, hourlyTemps, token }) {
+export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
@@ -19,6 +19,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token }) {
                     setData(result.data);
                     setWeatherIcon(result.data.weather[0].icon)
                     setWeatherID(result.data.weather[0].id)
+                    setWeatherCode(result.data.weather[0].id)
                 })
         }
     }, [lat, long, weatherID])

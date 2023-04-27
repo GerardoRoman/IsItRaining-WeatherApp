@@ -9,8 +9,9 @@ import { Link } from 'react-router-dom'
 
 
 export default function AnimalLobby({ handleLogout, token, username }) {
-    const [animalList, setAnimalList] = useState(0)
+    const [animalList, setAnimalList] = useState([])
     const [animalId, setAnimalId] = useState('')
+    
 
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals', {
@@ -20,15 +21,15 @@ export default function AnimalLobby({ handleLogout, token, username }) {
         }).then((response) => {
             console.log(response)
             console.log(response.data)
-            console.log(response.data.random_image)
-            setAnimalList(response.data.random_image)
-            setAnimalId(response.data.animal)
+            console.log(response.data[0].animal.id)
+            setAnimalList(response.data)
+            setAnimalId(response.data.animal.id)
         })
 
         // setAnimalId(animalList.animal.name)
-    }, [])
+    }, )
 
-    console.log(animalList)
+    // console.log(animalList)
     console.log(animalId)
 
     function deleteAnimal(animalId) {
@@ -54,12 +55,14 @@ export default function AnimalLobby({ handleLogout, token, username }) {
                 <h2>{username}'s Animal Lobby</h2>
 
                 <div className='animal-display'>
-                    {animalList && animalList.map((animal) => (
-                        <div key={animal.id}>
-                            <img src={animal.random_image} alt={animal.name} />
-                            <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
-                        </div>
-                    ))}
+                {animalList && animalList.map((animal) => (
+                    <div key={animal.image}>
+                        {animal.image}
+                        {/* {console.log(animal.id)} */}
+                        {/* <img src={animal.random_image} alt={animal.name} /> */}
+                        <button onClick={() => deleteAnimal(animal.id)}>Delete</button>
+                    </div>
+                ))}
                 </div>
 
                 <div className='lobby-background-image'>
