@@ -7,7 +7,7 @@ body {
     background-position: center center;
 }
 
-.lobby-background-image {
+.lobbyBackgroundImage {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,7 +16,7 @@ body {
     z-index: -1;
 }
 
-.lobby-background-image img {
+.lobbyBackgroundImage img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -45,27 +45,16 @@ h2 {
 }
 
 .animal-lobby-container {
-    display: flex;
-    flex-direction: row;
-    overflow: auto;
-    max-height: 80vh;
-    background: #72A0C1;
-    opacity: .8;
+    position: absolute;
+    width: 80%;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
 }
 
 .animal-image img {
-    max-width: 100%;
-    height: auto;
-    margin: 10px;
-}
-
-.animal-name {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.delete-animal-button {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    max-width: 30%;
 }
