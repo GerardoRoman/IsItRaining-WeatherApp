@@ -81,7 +81,6 @@ function Animal({ weatherID, token }) {
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
                     style={customStyles}
-                    contentLabel="Example Modal"
                     ariaHideApp={false}
                 >
                     <h2 className="modalTitle">You caught a {animal}!</h2>
@@ -100,11 +99,10 @@ function Animal({ weatherID, token }) {
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
-                contentLabel="Example Modal"
                 ariaHideApp={false}
             >
                 <h2 className="modalTitle">Login to capture this {animal}!</h2>
-                <div className="modalImage">
+                <div className="modalImageDiv">
                     <img src={image} alt='your-new-animal'></img>
                 </div>
                 <button className="modalButtonLeft" onClick={closeModal}>Nevermind</button>
