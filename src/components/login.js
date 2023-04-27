@@ -3,6 +3,8 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { BsFillCloudSunFill } from 'react-icons/bs'
+
 
 
 const Login = ({ setAuth }) => {
@@ -78,9 +80,11 @@ const Login = ({ setAuth }) => {
                     </form>
                 </div>
             </div>
-            <div>
+            <div className='loginNavBar'>
                 <Link to='/'>
-                    <button className="backToWeatherButton">Back to the weather!</button>
+                    <button className='backToWeather'>
+                        <div><BsFillCloudSunFill /></div>
+                    </button>
                 </Link>
             </div>
         </>

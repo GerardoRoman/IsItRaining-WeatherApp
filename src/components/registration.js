@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { TiArrowBack } from 'react-icons/ti'
 import "./../styles/registration.css"
 
 
@@ -78,8 +80,12 @@ const Registration = ({ setAuth }) => {
                         <div>
                             <button className="submitButtonRegister" type='submit'>Submit!</button>
                         </div>
-                        <div className="backToLogin">
-                            <a href="/login">Back to login</a>
+                        <div className='registerNavBar'>
+                            <Link to='/login'>
+                                <button className='backToLogin'>
+                                    <div><TiArrowBack /></div>
+                                </button>
+                            </Link>
                         </div>
 
                     </form>

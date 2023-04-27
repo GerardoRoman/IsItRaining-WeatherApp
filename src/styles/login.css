@@ -163,8 +163,10 @@ h1 span:before {
     color: #505fac;
 }
 
-.backToWeatherButton {
-    margin-top: 250px;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
+.loginNavBar {
+    position: absolute;
+    width: 375px;
+    height: 32px;
+    top: 635px;
+    background-color: rgba(0, 0, 0, 0.4);
 }
