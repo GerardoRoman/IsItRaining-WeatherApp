@@ -41,6 +41,7 @@ function Animal({ weatherID, token }) {
                     setAnimal(response.data.name)
                     setImage(response.data.image)
                     setVariation(response.data.variation_type)
+                    // get back data for if the user has collected the animal in the last 12 hours 
 
                 })
         }
