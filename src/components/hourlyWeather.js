@@ -10,7 +10,7 @@ export default function HourlyWeather({ lat, long, setHourlyTemps }) {
 
     useEffect(() => {
         if (lat && long) {
-            const URL = (`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY2}&q=${lat},${long}&days=2&aqi=no&alerts=no`)
+            const URL = (`https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY2}&q=${lat},${long}&days=2&aqi=no&alerts=no`)
             axios.get(URL).then(result => {
 
                 const day1 = result.data.forecast.forecastday[0].hour
