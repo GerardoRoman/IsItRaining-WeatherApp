@@ -41,16 +41,27 @@ h2 {
 .divForAnimalLobbyMap {
     align-content: center;
     position: absolute;
-    max-width: 325px;
-    padding-left: 25px;
+    max-width: 450px;
+    height: 70%;
+    padding-left: 50px;
+    overflow-y: auto;
+    overflow-x: auto;
+    background-color: rgba(225, 169, 95, .8);
+    border-radius: 20px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+    box-sizing: border-box;
+}
+
+.divForAnimalLobbyMap::-webkit-scrollbar {
+    width: 0px;
 }
 
 .animalLobbyMap {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 190px;
+    gap: 40px;
+    margin-top: 0px;
     justify-content: space-between;
 }
 
