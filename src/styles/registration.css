@@ -30,7 +30,7 @@ h1 span {
     position: relative
 }
 
-h1 span:before {
+/* h1 span:before {
     background: linear-gradient(45deg, #fc5c7d, #6a82fb, #fc5c7d);
     width: 100%;
     height: 100%;
@@ -38,14 +38,14 @@ h1 span:before {
     position: absolute;
     content: "";
     mix-blend-mode: screen
-}
+} */
 
 [class*="blobs"] {
     mix-blend-mode: color;
     animation: blobs 10s ease-in-out infinite alternate
 }
 
-.blobs_1 {
+/* .blobs_1 {
     background: #ff1493;
     width: 60px;
     height: 60px;
@@ -83,7 +83,7 @@ h1 span:before {
     height: 50px;
     top: 55px;
     left: 70px
-}
+} */
 
 
 @keyframes blobs {
@@ -155,9 +155,26 @@ h1 span:before {
     font-weight: 500;
 }
 
+.registerNavBar {
+    position: absolute;
+    width: 375px;
+    height: 32px;
+    top: 635px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 .backToLogin {
-    margin-top: 10px;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
-    color: #505fac;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: rgb(248, 246, 243);
+    border: none;
+    height: 15px;
+    width: 15px;
+}
+
+.backToLogin svg {
+    width: 900%;
+    height: 900%;
 }

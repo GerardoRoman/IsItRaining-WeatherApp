@@ -27,10 +27,8 @@ function Animal({ weatherID, token }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
     const [variation, setVariation] = useState([])
-    const [capturedAnimals, setCapturedAnimals] = useState('')
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const navigate = useNavigate();
-    let subtitle;
 
 
     useEffect(() => {
@@ -46,13 +44,13 @@ function Animal({ weatherID, token }) {
                 })
         }
     }, [weatherID])
-
+    console.log(token)
 
 
 
 
     const handleCapture = (event) => {
-        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}`, {},
+        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,6 +63,7 @@ function Animal({ weatherID, token }) {
                 navigate('/animal-lobby')
             })
     };
+    console.log(variation)
 
     function openModal() {
         setIsOpen(true);
@@ -82,7 +81,6 @@ function Animal({ weatherID, token }) {
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
                     style={customStyles}
-                    contentLabel="Example Modal"
                     ariaHideApp={false}
                 >
                     <h2 className="modalTitle">You caught a {animal}!</h2>
@@ -101,11 +99,10 @@ function Animal({ weatherID, token }) {
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
-                contentLabel="Example Modal"
                 ariaHideApp={false}
             >
                 <h2 className="modalTitle">Login to capture this {animal}!</h2>
-                <div className="modalImage">
+                <div className="modalImageDiv">
                     <img src={image} alt='your-new-animal'></img>
                 </div>
                 <button className="modalButtonLeft" onClick={closeModal}>Nevermind</button>
