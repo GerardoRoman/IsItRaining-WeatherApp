@@ -31,7 +31,7 @@ h1 span {
 }
 
 h1 span:before {
-    background: linear-gradient(45deg, #fc5c7d, #6a82fb, #fc5c7d);
+    background: linear-gradient(45deg, #5763ca, #6b81ec, #3d40e6);
     width: 100%;
     height: 100%;
     display: block;
@@ -46,7 +46,7 @@ h1 span:before {
 }
 
 .blobs_1 {
-    background: #ff1493;
+    background: #1f1c40;
     width: 60px;
     height: 60px;
     top: 90px;
@@ -54,7 +54,7 @@ h1 span:before {
 }
 
 .blobs_2 {
-    background: #ff4500;
+    background: #1f1c40;
     width: 80px;
     height: 80px;
     top: 120px;
@@ -62,7 +62,7 @@ h1 span:before {
 }
 
 .blobs_3 {
-    background: #00ff00;
+    background: #1f1c40;
     width: 60px;
     height: 60px;
     top: 110px;
@@ -70,7 +70,7 @@ h1 span:before {
 }
 
 .blobs_4 {
-    background: #ff0000;
+    background: #1f1c40;
     width: 100px;
     height: 50px;
     top: 115px;
@@ -78,7 +78,7 @@ h1 span:before {
 }
 
 .blobs_5 {
-    background: #ffff00;
+    background: #1f1c40;
     width: 50px;
     height: 50px;
     top: 55px;
