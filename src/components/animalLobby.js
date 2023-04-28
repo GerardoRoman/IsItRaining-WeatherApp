@@ -59,15 +59,9 @@ export default function AnimalLobby({ token, username }) {
                         yourAnimals.map((data =>
                             <>
                                 <div className='animalLobbyCard'>
-                                    {/* <div className='animal-name'>
-                                        {data[0]}
-                                    </div> */}
                                     <div className='animalImage'>
                                         <img src={data[1]} alt={data[0]}></img>
                                     </div>
-                                    {/* <div className='delete-animal-button'>
-                                        <button onClick={() => deleteAnimal(data[3])}>Delete</button>
-                                    </div> */}
                                 </div>
                             </>
                         ))
@@ -88,3 +82,11 @@ export default function AnimalLobby({ token, username }) {
         </>
     )
 }
+
+{/* <div className='delete-animal-button'>
+<button onClick={() => deleteAnimal(data[3])}>Delete</button>
+</div> */}
+
+{/* <div className='animal-name'>
+    {data[0]}
+</div> */}
