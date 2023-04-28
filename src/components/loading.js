@@ -1,6 +1,8 @@
 import React from "react";
 import ReactLoading from "react-loading";
 import '../styles/home.css'
+import '../styles/loader.css'
+
 
 
 export default function Loading() {
@@ -13,5 +15,11 @@ export default function Loading() {
                 width={150}
             />
         </div>
+        // <>
+        //     <h1>Loading...</h1>
+        //     <div class="drop-container">
+        //         <div class="drop"></div>
+        //     </div>
+        // </>
     );
 }

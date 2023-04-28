@@ -1,7 +1,6 @@
 import { AiFillPauseCircle } from 'react-icons/ai'
 import { AiFillPlayCircle } from 'react-icons/ai'
 import catchum from '../assets/music/catchum.wav'
-import silence from '../assets/music/silence.mp3'
 import React, { useEffect, useState } from 'react'
 
 

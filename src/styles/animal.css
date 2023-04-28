@@ -4,24 +4,21 @@
     text-align: center;
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
     color: rgb(41, 41, 107);
+    margin-top: 0px;
 }
 
 .modalImageDiv {
-    max-width: 200px;
-    max-height: 180px;
+    width: 200px;
+    height: 180px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 20px;
 }
 
 .modalImageDiv img {
     height: auto;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .modalChoice {
@@ -30,7 +27,6 @@
     font-weight: 500;
     font-size: 14px;
     color: rgb(41, 41, 107);
-    margin-bottom: 10px;
 }
 
 .modalButtonLeft {
@@ -45,6 +41,7 @@
     border-radius: 12px;
     margin-right: 20px;
     font-size: 11px;
+    margin-top: 10px;
 }
 
 .modalButtonRight {
@@ -58,5 +55,7 @@
     padding: 4px 6px;
     border-radius: 12px;
     font-size: 11px;
+    margin-top: 10px;
+
 
 }
