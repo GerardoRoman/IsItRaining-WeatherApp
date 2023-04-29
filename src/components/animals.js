@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import '../styles/animal.css'
-
-
-
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        maxWidth: '300px',
-        maxHeight: '300px',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
-
+import Confetti from 'react-confetti';
 
 
 function Animal({ weatherID, token }) {
@@ -29,6 +13,25 @@ function Animal({ weatherID, token }) {
     const [variation, setVariation] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const navigate = useNavigate();
+
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            maxWidth: '300px',
+            maxHeight: '300px',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+    };
+
+    const customStylesConfetti = {
+        width: '280px',
+        height: '327px',
+
+    }
 
 
     useEffect(() => {
@@ -68,6 +71,7 @@ function Animal({ weatherID, token }) {
     function openModal() {
         setIsOpen(true);
     }
+
     function closeModal() {
         setIsOpen(false);
     }
@@ -83,14 +87,21 @@ function Animal({ weatherID, token }) {
                     style={customStyles}
                     ariaHideApp={false}
                 >
-                    <h2 className="modalTitle">You caught a {animal}!</h2>
-                    <div className="modalImageDiv">
-                        <img className="modalImage" src={image} alt='your-new-animal'></img>
-                    </div>
-                    <div className="modalChoice">What would you like to do? </div>
-                    <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                    <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+                    <div>
+                        {/* <div>
+                            <Confetti
+                                style={customStylesConfetti}
+                            />
+                        </div> */}
+                        <h2 className="modalTitle">You caught a {animal}!</h2>
+                        <div className="modalImageDiv">
+                            <img className="modalImage" src={image} alt='your-new-animal'></img>
+                        </div>
+                        <div className="modalChoice">What would you like to do? </div>
+                        <button className="modalButtonLeft" onClick={closeModal}>Release</button>
+                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
 
+                    </div>
                 </Modal>
             </div>
         ) : (<div className='animal'>
