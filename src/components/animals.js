@@ -47,7 +47,6 @@ function Animal({ weatherID, token }) {
                 })
         }
     }, [weatherID])
-    console.log(token)
 
 
 
@@ -66,7 +65,6 @@ function Animal({ weatherID, token }) {
                 navigate('/animal-lobby')
             })
     };
-    console.log(variation)
 
     function openModal() {
         setIsOpen(true);

@@ -17,10 +17,31 @@
 
 .animal img {
     position: absolute;
-    top: 80%;
-    left: 58%;
+    top: 60%;
+    left: 30%;
     transform: translate(-50%, -65%);
     width: 54%;
+
+    border-radius: 50%;
+    transform: scale(1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        border: 5px solid rgba(243, 229, 171, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        border: 5px solid rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        border: 5px solid rgba(0, 0, 0, 0);
+    }
 }
 
 /* CURRENT WEATHER COMPONENT*/
