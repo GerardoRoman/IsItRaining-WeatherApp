@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import '../styles/animal.css'
+import { BsChatLeftFill } from 'react-icons/bs'
 import Confetti from 'react-confetti';
 
 
@@ -45,7 +45,6 @@ function Animal({ weatherID, token }) {
                     }
                 })
                 .then((response) => {
-                    // console.log(response.data.random_image)
                     setAnimal(response.data.name)
                     setImage(response.data.image)
                     setVariation(response.data.variation_type)
@@ -59,6 +58,7 @@ function Animal({ weatherID, token }) {
         }
     }, [weatherID, token])
 
+    console.log(token)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -75,6 +75,28 @@ function Animal({ weatherID, token }) {
             })
     };
 
+
+    //     const handleLevelUp = (event) => {
+    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Token ${token}`
+    //                 }
+    //             }
+    //         )
+    //             .then(res => {
+    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
+    //                 {
+    //                     closeModal()
+    //                     navigate('/animal-lobby')
+    //                 })
+    //     }
+    // };
+
+
+
+
     function openModal() {
         setIsOpen(true);
     }
@@ -83,15 +105,12 @@ function Animal({ weatherID, token }) {
         setIsOpen(false);
     }
 
-    function testFunc() {
-        console.log('passed')
-    }
 
-    const testDiv = () => {
-        // const interval = setInterval(setClick(true), 500);
-        // return () => clearInterval(interval) &&
-        setClick(true);
-    }
+    // const testDiv = () => {
+    //     // const interval = setInterval(setClick(true), 500);
+    //     // return () => clearInterval(interval) &&
+    //     setClick(true);
+    // }
 
 
     // useEffect((click) => {
@@ -104,33 +123,69 @@ function Animal({ weatherID, token }) {
 
     return (
         <div className='animal'>
-            {click && <div>NOT TODAY NO CLICKY</div>}
+            {click &&
+                <>
+                    <div className="noClickWarningIcon">
+                        <div className="chatBoxDiv"><BsChatLeftFill /></div>
+                    </div>
+                    <div className="noClickWarningText">
+                        <div className="warningWords">Try again <br></br>later. You <br></br>JUST caught<br></br> me...</div>
+                    </div>
+                </>}
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
                 onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img>}
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
-                ariaHideApp={false}
-            >
-                <div>
-                    {/* <div>
+
+            {pointsLeft === 1 ?
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    ariaHideApp={false}
+                >
+                    <div>
+                        <div>
+                            <Confetti
+                                style={customStylesConfetti}
+                            />
+                        </div>
+                        <h2 className="modalTitle">You caught a {animal}!</h2>
+                        <div className="modalImageDiv">
+                            <img className="modalImage" src={image} alt='your-new-animal'></img>
+                        </div>
+                        <div className="pointCountModal">Last one until level up</div>
+                        <div className="modalChoice">What would you like to do? </div>
+                        <button className="modalButtonLeft" onClick={closeModal}>Release</button>
+                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+
+                    </div>
+                </Modal >
+                :
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    ariaHideApp={false}
+                >
+                    <div>
+                        {/* <div>
                             <Confetti
                                 style={customStylesConfetti}
                             />
                         </div> */}
-                    <h2 className="modalTitle">You caught a {animal}!</h2>
-                    <div className="modalImageDiv">
-                        <img className="modalImage" src={image} alt='your-new-animal'></img>
-                    </div>
-                    <div className="pointCountModal">Collect {pointsLeft} more to level up</div>
-                    <div className="modalChoice">What would you like to do? </div>
-                    <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                    <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+                        <h2 className="modalTitle">You caught a {animal}!</h2>
+                        <div className="modalImageDiv">
+                            <img className="modalImage" src={image} alt='your-new-animal'></img>
+                        </div>
+                        <div className="pointCountModal">Collect {pointsLeft} more to level up</div>
+                        <div className="modalChoice">What would you like to do? </div>
+                        <button className="modalButtonLeft" onClick={closeModal}>Release</button>
+                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
 
-                </div>
-            </Modal>
+                    </div>
+                </Modal >
+            }
         </div>
+
     )
 
 }
