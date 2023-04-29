@@ -7,19 +7,17 @@ import '../styles/loader.css'
 
 export default function Loading() {
     return (
-        <div className="loader">
-            <ReactLoading
-                type="spinningBubbles"
-                color="#ccc145"
-                height={150}
-                width={150}
-            />
-        </div>
-        // <>
-        //     <h1>Loading...</h1>
-        //     <div class="drop-container">
-        //         <div class="drop"></div>
-        //     </div>
-        // </>
+        <>
+            <div className="hideImgIcon"></div>
+            <div className="loader">
+                <ReactLoading
+                    type="spinningBubbles"
+                    color="#2457c7"
+                    height={150}
+                    width={150} />
+            </div>
+
+            <div className="hideNavBar"></div>
+        </>
     );
 }

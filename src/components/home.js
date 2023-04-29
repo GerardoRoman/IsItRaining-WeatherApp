@@ -18,6 +18,7 @@ function Home({ token, setAuth }) {
     const navigate = useNavigate();
     const [weatherCode, setWeatherCode] = useState(null)
 
+
     useEffect(() => {
         const getData = async () => {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -48,13 +49,13 @@ function Home({ token, setAuth }) {
 
     return (
         <>
-            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} />
+            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} handleLogout={handleLogout} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <BackgroundImages weatherCode={weatherCode} />
             {/* <div className="musicToggleButton">
                 <Music />
             </div> */}
-            {token ? (
+            {/* {token ? (
                 <>
                     <div className="loggedInNavBar">
                         <Link to='/animal-lobby'>
@@ -77,7 +78,7 @@ function Home({ token, setAuth }) {
                         </button>
                     </Link>
                 </div>
-            )}
+            )} */}
         </>
     );
 }

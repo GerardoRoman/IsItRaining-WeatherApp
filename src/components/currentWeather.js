@@ -4,9 +4,14 @@ import 'weather-react-icons/lib/css/weather-icons.css';
 import 'weather-react-icons/lib/css/weather-icons-wind.css';
 import Animal from './animals.js'
 import Loading from './loading.js'
+import { Link } from 'react-router-dom'
+import { GiDinosaurRex } from 'react-icons/gi'
+import { IoMdLogOut } from 'react-icons/io'
+import { IoMdLogIn } from 'react-icons/io'
 
 
-export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode }) {
+
+export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode, handleLogout }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
@@ -28,6 +33,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
 
     const high = Math.max(...hourlyTemps)
     const low = Math.min(...hourlyTemps)
+
 
     return (
         (typeof data.main != 'undefined') ? (
@@ -71,6 +77,30 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 <div>
                     <Animal weatherID={weatherID} token={token} />
                 </div>
+                {token ? (
+                    <>
+                        <div className="loggedInNavBar">
+                            <Link to='/animal-lobby'>
+                                <button className='animalLobbyButton'>
+                                    <div><GiDinosaurRex /></div>
+                                </button>
+                            </Link>
+                            <div className='logoutButton'>
+                                <button onClick={handleLogout}>
+                                    <div><IoMdLogOut /></div>
+                                </button>
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <div className="loggedOutNavBar">
+                        <Link to='/login'>
+                            <button className='loginButton'>
+                                <div><IoMdLogIn /></div>
+                            </button>
+                        </Link>
+                    </div>
+                )}
             </>
         ) : (
             <div> <Loading /> </div>
