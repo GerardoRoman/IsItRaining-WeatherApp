@@ -87,15 +87,14 @@
 .noClickWarningText {
     position: absolute;
     width: 73px;
-    top: 390px;
-    left: 283px;
+    top: 389px;
+    left: 287px;
 }
 
 .warningWords {
     position: absolute;
-    color: antiquewhite;
-    font-family: ;
+    color: rgb(255, 255, 255);
+    font-family: 'Courier New', Courier, monospace;
     font-weight: 700;
     font-size: 10px;
-    font-family: 'Courier New', Courier, monospace;
 }

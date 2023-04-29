@@ -107,7 +107,7 @@ function Animal({ weatherID, token }) {
                         <div className="chatBoxDiv"><BsChatLeftFill /></div>
                     </div>
                     <div className="noClickWarningText">
-                        <div className="warningWords">Try again later. You JUST caught me...</div>
+                        <div className="warningWords">Try again <br></br>later. You <br></br>JUST caught<br></br> me...</div>
                     </div>
                 </>}
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
@@ -136,6 +136,7 @@ function Animal({ weatherID, token }) {
                 </div>
             </Modal>
         </div>
+
     )
 
 }
