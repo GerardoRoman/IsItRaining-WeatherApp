@@ -82,10 +82,11 @@ function Animal({ weatherID, token }) {
         console.log('passed')
     }
 
-    // const testDiv = () => {
-    //     const interval = setInterval(setClick(true), 500);
-    //     return () => clearInterval(interval) && setClick(false);
-    // }
+    const testDiv = () => {
+        // const interval = setInterval(setClick(true), 500);
+        // return () => clearInterval(interval) &&
+        setClick(true);
+    }
 
 
     // useEffect((click) => {
