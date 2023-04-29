@@ -89,6 +89,12 @@ export default function AnimalLobby({ token, username }) {
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             <ProgressBar progress={50} />
                                             {console.log(data[1])}
+                                            
+                                        </div>
+                                    </div>
+                                </>
+                            ))
+                        }
                                             <Modal
                                                 isOpen={modalIsOpen}
                                                 onRequestClose={closeModal}
@@ -99,16 +105,11 @@ export default function AnimalLobby({ token, username }) {
                                                 <div className="modalImageDivAL">
                                                     <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
                                                 </div>
-                                                <div className='delete-animal-button'>
+                                                {/* <div className='delete-animal-button'>
                                                     <button onClick={() => deleteAnimal(data[3])}>Delete</button>
-                                                </div>
+                                                </div> */}
                                                 <button className="modalButtonAL" onClick={closeModal}>Back</button>
                                             </Modal>
-                                        </div>
-                                    </div>
-                                </>
-                            ))
-                        }
                     </div>
                 </div>
                 <div className='lobbyBackgroundImage'>
@@ -121,10 +122,10 @@ export default function AnimalLobby({ token, username }) {
                         </button>
                     </Link>
                     <Link to='/special-animal-lobby'>
-                            <button className='specialAnimalLobbyButton'>
-                                <div><GiDinosaurBones /></div>
-                            </button>
-                        </Link>
+                        <button className='specialAnimalLobbyButton'>
+                            <div><GiDinosaurBones /></div>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>
