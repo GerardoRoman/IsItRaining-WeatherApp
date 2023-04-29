@@ -129,13 +129,6 @@ export default function AnimalLobby({ token, username }) {
     )
 }
 
-{/* <div className='delete-animal-button'>
-<button onClick={() => deleteAnimal(data[3])}>Delete</button>
-</div> */}
-
-{/* <div className='animal-name'>
-    {data[0]}
-</div> */}
 
 // import { CgProfile } from 'react-icons/cg'
 // import { IconContext } from 'react-icons'
