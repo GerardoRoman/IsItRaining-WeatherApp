@@ -104,12 +104,9 @@ function Animal({ weatherID, token }) {
 
     return (
         <div className='animal'>
-            {/* <img src={image} alt='corresponding-weather-animal'
-                    onClick={openModal}
-                > */}
             {click && <div>NOT TODAY NO CLICKY</div>}
-            {captureBoolean === true ? <img src={image} alt='corresponding-weather-animal'
-                onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={openModal}></img>}
+            {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
+                onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img>}
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
