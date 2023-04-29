@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import Modal from 'react-modal'
 import { GiDinosaurBones } from 'react-icons/gi'
-import { ProgressBar } from './progressBar'
-
+import { Line } from 'rc-progress'
 
 export default function AnimalLobby({ token, username }) {
     const [animalList, setAnimalList] = useState([])
@@ -36,8 +35,9 @@ export default function AnimalLobby({ token, username }) {
             }
         }).then((response) => {
             const animalMap = response.data
+            console.log(response.data)
             const animalArray = animalMap.map((response) => {
-                return ([response.animal.name, response.animal.image, response.animal.id])
+                return ([response.animal.name, response.animal.image, response.animal.id, response.animal.points_left_until_max, response.points])
             })
             setYourAnimals(animalArray)
         })
@@ -45,6 +45,7 @@ export default function AnimalLobby({ token, username }) {
     }, [])
 
 
+    console.log(yourAnimals)
     function deleteAnimal(animalId) {
         console.log(animalId)
         axios.delete(`https://is-it-raining.herokuapp.com/captured/${animalId}`, {
@@ -87,8 +88,12 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
-                                            <ProgressBar progress={50} />
-                                            {console.log(data[1])}
+                                            <Line percent={data[4] * 10}
+                                            strokeWidth="3"
+                                            strokeColor="#BF00FF"
+                                            strokeLinecap="square"
+                                            trailWidth="3"
+                                            trailColor="#f3f3f3" />
                                             
                                         </div>
                                     </div>
