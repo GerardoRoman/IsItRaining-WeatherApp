@@ -37,7 +37,7 @@ function Animal({ weatherID, token }) {
 
     useEffect(() => {
         if (weatherID && token) {
-            axios.get(`https://is-it-raining.herokuapp.com/weather-animal/${weatherID}/`,
+            axios.get(`https://is-it-raining.herokuapp.com/weather-animal/801/`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -58,6 +58,7 @@ function Animal({ weatherID, token }) {
         }
     }, [weatherID, token])
 
+    console.log(token)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -74,6 +75,28 @@ function Animal({ weatherID, token }) {
             })
     };
 
+
+    //     const handleLevelUp = (event) => {
+    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Token ${token}`
+    //                 }
+    //             }
+    //         )
+    //             .then(res => {
+    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
+    //                 {
+    //                     closeModal()
+    //                     navigate('/animal-lobby')
+    //                 })
+    //     }
+    // };
+
+
+
+
     function openModal() {
         setIsOpen(true);
     }
@@ -81,7 +104,6 @@ function Animal({ weatherID, token }) {
     function closeModal() {
         setIsOpen(false);
     }
-
 
 
     // const testDiv = () => {
@@ -112,29 +134,56 @@ function Animal({ weatherID, token }) {
                 </>}
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
                 onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img>}
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
-                ariaHideApp={false}
-            >
-                <div>
-                    {/* <div>
+
+            {pointsLeft === 1 ?
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    ariaHideApp={false}
+                >
+                    <div>
+                        <div>
+                            <Confetti
+                                style={customStylesConfetti}
+                            />
+                        </div>
+                        <h2 className="modalTitle">You caught a {animal}!</h2>
+                        <div className="modalImageDiv">
+                            <img className="modalImage" src={image} alt='your-new-animal'></img>
+                        </div>
+                        <div className="pointCountModal">Last one until level up</div>
+                        <div className="modalChoice">What would you like to do? </div>
+                        <button className="modalButtonLeft" onClick={closeModal}>Release</button>
+                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+
+                    </div>
+                </Modal >
+                :
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    ariaHideApp={false}
+                >
+                    <div>
+                        {/* <div>
                             <Confetti
                                 style={customStylesConfetti}
                             />
                         </div> */}
-                    <h2 className="modalTitle">You caught a {animal}!</h2>
-                    <div className="modalImageDiv">
-                        <img className="modalImage" src={image} alt='your-new-animal'></img>
-                    </div>
-                    <div className="pointCountModal">Collect {pointsLeft} more to level up</div>
-                    <div className="modalChoice">What would you like to do? </div>
-                    <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                    <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+                        <h2 className="modalTitle">You caught a {animal}!</h2>
+                        <div className="modalImageDiv">
+                            <img className="modalImage" src={image} alt='your-new-animal'></img>
+                        </div>
+                        <div className="pointCountModal">Collect {pointsLeft} more to level up</div>
+                        <div className="modalChoice">What would you like to do? </div>
+                        <button className="modalButtonLeft" onClick={closeModal}>Release</button>
+                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
 
-                </div>
-            </Modal>
+                    </div>
+                </Modal >
+            }
         </div>
 
     )
