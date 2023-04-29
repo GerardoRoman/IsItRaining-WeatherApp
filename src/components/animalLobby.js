@@ -86,27 +86,23 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
-                                            {console.log(data[1])}
-                                            <Modal
-                                                isOpen={modalIsOpen}
-                                                onRequestClose={closeModal}
-                                                ariaHideApp={false}
-                                                style={customStyles}
-                                            >
-                                                <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                                                <div className="modalImageDivAL">
-                                                    <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                                                </div>
-                                                <div className='delete-animal-button'>
-                                                    <button onClick={() => deleteAnimal(data[3])}>Delete</button>
-                                                </div>
-                                                <button className="modalButtonAL" onClick={closeModal}>Back</button>
-                                            </Modal>
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={closeModal}
+                            ariaHideApp={false}
+                            style={customStyles}
+                        >
+                            <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                            <div className="modalImageDivAL">
+                                <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                            </div>
+                            <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                        </Modal>
                     </div>
                 </div>
                 <div className='lobbyBackgroundImage'>
@@ -119,10 +115,10 @@ export default function AnimalLobby({ token, username }) {
                         </button>
                     </Link>
                     <Link to='/special-animal-lobby'>
-                            <button className='specialAnimalLobbyButton'>
-                                <div><GiDinosaurBones /></div>
-                            </button>
-                        </Link>
+                        <button className='specialAnimalLobbyButton'>
+                            <div><GiDinosaurBones /></div>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>

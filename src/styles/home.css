@@ -22,7 +22,7 @@
     transform: translate(-50%, -65%);
     width: 54%;
 
-    border-radius: 50%;
+    border-radius: 56%;
     transform: scale(1);
     animation: pulse 2s infinite;
 }
@@ -32,7 +32,7 @@
         transform: scale(0.95);
         border: 5px solid rgba(243, 229, 171, 0.7);
     }
-    
+
     70% {
         transform: scale(1);
         border: 5px solid rgba(0, 0, 0, 0);

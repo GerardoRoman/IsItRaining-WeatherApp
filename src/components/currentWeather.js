@@ -4,6 +4,7 @@ import 'weather-react-icons/lib/css/weather-icons.css';
 import 'weather-react-icons/lib/css/weather-icons-wind.css';
 import Animal from './animals.js'
 import Loading from './loading.js'
+import AnimalLoggedOut from './animalsLoggedOut.js'
 import { Link } from 'react-router-dom'
 import { GiDinosaurRex } from 'react-icons/gi'
 import { IoMdLogOut } from 'react-icons/io'
@@ -74,11 +75,11 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 <div className="hourlyForecastLabel">
                     Swipe for hourly forecast →
                 </div>
-                <div>
-                    <Animal weatherID={weatherID} token={token} />
-                </div>
                 {token ? (
                     <>
+                        <div>
+                            <Animal weatherID={weatherID} token={token} />
+                        </div>
                         <div className="loggedInNavBar">
                             <Link to='/animal-lobby'>
                                 <button className='animalLobbyButton'>
@@ -93,13 +94,18 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                         </div>
                     </>
                 ) : (
-                    <div className="loggedOutNavBar">
-                        <Link to='/login'>
-                            <button className='loginButton'>
-                                <div><IoMdLogIn /></div>
-                            </button>
-                        </Link>
-                    </div>
+                    <>
+                        <div>
+                            <AnimalLoggedOut weatherID={weatherID} />
+                        </div>
+                        <div className="loggedOutNavBar">
+                            <Link to='/login'>
+                                <button className='loginButton'>
+                                    <div><IoMdLogIn /></div>
+                                </button>
+                            </Link>
+                        </div>
+                    </>
                 )}
             </>
         ) : (

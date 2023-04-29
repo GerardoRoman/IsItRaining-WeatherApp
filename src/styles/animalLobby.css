@@ -39,10 +39,9 @@ h2 {
 /* Animal Display */
 
 .divForAnimalLobbyMap {
-    align-content: center;
     position: absolute;
-    max-width: 375px;
-    height: 80%;
+    max-width: 100%;
+    height: auto;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: rgba(225, 169, 95, .8);
@@ -59,21 +58,21 @@ h2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 375px;
-    padding: 10px;
+    width: 375px;
     gap: 25px;
     margin-top: 0px;
+
     justify-content: space-between;
 }
 
 .animalLobbyCard {
-    height: 100px;
-    width: 100px;
+    height: 95px;
+    width: 95px;
 }
 
 .animalImage {
-    height: 100px;
-    width: 100px;
+    height: 95px;
+    width: 95px;
 }
 
 .animalImage img {
