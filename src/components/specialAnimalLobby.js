@@ -32,7 +32,7 @@ export default function SpecialAnimalLobby({ token, username }) {
     };
 
     useEffect(() => {
-        axios.get('https://is-it-raining.herokuapp.com/my-animals', {
+        axios.get('https://is-it-raining.herokuapp.com/my-special-animals', {
             headers: {
                 'Authorization': `Token ${token}`
             }

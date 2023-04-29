@@ -97,6 +97,9 @@ export default function AnimalLobby({ token, username }) {
                                                 <div className="modalImageDivAL">
                                                     <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
                                                 </div>
+                                                <div className='delete-animal-button'>
+                                                    <button onClick={() => deleteAnimal(data[3])}>Delete</button>
+                                                </div>
                                                 <button className="modalButtonAL" onClick={closeModal}>Back</button>
                                             </Modal>
                                         </div>
