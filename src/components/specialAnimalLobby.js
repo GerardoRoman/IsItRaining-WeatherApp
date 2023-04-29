@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import animalLobbyBackgroundImage from '../assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png'
-import "../styles/animalLobby.css"
+import specialAnimalLobbyBackground from '../assets/backgroundImages/7_by_cleopatrawolf_dfuq86e.png'
+import "../styles/specialAnimalLobby.css"
 import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
-import Modal from 'react-modal'
-import { GiDinosaurBones } from 'react-icons/gi'
+import Modal from 'react-modal';
+import { GiDinosaurRex } from 'react-icons/gi'
 
 
-export default function AnimalLobby({ token, username }) {
+
+
+
+export default function SpecialAnimalLobby({ token, username }) {
     const [animalList, setAnimalList] = useState([])
     const [yourAnimals, setYourAnimals] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -29,7 +32,7 @@ export default function AnimalLobby({ token, username }) {
     };
 
     useEffect(() => {
-        axios.get('https://is-it-raining.herokuapp.com/my-animals', {
+        axios.get('https://is-it-raining.herokuapp.com/my-special-animals', {
             headers: {
                 'Authorization': `Token ${token}`
             }
@@ -76,7 +79,7 @@ export default function AnimalLobby({ token, username }) {
                     </div>
                 </IconContext.Provider> */}
 
-                <h2>Animal Inventory</h2>
+                <h2>Special Animal Inventory</h2>
 
                 <div className='divForAnimalLobbyMap'>
                     <div className='animalLobbyMap'>
@@ -86,27 +89,28 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
+                                            {console.log(data[1])}
+                                            <Modal
+                                                isOpen={modalIsOpen}
+                                                onRequestClose={closeModal}
+                                                ariaHideApp={false}
+                                                style={customStyles}
+                                            >
+                                                <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                                                <div className="modalImageDivAL">
+                                                    <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                                                </div>
+                                                <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                                            </Modal>
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
-                        <Modal
-                            isOpen={modalIsOpen}
-                            onRequestClose={closeModal}
-                            ariaHideApp={false}
-                            style={customStyles}
-                        >
-                            <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                            <div className="modalImageDivAL">
-                                <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                            </div>
-                            <button className="modalButtonAL" onClick={closeModal}>Back</button>
-                        </Modal>
                     </div>
                 </div>
                 <div className='lobbyBackgroundImage'>
-                    <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+                    <img src={specialAnimalLobbyBackground} alt='special-lobby-background'></img>
                 </div>
                 <div className='animalLobbyNavBar'>
                     <Link to='/'>
@@ -114,25 +118,13 @@ export default function AnimalLobby({ token, username }) {
                             <div><BsFillCloudSunFill /></div>
                         </button>
                     </Link>
-                    <Link to='/special-animal-lobby'>
-                        <button className='specialAnimalLobbyButton'>
-                            <div><GiDinosaurBones /></div>
-                        </button>
+                    <Link to='/animal-lobby'>
+                            <button className='animalLobbyButton'>
+                                <div><GiDinosaurRex /></div>
+                            </button>
                     </Link>
                 </div>
             </div>
         </>
     )
 }
-
-{/* <div className='delete-animal-button'>
-<button onClick={() => deleteAnimal(data[3])}>Delete</button>
-</div> */}
-
-{/* <div className='animal-name'>
-    {data[0]}
-</div> */}
-
-// import { CgProfile } from 'react-icons/cg'
-// import { IconContext } from 'react-icons'
-// import "../styles/profile-icon.css"
