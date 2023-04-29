@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import animalLobbyBackgroundImage from '../assets/backgroundImages/8_png_by_cleopatrawolf_dfuq867.png'
 import { CgProfile } from 'react-icons/cg'
@@ -7,13 +7,32 @@ import "../styles/profile-icon.css"
 import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
+import Modal from 'react-modal';
+
+
+
 
 
 
 export default function AnimalLobby({ token, username }) {
     const [animalList, setAnimalList] = useState([])
     const [yourAnimals, setYourAnimals] = useState([])
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [clickedImage, setClickedImage] = useState([])
+    const [clickedName, setClickedName] = useState([])
 
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            maxWidth: '300px',
+            maxHeight: '300px',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+    };
 
     useEffect(() => {
         axios.get('https://is-it-raining.herokuapp.com/my-animals', {
@@ -42,6 +61,18 @@ export default function AnimalLobby({ token, username }) {
     }
 
 
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    const handleClick = (event) => {
+        console.log(event.target);
+        setClickedImage(event.target.src);
+        setClickedName(event.target.alt);
+        setIsOpen(true);
+    }
+
     return (
         <>
             <div>
@@ -54,19 +85,32 @@ export default function AnimalLobby({ token, username }) {
                 <h2>Animal Inventory</h2>
 
                 <div className='divForAnimalLobbyMap'>
-                <div className='animalLobbyMap'>
-                    {
-                        yourAnimals.map((data =>
-                            <>
-                                <div className='animalLobbyCard'>
-                                    <div className='animalImage'>
-                                        <img src={data[1]} alt={data[0]}></img>
+                    <div className='animalLobbyMap'>
+                        {
+                            yourAnimals.map((data =>
+                                <>
+                                    <div className='animalLobbyCard'>
+                                        <div className='animalImage'>
+                                            <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
+                                            {console.log(data[1])}
+                                            <Modal
+                                                isOpen={modalIsOpen}
+                                                onRequestClose={closeModal}
+                                                ariaHideApp={false}
+                                                style={customStyles}
+                                            >
+                                                <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                                                <div className="modalImageDivAL">
+                                                    <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                                                </div>
+                                                <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                                            </Modal>
+                                        </div>
                                     </div>
-                                </div>
-                            </>
-                        ))
-                    }
-                </div>
+                                </>
+                            ))
+                        }
+                    </div>
                 </div>
                 <div className='lobbyBackgroundImage'>
                     <img src={animalLobbyBackgroundImage} alt='profile-background'></img>

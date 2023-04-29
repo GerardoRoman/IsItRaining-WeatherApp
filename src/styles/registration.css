@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Titan+One');
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Quicksand:wght@300;400;500;600;700&display=swap');
-
+/* 
 body {
     text-align: center
 }
@@ -8,9 +8,9 @@ body {
 .blobs div {
     display: block;
     position: absolute
-}
+} */
 
-h1 {
+/* h1 {
     background: rgb(255, 255, 255);
     width: 370px;
     height: 200px;
@@ -23,12 +23,13 @@ h1 {
     flex-flow: row wrap;
     align-content: center;
     justify-content: center
-}
+} */
 
+/* 
 h1 span {
     width: 100%;
     position: relative
-}
+} */
 
 /* h1 span:before {
     background: linear-gradient(45deg, #fc5c7d, #6a82fb, #fc5c7d);
@@ -39,11 +40,11 @@ h1 span {
     content: "";
     mix-blend-mode: screen
 } */
-
+/* 
 [class*="blobs"] {
     mix-blend-mode: color;
     animation: blobs 10s ease-in-out infinite alternate
-}
+} */
 
 /* .blobs_1 {
     background: #ff1493;
