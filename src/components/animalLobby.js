@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import Modal from 'react-modal'
 import { GiDinosaurBones } from 'react-icons/gi'
+import { ProgressBar } from './progressBar'
 
 
 export default function AnimalLobby({ token, username }) {
@@ -86,6 +87,7 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
+                                            <ProgressBar progress={50} />
                                             {console.log(data[1])}
                                             <Modal
                                                 isOpen={modalIsOpen}
