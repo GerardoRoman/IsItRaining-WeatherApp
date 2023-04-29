@@ -93,23 +93,23 @@ export default function AnimalLobby({ token, username }) {
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             {console.log(data[1])}
-                                            <Modal
-                                                isOpen={modalIsOpen}
-                                                onRequestClose={closeModal}
-                                                ariaHideApp={false}
-                                                style={customStyles}
-                                            >
-                                                <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                                                <div className="modalImageDivAL">
-                                                    <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                                                </div>
-                                                <button className="modalButtonAL" onClick={closeModal}>Back</button>
-                                            </Modal>
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={closeModal}
+                            ariaHideApp={false}
+                            style={customStyles}
+                        >
+                            <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                            <div className="modalImageDivAL">
+                                <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                            </div>
+                            <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                        </Modal>
                     </div>
                 </div>
                 <div className='lobbyBackgroundImage'>

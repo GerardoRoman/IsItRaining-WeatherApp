@@ -12,6 +12,8 @@ function Animal({ weatherID, token }) {
     const [image, setImage] = useState('')
     const [variation, setVariation] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [captureBoolean, setCaptureBoolean] = useState('')
+    const [click, setClick] = useState(false)
     const navigate = useNavigate();
 
     const customStyles = {
@@ -42,14 +44,14 @@ function Animal({ weatherID, token }) {
                     setAnimal(response.data.name)
                     setImage(response.data.image)
                     setVariation(response.data.variation_type)
+                    setCaptureBoolean(response.data.can_capture)
                     // get back data for if the user has collected the animal in the last 12 hours 
 
                 })
         }
     }, [weatherID])
     console.log(token)
-
-
+    console.log(captureBoolean)
 
 
     const handleCapture = (event) => {
@@ -76,11 +78,33 @@ function Animal({ weatherID, token }) {
         setIsOpen(false);
     }
 
+    function testFunc() {
+        console.log('passed')
+    }
+
+    // const testDiv = () => {
+    //     const interval = setInterval(setClick(true), 500);
+    //     return () => clearInterval(interval) && setClick(false);
+    // }
+
+
+    // useEffect((click) => {
+    //     const interval = setInterval(() => {
+    //         console.log('This will run every second!');
+    //     }, 1000);
+    //     return () => clearInterval(interval);
+    // }, [lick]);
+
+
     return (
         (token ? (
-
             <div className='animal'>
-                <img src={image} alt='corresponding-weather-animal' onClick={openModal}></img>
+                {/* <img src={image} alt='corresponding-weather-animal'
+                    onClick={openModal}
+                > */}
+                {click && <div>NOT TODAY NO CLICKY</div>}
+                {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
+                    onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={testDiv}></img>}
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
