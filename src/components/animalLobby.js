@@ -45,13 +45,13 @@ export default function AnimalLobby({ token, username }) {
     return (
         <>
             <div>
-                <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
+                {/* <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
                     <div className='profile-icon'>
                         <CgProfile />
                     </div>
-                </IconContext.Provider>
+                </IconContext.Provider> */}
 
-                <h2>{username}'s Animal Lobby</h2>
+                <h2>Animal Inventory</h2>
 
                 <div className='divForAnimalLobbyMap'>
                 <div className='animalLobbyMap'>

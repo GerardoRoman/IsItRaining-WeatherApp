@@ -7,8 +7,7 @@ function BackgroundImages({ weatherCode }) {
     useEffect(() => {
             axios.get(`https://is-it-raining.herokuapp.com/background/?code=${weatherCode}`) 
                 .then((response) => {
-                    setImage(response.data[0].background_image) // add mapping
-                    console.log(response.data.background_image)
+                    setImage(response.data[0].background_image)
                 })
     }, [weatherCode])
 
