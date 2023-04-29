@@ -5,6 +5,8 @@ import { Routes, Route, Link } from 'react-router-dom'
 import AnimalLobby from './components/animalLobby.js'
 import Home from './components/home.js'
 import SpecialAnimalLobby from './components/specialAnimalLobby.js'
+import Loading from './components/loading.js'
+
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
           <Route path='/login' element={<Login setAuth={setAuth} />} />
           <Route path='/register' element={<Registration setAuth={setAuth} />} />
           <Route path='/special-animal-lobby' element={<SpecialAnimalLobby token={token} username={username} />} />
+          <Route path='/loader' element={<Loading />} />
         </Routes>
       </div>
     </>
