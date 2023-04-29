@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal';
-import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import '../styles/animal.css'
 
@@ -9,12 +8,7 @@ import '../styles/animal.css'
 export default function AnimalLoggedOut({ weatherID }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
-    const [variation, setVariation] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [captureBoolean, setCaptureBoolean] = useState('')
-    const [click, setClick] = useState(false)
-    const [pointsLeft, setPointsLeft] = useState(0)
-    const navigate = useNavigate();
 
 
     const customStyles = {

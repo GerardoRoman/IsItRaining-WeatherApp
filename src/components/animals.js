@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import '../styles/animal.css'
+import { BsChatLeftFill } from 'react-icons/bs'
 import Confetti from 'react-confetti';
 
 
@@ -45,7 +45,6 @@ function Animal({ weatherID, token }) {
                     }
                 })
                 .then((response) => {
-                    // console.log(response.data.random_image)
                     setAnimal(response.data.name)
                     setImage(response.data.image)
                     setVariation(response.data.variation_type)
@@ -83,15 +82,13 @@ function Animal({ weatherID, token }) {
         setIsOpen(false);
     }
 
-    function testFunc() {
-        console.log('passed')
-    }
 
-    const testDiv = () => {
-        // const interval = setInterval(setClick(true), 500);
-        // return () => clearInterval(interval) &&
-        setClick(true);
-    }
+
+    // const testDiv = () => {
+    //     // const interval = setInterval(setClick(true), 500);
+    //     // return () => clearInterval(interval) &&
+    //     setClick(true);
+    // }
 
 
     // useEffect((click) => {
@@ -104,7 +101,15 @@ function Animal({ weatherID, token }) {
 
     return (
         <div className='animal'>
-            {click && <div>NOT TODAY NO CLICKY</div>}
+            {click &&
+                <>
+                    <div className="noClickWarningIcon">
+                        <div className="chatBoxDiv"><BsChatLeftFill /></div>
+                    </div>
+                    <div className="noClickWarningText">
+                        <div className="warningWords">Try again later. You JUST caught me...</div>
+                    </div>
+                </>}
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
                 onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img>}
             <Modal

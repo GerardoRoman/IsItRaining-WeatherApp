@@ -65,3 +65,37 @@
     font-size: 11px;
     margin-top: 10px;
 }
+
+.noClickWarningIcon {
+    position: absolute;
+    top: 380px;
+    left: 280px;
+}
+
+.chatBoxDiv {
+    width: 80px;
+    height: 50px;
+}
+
+.chatBoxDiv svg {
+    top: 80px;
+    width: 100%;
+    height: auto;
+    opacity: 60%;
+}
+
+.noClickWarningText {
+    position: absolute;
+    width: 73px;
+    top: 390px;
+    left: 283px;
+}
+
+.warningWords {
+    position: absolute;
+    color: antiquewhite;
+    font-family: ;
+    font-weight: 700;
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
