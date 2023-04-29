@@ -59,6 +59,7 @@ h2 {
     flex-direction: row;
     flex-wrap: wrap;
     width: 375px;
+    padding: 10px;
     gap: 25px;
     margin-top: 0px;
 
