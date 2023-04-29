@@ -14,6 +14,7 @@ function Animal({ weatherID, token }) {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [captureBoolean, setCaptureBoolean] = useState('')
     const [click, setClick] = useState(false)
+    const [pointsLeft, setPointsLeft] = useState(0)
     const navigate = useNavigate();
 
     const customStyles = {
@@ -45,6 +46,7 @@ function Animal({ weatherID, token }) {
                     setImage(response.data.image)
                     setVariation(response.data.variation_type)
                     setCaptureBoolean(response.data.can_capture)
+                    setPointsLeft(response.data.points_left_until_max)
                     // get back data for if the user has collected the animal in the last 12 hours 
 
                 })
