@@ -45,39 +45,37 @@ export default function AnimalLobby({ token, username }) {
     }, [])
 
 
-    console.log(yourAnimals)
     function deleteAnimal(animalId) {
-        console.log(animalId)
-        axios.delete(`https://is-it-raining.herokuapp.com/captured/${animalId}`, {
+        axios.delete(`https://is-it-raining.herokuapp.com/my-animals/${animalId}`, {
             headers: {
-                'Authorization': `Token ${token}`
+            'Authorization': `Token ${token}`
             }
+        }).then((response) => {
+            console.log(response.data)
+            setYourAnimals(yourAnimals.filter(animal => animal[2] !== animalId))
+        }).catch((error) => {
+            console.error(error)
         })
-            .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
     }
-
 
 
     function closeModal() {
         setIsOpen(false);
     }
 
+    // const [progress, setProgress] = useState(0)
+
     const handleClick = (event) => {
         console.log(event.target);
         setClickedImage(event.target.src);
         setClickedName(event.target.alt);
+        // setProgress(Math.round((data[3] / 10) * 100))
         setIsOpen(true);
     }
 
     return (
         <>
             <div>
-                {/* <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
-                    <div className='profile-icon'>
-                        <CgProfile />
-                    </div>
-                </IconContext.Provider> */}
-
                 <h2>Animal Inventory</h2>
 
                 <div className='divForAnimalLobbyMap'>
@@ -88,18 +86,19 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
-                                            <Line percent={data[4] * 10}
-                                            strokeWidth="3"
-                                            strokeColor="#BF00FF"
-                                            strokeLinecap="square"
-                                            trailWidth="3"
-                                            trailColor="#f3f3f3" />
-                                            
+                                                <Line percent={data[4] * 10}
+                                                strokeWidth="3"
+                                                strokeColor="#BF00FF"
+                                                strokeLinecap="square"
+                                                trailWidth="3"
+                                                trailColor="#f3f3f3" />
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
+                        {
+                            yourAnimals.map((data =>
                                             <Modal
                                                 isOpen={modalIsOpen}
                                                 onRequestClose={closeModal}
@@ -107,16 +106,27 @@ export default function AnimalLobby({ token, username }) {
                                                 style={customStyles}
                                             >
                                                 <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                                                <div className="modalImageDivAL">
-                                                    <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                                                </div>
-                                                {/* <div className='delete-animal-button'>
-                                                    <button onClick={() => deleteAnimal(data[3])}>Delete</button>
-                                                </div> */}
+                                                    <div className="modalImageDivAL">
+                                                        <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                                                    </div>
+                                                    <div className='modal-progress-bar'>
+                                                        <Line percent={data[4] * 10}
+                                                            strokeWidth="3"
+                                                            strokeColor="#BF00FF"
+                                                            strokeLinecap="square"
+                                                            trailWidth="3"
+                                                            trailColor="#f3f3f3" />
+                                                    </div>
+                                                    <div className='delete-animal-button'>
+                                                        <button onClick={() => deleteAnimal(data[2])}>Delete</button>
+                                                    </div>
                                                 <button className="modalButtonAL" onClick={closeModal}>Back</button>
                                             </Modal>
+                                            ))
+                                        }
                     </div>
                 </div>
+
                 <div className='lobbyBackgroundImage'>
                     <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
                 </div>
@@ -136,8 +146,3 @@ export default function AnimalLobby({ token, username }) {
         </>
     )
 }
-
-
-// import { CgProfile } from 'react-icons/cg'
-// import { IconContext } from 'react-icons'
-// import "../styles/profile-icon.css"
