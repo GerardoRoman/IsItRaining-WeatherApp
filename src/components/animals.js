@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/animal.css'
 import { BsChatLeftFill } from 'react-icons/bs'
 import Confetti from 'react-confetti';
+import Typewriter from 'typewriter-effect'
 
 
 function Animal({ weatherID, token }) {
@@ -15,6 +16,7 @@ function Animal({ weatherID, token }) {
     const [captureBoolean, setCaptureBoolean] = useState('')
     const [click, setClick] = useState(false)
     const [pointsLeft, setPointsLeft] = useState(0)
+    // const [showMessage, setShowMessage] = useState(false)
     const navigate = useNavigate();
 
     const customStyles = {
@@ -75,6 +77,23 @@ function Animal({ weatherID, token }) {
             })
     };
 
+    // useEffect(() => {
+    //     if (showMessage) {
+    //         const timeoutId = setTimeout(() => {
+    //         setShowMessage(false);
+    //         }, 5000);
+    
+    //         return () => {
+    //             clearTimeout(timeoutId);
+    //         };
+    //     }
+    // }, [showMessage]);
+    
+    //     const handleClick = () => {
+    //         setShowMessage(true);
+    //     };
+    // add onClick={handleClick} to noClickWarningIcon div
+
 
     //     const handleLevelUp = (event) => {
     //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -105,7 +124,7 @@ function Animal({ weatherID, token }) {
         setIsOpen(false);
     }
 
-
+    
     // const testDiv = () => {
     //     // const interval = setInterval(setClick(true), 500);
     //     // return () => clearInterval(interval) &&
@@ -118,18 +137,28 @@ function Animal({ weatherID, token }) {
     //         console.log('This will run every second!');
     //     }, 1000);
     //     return () => clearInterval(interval);
-    // }, [lick]);
+    // }, [click]);
 
 
     return (
         <div className='animal'>
             {click &&
                 <>
-                    <div className="noClickWarningIcon">
+                    <div className="noClickWarningIcon"> 
                         <div className="chatBoxDiv"><BsChatLeftFill /></div>
                     </div>
                     <div className="noClickWarningText">
-                        <div className="warningWords">Try again <br></br>later. You <br></br>JUST caught<br></br> me...</div>
+                        <div className="warningWords">
+                            <Typewriter 
+                            onInit={ (typewriter) => {
+                                typewriter
+                                .typeString("Try again later.")
+                                .pauseFor(1000)
+                                .typeString(" You JUST caught me...")
+                                .start();
+                            }}
+                            />
+                            </div>
                     </div>
                 </>}
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'

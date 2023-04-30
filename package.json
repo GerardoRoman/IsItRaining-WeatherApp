@@ -31,6 +31,7 @@
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "styled-components": "^5.3.10",
+    "typewriter-effect": "^2.19.0",
     "use-local-storage-state": "^18.3.2",
     "weather-react-icons": "^4.0.2",
     "web-vitals": "^2.1.4"
