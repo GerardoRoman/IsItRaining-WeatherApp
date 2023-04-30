@@ -16,7 +16,6 @@ function Animal({ weatherID, token }) {
     const [captureBoolean, setCaptureBoolean] = useState('')
     const [click, setClick] = useState(false)
     const [pointsLeft, setPointsLeft] = useState(0)
-    // const [showMessage, setShowMessage] = useState(false)
     const navigate = useNavigate();
 
     const customStyles = {
@@ -77,67 +76,16 @@ function Animal({ weatherID, token }) {
             })
     };
 
-    // useEffect(() => {
-    //     if (showMessage) {
-    //         const timeoutId = setTimeout(() => {
-    //         setShowMessage(false);
-    //         }, 5000);
-    
-    //         return () => {
-    //             clearTimeout(timeoutId);
-    //         };
-    //     }
-    // }, [showMessage]);
-    
-    //     const handleClick = () => {
-    //         setShowMessage(true);
-    //     };
-    // add onClick={handleClick} to noClickWarningIcon div
-
-
-    //     const handleLevelUp = (event) => {
-    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
-    //             {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Token ${token}`
-    //                 }
-    //             }
-    //         )
-    //             .then(res => {
-    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
-    //                 {
-    //                     closeModal()
-    //                     navigate('/animal-lobby')
-    //                 })
-    //     }
-    // };
-
-
-
-
     function openModal() {
         setIsOpen(true);
     }
 
     function closeModal() {
         setIsOpen(false);
+        setTimeout(() => {
+            setIsOpen(false);
+        }, 3000);
     }
-
-    
-    // const testDiv = () => {
-    //     // const interval = setInterval(setClick(true), 500);
-    //     // return () => clearInterval(interval) &&
-    //     setClick(true);
-    // }
-
-
-    // useEffect((click) => {
-    //     const interval = setInterval(() => {
-    //         console.log('This will run every second!');
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    // }, [click]);
 
 
     return (
@@ -220,3 +168,58 @@ function Animal({ weatherID, token }) {
 }
 
 export default Animal;
+
+// My failed attempts
+
+// useEffect(() => {
+    //     if (showMessage) {
+    //         const timeoutId = setTimeout(() => {
+    //         setShowMessage(false);
+    //         }, 5000);
+    
+    //         return () => {
+    //             clearTimeout(timeoutId);
+    //         };
+    //     }
+    // }, [showMessage]);
+    
+    //     const handleClick = () => {
+    //         setShowMessage(true);
+    //     };
+    // add onClick={handleClick} to noClickWarningIcon div
+
+
+// Emmaline Code
+    // const testDiv = () => {
+    //     // const interval = setInterval(setClick(true), 500);
+    //     // return () => clearInterval(interval) &&
+    //     setClick(true);
+    // }
+
+
+    // useEffect((click) => {
+    //     const interval = setInterval(() => {
+    //         console.log('This will run every second!');
+    //     }, 1000);
+    //     return () => clearInterval(interval);
+    // }, [click]);
+
+
+
+    //     const handleLevelUp = (event) => {
+    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Token ${token}`
+    //                 }
+    //             }
+    //         )
+    //             .then(res => {
+    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
+    //                 {
+    //                     closeModal()
+    //                     navigate('/animal-lobby')
+    //                 })
+    //     }
+    // };
