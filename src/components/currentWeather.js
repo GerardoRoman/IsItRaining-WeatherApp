@@ -11,11 +11,11 @@ import { IoMdLogOut } from 'react-icons/io'
 import { IoMdLogIn } from 'react-icons/io'
 
 
-
 export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode, handleLogout }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
+    const [catchum, setCatchum] = useState('')
 
     useEffect(() => {
         if (lat && long) {
@@ -34,7 +34,6 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
 
     const high = Math.max(...hourlyTemps)
     const low = Math.min(...hourlyTemps)
-
 
     return (
         (typeof data.main != 'undefined') ? (

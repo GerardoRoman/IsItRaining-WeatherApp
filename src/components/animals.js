@@ -15,6 +15,9 @@ function Animal({ weatherID, token }) {
     const [captureBoolean, setCaptureBoolean] = useState('')
     const [click, setClick] = useState(false)
     const [pointsLeft, setPointsLeft] = useState(0)
+    const [specialName, setSpecialName] = useState([])
+    const [specialImg, setSpecialImg] = useState([])
+
     const navigate = useNavigate();
 
     const customStyles = {
@@ -50,9 +53,12 @@ function Animal({ weatherID, token }) {
                     setVariation(response.data.variation_type)
                     setCaptureBoolean(response.data.can_capture)
                     setPointsLeft(response.data.points_left_until_max)
-                    console.log(response.data.points_left_until_max)
-                    console.log(response.data.can_capture)
-                    console.log(response.data)
+                    setSpecialName(response.data.special_animal[0].special_name)
+                    setSpecialImg(response.data.special_animal[0].image)
+
+                    // console.log(response.data.points_left_until_max)
+                    // console.log(response.data.can_capture)
+                    // console.log(response.data)
 
                 })
         }
@@ -76,23 +82,28 @@ function Animal({ weatherID, token }) {
     };
 
 
-    //     const handleLevelUp = (event) => {
-    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
-    //             {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Token ${token}`
-    //                 }
-    //             }
-    //         )
-    //             .then(res => {
-    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
-    //                 {
-    //                     closeModal()
-    //                     navigate('/animal-lobby')
-    //                 })
-    //     }
-    // };
+    const handleLevelUp = (event) => {
+        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                }
+            })
+            .then(res => {
+                axios.get(`https://is-it-raining.herokuapp.com/weather-animal/${weatherID}/`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Token ${token}`
+                        }
+                    })
+                    .then((response) => {
+                        setAnimal(response.data.special_animal[0].special_name)
+                        setImage(response.data.special_animal[0].image)
+                    })
+            })
+    };
 
 
 
@@ -129,7 +140,7 @@ function Animal({ weatherID, token }) {
                         <div className="chatBoxDiv"><BsChatLeftFill /></div>
                     </div>
                     <div className="noClickWarningText">
-                        <div className="warningWords">Try again <br></br>later. You <br></br>JUST caught<br></br> me...</div>
+                        <div className="warningWords">Try again <br />later. You <br />JUST caught<br /> me...</div>
                     </div>
                 </>}
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
@@ -146,6 +157,7 @@ function Animal({ weatherID, token }) {
                         <div>
                             <Confetti
                                 style={customStylesConfetti}
+
                             />
                         </div>
                         <h2 className="modalTitle">You caught a {animal}!</h2>
@@ -155,7 +167,7 @@ function Animal({ weatherID, token }) {
                         <div className="pointCountModal">Last one until level up</div>
                         <div className="modalChoice">What would you like to do? </div>
                         <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+                        <button className="modalButtonRight" onClick={handleLevelUp}>Capture</button>
 
                     </div>
                 </Modal >

@@ -299,3 +299,41 @@
     padding: 5px 8px;
     border-radius: 12px;
 }
+
+/* MUSIC PLAYER */
+
+.playButton {
+    background: none;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.subTitle {
+    margin-top: -1em;
+    color: #4f4f4f;
+}
+
+.time {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    color: #828282;
+    font-size: smaller;
+}
+
+.timeline {
+    width: 80%;
+    background-color: #27ae60;
+}
+
+input[type="range"] {
+    background-color: #27ae60;
+}
+
+@media (max-width: 900px) {
+    .component {
+        width: 50%;
+    }
+}
