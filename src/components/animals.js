@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/animal.css'
 import { BsChatLeftFill } from 'react-icons/bs'
 import Confetti from 'react-confetti';
+import Typewriter from 'typewriter-effect'
 
 
 function Animal({ weatherID, token }) {
@@ -116,33 +117,31 @@ function Animal({ weatherID, token }) {
 
     function closeModal() {
         setIsOpen(false);
+        setTimeout(() => {
+            setIsOpen(false);
+        }, 3000);
     }
-
-
-    // const testDiv = () => {
-    //     // const interval = setInterval(setClick(true), 500);
-    //     // return () => clearInterval(interval) &&
-    //     setClick(true);
-    // }
-
-
-    // useEffect((click) => {
-    //     const interval = setInterval(() => {
-    //         console.log('This will run every second!');
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    // }, [lick]);
 
 
     return (
         <div className='animal'>
             {click &&
                 <>
-                    <div className="noClickWarningIcon">
+                    <div className="noClickWarningIcon"> 
                         <div className="chatBoxDiv"><BsChatLeftFill /></div>
                     </div>
                     <div className="noClickWarningText">
-                        <div className="warningWords">Try again <br />later. You <br />JUST caught<br /> me...</div>
+                        <div className="warningWords">
+                            <Typewriter 
+                            onInit={ (typewriter) => {
+                                typewriter
+                                .typeString("Try again later.")
+                                .pauseFor(1000)
+                                .typeString(" You JUST caught me...")
+                                .start();
+                            }}
+                            />
+                            </div>
                     </div>
                 </>}
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
@@ -203,7 +202,7 @@ function Animal({ weatherID, token }) {
                             style={customStyles}
                             ariaHideApp={false}
                         >
-                            <div>
+                            // <div>
                                 {/* <div>
                             <Confetti
                                 style={customStylesConfetti}
@@ -228,3 +227,58 @@ function Animal({ weatherID, token }) {
 }
 
 export default Animal;
+
+// My failed attempts
+
+// useEffect(() => {
+    //     if (showMessage) {
+    //         const timeoutId = setTimeout(() => {
+    //         setShowMessage(false);
+    //         }, 5000);
+    
+    //         return () => {
+    //             clearTimeout(timeoutId);
+    //         };
+    //     }
+    // }, [showMessage]);
+    
+    //     const handleClick = () => {
+    //         setShowMessage(true);
+    //     };
+    // add onClick={handleClick} to noClickWarningIcon div
+
+
+// Emmaline Code
+    // const testDiv = () => {
+    //     // const interval = setInterval(setClick(true), 500);
+    //     // return () => clearInterval(interval) &&
+    //     setClick(true);
+    // }
+
+
+    // useEffect((click) => {
+    //     const interval = setInterval(() => {
+    //         console.log('This will run every second!');
+    //     }, 1000);
+    //     return () => clearInterval(interval);
+    // }, [click]);
+
+
+
+    //     const handleLevelUp = (event) => {
+    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Token ${token}`
+    //                 }
+    //             }
+    //         )
+    //             .then(res => {
+    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
+    //                 {
+    //                     closeModal()
+    //                     navigate('/animal-lobby')
+    //                 })
+    //     }
+    // };
