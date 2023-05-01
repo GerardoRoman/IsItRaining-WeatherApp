@@ -7,6 +7,12 @@ import { BsFillCloudSunFill } from 'react-icons/bs'
 import Modal from 'react-modal'
 import { GiDinosaurBones } from 'react-icons/gi'
 import { Line } from 'rc-progress'
+import useSound from "use-sound";
+import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
+import { IconContext } from "react-icons";
+import catchum from '../assets/music/catchum.wav'
+
+
 
 export default function AnimalLobby({ token, username }) {
     const [animalList, setAnimalList] = useState([])
@@ -14,6 +20,9 @@ export default function AnimalLobby({ token, username }) {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [clickedImage, setClickedImage] = useState([])
     const [clickedName, setClickedName] = useState([])
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [lobbySong, setLobbySong] = useState([])
+
 
     const customStyles = {
         content: {
@@ -40,6 +49,7 @@ export default function AnimalLobby({ token, username }) {
                 return ([response.animal.name, response.animal.image, response.animal.id, response.animal.points_left_until_max, response.points])
             })
             setYourAnimals(animalArray)
+            setLobbySong(response.data[0].animal_lobby_song)
         })
 
     }, [])
@@ -48,7 +58,7 @@ export default function AnimalLobby({ token, username }) {
     function deleteAnimal(animalId) {
         axios.delete(`https://is-it-raining.herokuapp.com/my-animals/${animalId}`, {
             headers: {
-            'Authorization': `Token ${token}`
+                'Authorization': `Token ${token}`
             }
         }).then((response) => {
             console.log(response.data)
@@ -73,6 +83,19 @@ export default function AnimalLobby({ token, username }) {
         setIsOpen(true);
     }
 
+    console.log(lobbySong)
+    const [play, { pause }] = useSound(lobbySong);
+
+
+    const playingButton = () => {
+        if (isPlaying) {
+            pause();
+            setIsPlaying(false);
+        } else {
+            play();
+            setIsPlaying(true);
+        }
+    };
     return (
         <>
             <div>
@@ -86,7 +109,7 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
-                                                <Line percent={data[4] * 10}
+                                            <Line percent={data[4] * 10}
                                                 strokeWidth="3"
                                                 strokeColor="#BF00FF"
                                                 strokeLinecap="square"
@@ -99,31 +122,56 @@ export default function AnimalLobby({ token, username }) {
                         }
                         {
                             yourAnimals.map((data =>
-                                            <Modal
-                                                isOpen={modalIsOpen}
-                                                onRequestClose={closeModal}
-                                                ariaHideApp={false}
-                                                style={customStyles}
-                                            >
-                                                <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                                                    <div className="modalImageDivAL">
-                                                        <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                                                    </div>
-                                                    <div className='modal-progress-bar'>
-                                                        <Line percent={data[4] * 10}
-                                                            strokeWidth="3"
-                                                            strokeColor="#BF00FF"
-                                                            strokeLinecap="square"
-                                                            trailWidth="3"
-                                                            trailColor="#f3f3f3" />
-                                                    </div>
-                                                    <div className='delete-animal-button'>
-                                                        <button onClick={() => deleteAnimal(data[2])}>Delete</button>
-                                                    </div>
-                                                <button className="modalButtonAL" onClick={closeModal}>Back</button>
-                                            </Modal>
-                                            ))
-                                        }
+                                <Modal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    ariaHideApp={false}
+                                    style={customStyles}
+                                >
+                                    <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                                    <div className="modalImageDivAL">
+                                        <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                                    </div>
+                                    <div className='modal-progress-bar'>
+                                        <Line percent={data[4] * 10}
+                                            strokeWidth="3"
+                                            strokeColor="#BF00FF"
+                                            strokeLinecap="square"
+                                            trailWidth="3"
+                                            trailColor="#f3f3f3" />
+                                    </div>
+                                    <div className='delete-animal-button'>
+                                        <button onClick={() => deleteAnimal(data[2])}>Delete</button>
+                                    </div>
+                                    <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                                </Modal>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div className="audioPlayer">
+                    <div className="audioPlayerHome">
+                        <button className="playButton">
+                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                            </IconContext.Provider>
+                        </button>
+                        {!isPlaying ? (
+                            <button className="playButton" onClick={playingButton}>
+                                <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    <AiFillPlayCircle />
+                                </IconContext.Provider>
+                            </button>
+                        ) : (
+                            <button className="playButton" onClick={playingButton}>
+                                <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    <AiFillPauseCircle />
+                                </IconContext.Provider>
+                            </button>
+                        )}
+                        <button className="playButton">
+                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                            </IconContext.Provider>
+                        </button>
                     </div>
                 </div>
 
