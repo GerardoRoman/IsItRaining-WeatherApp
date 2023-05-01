@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import specialAnimalLobbyBackground from '../assets/backgroundImages/7_by_cleopatrawolf_dfuq86e.png'
+import specialAnimalLobbyBackground from '../assets/backgroundImages/Lobby_Background/dfvvtn1-4814102c-4aec-4efd-881e-96fe6383fbc1.png'
 import "../styles/specialAnimalLobby.css"
 import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'

@@ -11,7 +11,7 @@ export default function Loading() {
             <div className="loader">
                 <ReactLoading
                     type="spinningBubbles"
-                    color="#2457c7"
+                    color="#BF00FF"
                     height={150}
                     width={150} />
             </div>

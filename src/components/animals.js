@@ -134,6 +134,7 @@ function Animal({ weatherID, token }) {
 
     function openModal() {
         setIsOpen(true);
+        console.log('Modal opened.')
     }
 
     function closeModal() {
