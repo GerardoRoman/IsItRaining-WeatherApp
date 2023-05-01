@@ -15,7 +15,6 @@ function Animal({ weatherID, token }) {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [pointsLeft, setPointsLeft] = useState(0)
     const [captureBoolean, setCaptureBoolean] = useState('')
-    const [specialName, setSpecialName] = useState('')
     const [specialImg, setSpecialImg] = useState('')
     const navigate = useNavigate();
     const [showBubble, setShowBubble] = useState(false)
@@ -53,23 +52,17 @@ function Animal({ weatherID, token }) {
                     setVariation(response.data.variation_type)
                     setCaptureBoolean(response.data.can_capture)
                     setPointsLeft(response.data.points_left_until_max)
-                    setSpecialName(response.data.special_animal[0].special_name)
                     setSpecialImg(response.data.special_animal[0].image)
-
-                    // console.log(response.data.points_left_until_max)
-                    // console.log(response.data.can_capture)
-                    console.log(response.data.special_animal[0].image)
-
                 })
         }
     }, [weatherID, token])
 
 
 
-    console.log(token)
+    // console.log(token)
     // console.log(specialImg)
-    console.log(captureBoolean)
-    console.log(pointsLeft)
+    // console.log(captureBoolean)
+    // console.log(pointsLeft)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -86,10 +79,6 @@ function Animal({ weatherID, token }) {
                 if (pointsLeft > 1) {
                     navigate('/animal-lobby')
                 }
-                // else (pointsLeft === 0); {
-                //     navigate('/my-special-animals')
-                // }
-
             })
     };
 
@@ -98,9 +87,12 @@ function Animal({ weatherID, token }) {
         navigate('/special-animal-lobby')
     }
 
+    const handlePointChange = (event) => {
+        setPointsLeft(0)
+    }
+
     function openModal() {
         setIsOpen(true);
-        console.log('Modal opened.')
     }
 
     function closeModal() {
@@ -173,11 +165,10 @@ function Animal({ weatherID, token }) {
                         (pointsLeft === 1) ?
                             (
                                 <Modal
-                                    isOpen={pointsLeft === 1}
+                                    isOpen={modalIsOpen}
                                     onRequestClose={closeModal}
                                     style={customStyles}
                                     ariaHideApp={false}
-                                // onAfterClose={ }
                                 >
                                     <div>
                                         <h2 className="modalTitle">You caught a {animal}!</h2>
@@ -187,7 +178,7 @@ function Animal({ weatherID, token }) {
                                         <div className="pointCountModal">Last one until level up</div>
                                         <div className="modalChoice">What would you like to do? </div>
                                         <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+                                        <button className="modalButtonRight" onClick={handlePointChange}>Capture</button>
                                     </div>
                                 </Modal >
                             ) : (
