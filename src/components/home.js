@@ -5,21 +5,28 @@ import HourlyWeather from './hourlyWeather.js'
 import '../styles/home.css'
 import { useNavigate } from 'react-router-dom'
 import BackgroundImages from './background.js'
-// import ReactAudioPlayer from 'react-audio-player';
 import catchum from '../assets/music/catchum.wav'
 import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
+
 function Home({ token, setAuth }) {
     const [lat, setLat] = useState(null)
     const [long, setLong] = useState(null)
     const [hourlyTemps, setHourlyTemps] = useState([])
-    const navigate = useNavigate();
     const [weatherCode, setWeatherCode] = useState(null)
     const [isPlaying, setIsPlaying] = useState(false);
+    const [backgroundAudio, setBackgroundAudio] = useState([])
+    const [captureBoolean, setCaptureBoolean] = useState('')
+    const navigate = useNavigate();
 
-    const [play, { pause, autoplay }] = useSound(catchum);
+
+
+    console.log(backgroundAudio)
+    console.log(captureBoolean)
+
+    const [play, { pause }] = useSound(backgroundAudio);
 
     const playingButton = () => {
         if (isPlaying) {
@@ -61,49 +68,35 @@ function Home({ token, setAuth }) {
 
     return (
         <>
-            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} handleLogout={handleLogout} />
+            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} handleLogout={handleLogout} setCaptureBoolean={setCaptureBoolean} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
-            <BackgroundImages weatherCode={weatherCode} />
+            <BackgroundImages weatherCode={weatherCode} setBackgroundAudio={setBackgroundAudio} />
             <div className="audioPlayer">
-                {/* <ReactAudioPlayer
-                    src="catchum"
-                    type="audio/wav"
-                    // autoPlay="true"
-                    loop='true'
-                    controls
-                />
-                <audio
-                    src="catchum"
-                    type="audio/wav"
-                    // autoPlay="true"
-                    loop='true'
-                    controls
-                /> */}
-                <button className="playButton">
-                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                    </IconContext.Provider>
-                </button>
-                {!isPlaying ? (
-                    <button className="playButton" onClick={playingButton}>
+                <div className="audioPlayerHome">
+                    <button className="playButton">
                         <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                            <AiFillPlayCircle />
                         </IconContext.Provider>
                     </button>
-                ) : (
-                    <button className="playButton" onClick={playingButton}>
+                    {!isPlaying ? (
+                        <button className="playButton" onClick={playingButton}>
+                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                <AiFillPlayCircle />
+                            </IconContext.Provider>
+                        </button>
+                    ) : (
+                        <button className="playButton" onClick={playingButton}>
+                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                <AiFillPauseCircle />
+                            </IconContext.Provider>
+                        </button>
+                    )}
+                    <button className="playButton">
                         <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                            <AiFillPauseCircle />
                         </IconContext.Provider>
                     </button>
-                )}
-                <button className="playButton">
-                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                    </IconContext.Provider>
-                </button>
+                </div>
             </div>
-            {/* <div className="musicToggleButton">
-                <Music />
-            </div> */}
+
         </>
     );
 }

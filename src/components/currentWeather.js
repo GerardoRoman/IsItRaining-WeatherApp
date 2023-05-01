@@ -11,7 +11,7 @@ import { IoMdLogOut } from 'react-icons/io'
 import { IoMdLogIn } from 'react-icons/io'
 
 
-export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode, handleLogout }) {
+export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode, handleLogout, setCaptureBoolean }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
@@ -77,7 +77,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 {token ? (
                     <>
                         <div>
-                            <Animal weatherID={weatherID} token={token} />
+                            <Animal weatherID={weatherID} token={token} setCaptureBoolean={setCaptureBoolean} />
                         </div>
                         <div className="loggedInNavBar">
                             <Link to='/animal-lobby'>

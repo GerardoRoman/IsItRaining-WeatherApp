@@ -8,12 +8,11 @@ import Confetti from 'react-confetti';
 import Typewriter from 'typewriter-effect'
 
 
-function Animal({ weatherID, token }) {
+function Animal({ weatherID, token, setCaptureBoolean }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
     const [variation, setVariation] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [captureBoolean, setCaptureBoolean] = useState('')
     const [click, setClick] = useState(false)
     const [pointsLeft, setPointsLeft] = useState(0)
     const [specialName, setSpecialName] = useState([])
@@ -62,7 +61,7 @@ function Animal({ weatherID, token }) {
 
                 })
         }
-    }, [weatherID, token])
+    }, [weatherID, token, setCaptureBoolean])
 
     console.log(token)
 
@@ -143,7 +142,7 @@ function Animal({ weatherID, token }) {
                             </div>
                     </div>
                 </>}
-            {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
+            {setCaptureBoolean ? <img src={image} alt='corresponding-weather-animal'
                 onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img>}
 
             {(pointsLeft === 0) ?

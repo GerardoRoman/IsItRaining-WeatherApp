@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-html, body {
+html,
+body {
     overflow: hidden;
 }
 
@@ -305,31 +306,17 @@ html, body {
 }
 
 /* MUSIC PLAYER */
+.audioPlayerHome {
+    position: absolute;
+    top: 625px;
+    left: 145px;
+}
 
 .playButton {
     background: none;
     border: none;
     align-items: center;
     justify-content: center;
-}
-
-.subTitle {
-    margin-top: -1em;
-    color: #4f4f4f;
-}
-
-.time {
-    margin: 0 auto;
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    color: #828282;
-    font-size: smaller;
-}
-
-.timeline {
-    width: 80%;
-    background-color: #27ae60;
 }
 
 input[type="range"] {
