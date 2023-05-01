@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+html, body {
+    overflow: hidden;
+}
+
 .homeWrapper {
     max-width: 375px;
     max-height: 667;

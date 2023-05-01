@@ -4,7 +4,6 @@ import '../styles/home.css'
 import '../styles/loader.css'
 
 
-
 export default function Loading() {
     return (
         <>
