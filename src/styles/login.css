@@ -149,8 +149,10 @@ h1 span:before {
 }
 
 .signUpPrompt {
+    position: absolute;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
+    left: 85px;
     height: 10px;
     display: flex;
     justify-content: center;

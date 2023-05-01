@@ -54,7 +54,7 @@ function Animal({ weatherID, token }) {
                     setCaptureBoolean(response.data.can_capture)
                     setPointsLeft(response.data.points_left_until_max)
                     setSpecialName(response.data.special_animal[0].special_name)
-                    setSpecialImg(response.data.special_animal[0].image)
+                    // setSpecialImg(response.data.special_animal[0].image)
 
                     // console.log(response.data.points_left_until_max)
                     // console.log(response.data.can_capture)
@@ -85,6 +85,30 @@ function Animal({ weatherID, token }) {
     };
 
 
+    // const handleLevelUp = (event) => {
+    //     axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
+    //         {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Token ${token}`
+    //             }
+    //         })
+    //         .then(res => {
+    //             axios.get(`https://is-it-raining.herokuapp.com/weather-animal/${weatherID}/`,
+    //                 {
+    //                     headers: {
+    //                         'Content-Type': 'application/json',
+    //                         'Authorization': `Token ${token}`
+    //                     }
+    //                 })
+    //                 .then((response) => {
+    //                     // setAnimal(response.data.special_animal[0].special_name)
+    //                     // setSpecialImg(response.data.special_animal[0].image)
+    //                     console.log(response.data.special_animal[0].image)
+    //                 })
+    //         })
+    // };
+
     const handleLevelUp = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
             {
@@ -92,23 +116,13 @@ function Animal({ weatherID, token }) {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ${token}`
                 }
-            })
-            .then(res => {
-                axios.get(`https://is-it-raining.herokuapp.com/weather-animal/${weatherID}/`,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Token ${token}`
-                        }
-                    })
-                    .then((response) => {
-                        // setAnimal(response.data.special_animal[0].special_name)
-                        // setSpecialImg(response.data.special_animal[0].image)
-                        console.log(response.data.special_animal[0].image)
-                    })
+            }
+        )
+            .then(response => {
+                setSpecialImg(response.data.special_animal[0].image)
             })
     };
-
+    console.log(specialImg)
 
     const handleNavToSpecialAnimals = (event) => {
         navigate('/special-animal-lobby')
