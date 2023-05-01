@@ -13,12 +13,13 @@ function Animal({ weatherID, token }) {
     const [image, setImage] = useState('')
     const [variation, setVariation] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [click, setClick] = useState(false)
     const [pointsLeft, setPointsLeft] = useState(0)
     const [captureBoolean, setCaptureBoolean] = useState('')
-    const [specialName, setSpecialName] = useState([])
-    const [specialImg, setSpecialImg] = useState([])
+    const [specialName, setSpecialName] = useState('')
+    const [specialImg, setSpecialImg] = useState('')
+    const [special, setSpecial] = useState([])
     const navigate = useNavigate();
+    const [showBubble, setShowBubble] = useState(false)
 
     const customStyles = {
         content: {
@@ -54,17 +55,19 @@ function Animal({ weatherID, token }) {
                     setCaptureBoolean(response.data.can_capture)
                     setPointsLeft(response.data.points_left_until_max)
                     setSpecialName(response.data.special_animal[0].special_name)
-                    // setSpecialImg(response.data.special_animal[0].image)
+                    setSpecialImg(response.data.special_animal[0].image)
 
                     // console.log(response.data.points_left_until_max)
                     // console.log(response.data.can_capture)
-                    // console.log(response.data)
+                    console.log(response.data.special_animal[0].image)
 
                 })
         }
     }, [weatherID, token])
 
-    // console.log(token)
+
+
+    console.log(token)
     // console.log(specialImg)
     console.log(captureBoolean)
     console.log(pointsLeft)
@@ -119,10 +122,11 @@ function Animal({ weatherID, token }) {
             }
         )
             .then(response => {
-                setSpecialImg(response.data.special_animal[0].image)
+                // const special = response.data.special_animal
+                console.log(response.data)
             })
     };
-    console.log(specialImg)
+    // console.log(specialImg)
 
     const handleNavToSpecialAnimals = (event) => {
         navigate('/special-animal-lobby')
@@ -136,30 +140,44 @@ function Animal({ weatherID, token }) {
         setIsOpen(false);
     }
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowBubble(false);
+        }, 10000);
+        return () => clearTimeout(timer);
+    }, [showBubble])
+
+    const handleClick = () => {
+        (captureBoolean ? openModal() : setShowBubble(true))
+    }
+
 
     return (
         <div className='animalDiv'>
-            {click &&
-                <>
-                    <div className="noClickWarningIcon">
-                        <div className="chatBoxDiv"><BsChatLeftFill /></div>
-                    </div>
-                    <div className="noClickWarningText">
-                        <div className="warningWords">
-                            <Typewriter
-                                onInit={(typewriter) => {
-                                    typewriter
-                                        .typeString("Try again later.")
-                                        .pauseFor(1000)
-                                        .typeString(" You JUST caught me...")
-                                        .start();
-                                }}
-                            />
+            <>
+                {showBubble &&
+                    <div className="talkBubble">
+                        <div className="noClickWarningIcon">
+                            <div className="chatBoxDiv"><BsChatLeftFill /></div>
+                        </div>
+                        <div className="noClickWarningText">
+                            <div className="warningWords">
+                                <Typewriter
+                                    onInit={(typewriter) => {
+                                        typewriter
+                                            .typeString("Try again later.")
+                                            .pauseFor(1000)
+                                            .typeString(" You JUST caught me...")
+                                            .start();
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
-                </>}
-            {captureBoolean ? <div className="animalCanCapture"> <img src={image} alt='corresponding-weather-animal'
-                onClick={openModal}></img> </div> : <div className="animal"> <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img></div>}
+                }
+            </>
+
+            <div className={captureBoolean ? "animalCanCapture" : "animal"}> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
 
             {
                 (pointsLeft === 0) ?
