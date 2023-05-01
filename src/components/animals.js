@@ -8,13 +8,14 @@ import Confetti from 'react-confetti';
 import Typewriter from 'typewriter-effect'
 
 
-function Animal({ weatherID, token, setCaptureBoolean }) {
+function Animal({ weatherID, token }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
     const [variation, setVariation] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [click, setClick] = useState(false)
     const [pointsLeft, setPointsLeft] = useState(0)
+    const [captureBoolean, setCaptureBoolean] = useState('')
     const [specialName, setSpecialName] = useState([])
     const [specialImg, setSpecialImg] = useState([])
     const navigate = useNavigate();
@@ -55,15 +56,18 @@ function Animal({ weatherID, token, setCaptureBoolean }) {
                     setSpecialName(response.data.special_animal[0].special_name)
                     setSpecialImg(response.data.special_animal[0].image)
 
-                    console.log(response.data.points_left_until_max)
+                    // console.log(response.data.points_left_until_max)
                     // console.log(response.data.can_capture)
                     // console.log(response.data)
 
                 })
         }
-    }, [weatherID, token, setCaptureBoolean])
+    }, [weatherID, token])
 
-    console.log(token)
+    // console.log(token)
+    // console.log(specialImg)
+    console.log(captureBoolean)
+    console.log(pointsLeft)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -98,8 +102,9 @@ function Animal({ weatherID, token, setCaptureBoolean }) {
                         }
                     })
                     .then((response) => {
-                        setAnimal(response.data.special_animal[0].special_name)
-                        setImage(response.data.special_animal[0].image)
+                        // setAnimal(response.data.special_animal[0].special_name)
+                        // setSpecialImg(response.data.special_animal[0].image)
+                        console.log(response.data.special_animal[0].image)
                     })
             })
     };
@@ -115,154 +120,98 @@ function Animal({ weatherID, token, setCaptureBoolean }) {
 
     function closeModal() {
         setIsOpen(false);
-        setTimeout(() => {
-            setIsOpen(false);
-        }, 3000);
     }
 
 
     return (
-        <div className='animalCanCapture'>
+        <div className='animalDiv'>
             {click &&
                 <>
-                    <div className="noClickWarningIcon"> 
+                    <div className="noClickWarningIcon">
                         <div className="chatBoxDiv"><BsChatLeftFill /></div>
                     </div>
                     <div className="noClickWarningText">
                         <div className="warningWords">
-                            <Typewriter 
-                            onInit={ (typewriter) => {
-                                typewriter
-                                .typeString("Try again later.")
-                                .pauseFor(1000)
-                                .typeString(" You JUST caught me...")
-                                .start();
-                            }}
+                            <Typewriter
+                                onInit={(typewriter) => {
+                                    typewriter
+                                        .typeString("Try again later.")
+                                        .pauseFor(1000)
+                                        .typeString(" You JUST caught me...")
+                                        .start();
+                                }}
                             />
-                            </div>
+                        </div>
                     </div>
                 </>}
-            {setCaptureBoolean ? <img src={image} alt='corresponding-weather-animal'
-                onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img>}
+            {captureBoolean ? <div className="animalCanCapture"> <img src={image} alt='corresponding-weather-animal'
+                onClick={openModal}></img> </div> : <div className="animal"> <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img></div>}
 
-            {(pointsLeft === 0) ?
-                (<Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    ariaHideApp={false}
-                >
-                    <div>
+            {
+                (pointsLeft === 0) ?
+                    (<Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        ariaHideApp={false}
+                    >
                         <div>
-                            <Confetti
-                                style={customStylesConfetti}
+                            <div>
+                                <Confetti
+                                    style={customStylesConfetti}
 
-                            />
+                                />
+                            </div>
+                            <h2 className="modalTitle">You've leveled up your {animal}!</h2>
+                            <div className="modalImageDiv">
+                                <img className="modalImage" src={specialImg} alt='your-new-animal'></img>
+                            </div>
+                            <button className="modalButtonRight" onClick={handleNavToSpecialAnimals}>Capture</button>
+
                         </div>
-                        <h2 className="modalTitle">You've leveled up to a {animal}</h2>
-                        <div className="modalImageDiv">
-                            <img className="modalImage" src={image} alt='your-new-animal'></img>
-                        </div>
-                        <button className="modalButtonRight" onClick={handleNavToSpecialAnimals}>Capture</button>
-
-                    </div>
-                </Modal >
-                ) : (
-                    (pointsLeft === 1) ?
-                        (
-                            <Modal
-                                isOpen={modalIsOpen}
-                                onRequestClose={closeModal}
-                                style={customStyles}
-                                ariaHideApp={false}
-                            >
-                                <div>
-                                    <h2 className="modalTitle">You caught a {animal}!</h2>
-                                    <div className="modalImageDiv">
-                                        <img className="modalImage" src={image} alt='your-new-animal'></img>
+                    </Modal >
+                    ) : (
+                        (pointsLeft === 1) ?
+                            (
+                                <Modal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    ariaHideApp={false}
+                                >
+                                    <div>
+                                        <h2 className="modalTitle">You caught a {animal}!</h2>
+                                        <div className="modalImageDiv">
+                                            <img className="modalImage" src={image} alt='your-new-animal'></img>
+                                        </div>
+                                        <div className="pointCountModal">Last one until level up</div>
+                                        <div className="modalChoice">What would you like to do? </div>
+                                        <button className="modalButtonLeft" onClick={closeModal}>Release</button>
+                                        <button className="modalButtonRight" onClick={handleLevelUp}>Capture</button>
                                     </div>
-                                    <div className="pointCountModal">Last one until level up</div>
-                                    <div className="modalChoice">What would you like to do? </div>
-                                    <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                                    <button className="modalButtonRight" onClick={handleLevelUp}>Capture</button>
-                                </div>
-                            </Modal >
-                        ) : (
-                            <Modal
-                                isOpen={modalIsOpen}
-                                onRequestClose={closeModal}
-                                style={customStyles}
-                                ariaHideApp={false}
-                            >
-                                <div>
-                                    <h2 className="modalTitle">You caught a {animal}!</h2>
-                                    <div className="modalImageDiv">
-                                        <img className="modalImage" src={image} alt='your-new-animal'></img>
-                                    </div>
-                                    <div className="pointCountModal">Collect {pointsLeft} more to level up</div>
-                                    <div className="modalChoice">What would you like to do? </div>
-                                    <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                                    <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+                                </Modal >
+                            ) : (
+                                <Modal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    ariaHideApp={false}
+                                >
+                                    <div>
+                                        <h2 className="modalTitle">You caught a {animal}!</h2>
+                                        <div className="modalImageDiv">
+                                            <img className="modalImage" src={image} alt='your-new-animal'></img>
+                                        </div>
+                                        <div className="pointCountModal">Collect {pointsLeft} more to level up</div>
+                                        <div className="modalChoice">What would you like to do? </div>
+                                        <button className="modalButtonLeft" onClick={closeModal}>Release</button>
+                                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
 
-                                </div>
-                            </Modal >))}
-        </div>
+                                    </div>
+                                </Modal >))
+            }
+        </div >
     )
 }
 
 export default Animal;
-
-// My failed attempts
-
-// useEffect(() => {
-    //     if (showMessage) {
-    //         const timeoutId = setTimeout(() => {
-    //         setShowMessage(false);
-    //         }, 5000);
-    
-    //         return () => {
-    //             clearTimeout(timeoutId);
-    //         };
-    //     }
-    // }, [showMessage]);
-    
-    //     const handleClick = () => {
-    //         setShowMessage(true);
-    //     };
-    // add onClick={handleClick} to noClickWarningIcon div
-
-
-// Emmaline Code
-    // const testDiv = () => {
-    //     // const interval = setInterval(setClick(true), 500);
-    //     // return () => clearInterval(interval) &&
-    //     setClick(true);
-    // }
-
-
-    // useEffect((click) => {
-    //     const interval = setInterval(() => {
-    //         console.log('This will run every second!');
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    // }, [click]);
-
-
-
-    //     const handleLevelUp = (event) => {
-    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
-    //             {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Token ${token}`
-    //                 }
-    //             }
-    //         )
-    //             .then(res => {
-    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
-    //                 {
-    //                     closeModal()
-    //                     navigate('/animal-lobby')
-    //                 })
-    //     }
-    // };

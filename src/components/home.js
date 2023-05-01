@@ -18,15 +18,15 @@ function Home({ token, setAuth }) {
     const [weatherCode, setWeatherCode] = useState(null)
     const [isPlaying, setIsPlaying] = useState(false);
     const [backgroundAudio, setBackgroundAudio] = useState([])
-    const [captureBoolean, setCaptureBoolean] = useState('')
+    // const [captureBoolean, setCaptureBoolean] = useState('')
     const navigate = useNavigate();
 
 
 
-    console.log(backgroundAudio)
-    console.log(captureBoolean)
+    // console.log(backgroundAudio)
+    // console.log(captureBoolean)
 
-    const [play, { pause }] = useSound(backgroundAudio);
+    const [play, { pause }] = useSound(catchum);
 
 
     const playingButton = () => {
@@ -69,7 +69,7 @@ function Home({ token, setAuth }) {
 
     return (
         <>
-            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} handleLogout={handleLogout} setCaptureBoolean={setCaptureBoolean} />
+            <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} handleLogout={handleLogout} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <BackgroundImages weatherCode={weatherCode} setBackgroundAudio={setBackgroundAudio} />
             <div className="audioPlayer">
