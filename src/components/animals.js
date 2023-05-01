@@ -82,51 +82,15 @@ function Animal({ weatherID, token }) {
             }
         )
             .then(res => {
+                setPointsLeft(res.data.points)
                 closeModal()
-                navigate('/animal-lobby')
-            })
-    };
-
-
-    // const handleLevelUp = (event) => {
-    //     axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
-    //         {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Token ${token}`
-    //             }
-    //         })
-    //         .then(res => {
-    //             axios.get(`https://is-it-raining.herokuapp.com/weather-animal/${weatherID}/`,
-    //                 {
-    //                     headers: {
-    //                         'Content-Type': 'application/json',
-    //                         'Authorization': `Token ${token}`
-    //                     }
-    //                 })
-    //                 .then((response) => {
-    //                     // setAnimal(response.data.special_animal[0].special_name)
-    //                     // setSpecialImg(response.data.special_animal[0].image)
-    //                     console.log(response.data.special_animal[0].image)
-    //                 })
-    //         })
-    // };
-
-    const handleLevelUp = (event) => {
-        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Token ${token}`
+                if (pointsLeft > 1) {
+                    navigate('/animal-lobby')
                 }
-            }
-        )
-            .then(response => {
-                // const special = response.data.special_animal
-                console.log(response.data)
+                console.log(res)
             })
     };
-    // console.log(specialImg)
+
 
     const handleNavToSpecialAnimals = (event) => {
         navigate('/special-animal-lobby')
@@ -183,7 +147,7 @@ function Animal({ weatherID, token }) {
             {
                 (pointsLeft === 0) ?
                     (<Modal
-                        isOpen={modalIsOpen}
+                        isOpen={pointsLeft === 0}
                         onRequestClose={closeModal}
                         style={customStyles}
                         ariaHideApp={false}
@@ -208,7 +172,7 @@ function Animal({ weatherID, token }) {
                             (
                                 <Modal
                                     isOpen={modalIsOpen}
-                                    onRequestClose={closeModal}
+                                    // onRequestClose={closeModal}
                                     style={customStyles}
                                     ariaHideApp={false}
                                 >
@@ -220,7 +184,7 @@ function Animal({ weatherID, token }) {
                                         <div className="pointCountModal">Last one until level up</div>
                                         <div className="modalChoice">What would you like to do? </div>
                                         <button className="modalButtonLeft" onClick={closeModal}>Release</button>
-                                        <button className="modalButtonRight" onClick={handleLevelUp}>Capture</button>
+                                        <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
                                     </div>
                                 </Modal >
                             ) : (
