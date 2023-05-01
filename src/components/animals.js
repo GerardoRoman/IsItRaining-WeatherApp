@@ -17,7 +17,6 @@ function Animal({ weatherID, token }) {
     const [captureBoolean, setCaptureBoolean] = useState('')
     const [specialName, setSpecialName] = useState('')
     const [specialImg, setSpecialImg] = useState('')
-    const [special, setSpecial] = useState([])
     const navigate = useNavigate();
     const [showBubble, setShowBubble] = useState(false)
 
@@ -87,7 +86,10 @@ function Animal({ weatherID, token }) {
                 if (pointsLeft > 1) {
                     navigate('/animal-lobby')
                 }
-                console.log(res)
+                // else (pointsLeft === 0); {
+                //     navigate('/my-special-animals')
+                // }
+
             })
     };
 
@@ -171,10 +173,11 @@ function Animal({ weatherID, token }) {
                         (pointsLeft === 1) ?
                             (
                                 <Modal
-                                    isOpen={modalIsOpen}
-                                    // onRequestClose={closeModal}
+                                    isOpen={pointsLeft === 1}
+                                    onRequestClose={closeModal}
                                     style={customStyles}
                                     ariaHideApp={false}
+                                // onAfterClose={ }
                                 >
                                     <div>
                                         <h2 className="modalTitle">You caught a {animal}!</h2>
