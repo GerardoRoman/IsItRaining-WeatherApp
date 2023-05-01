@@ -23,7 +23,6 @@ function BackgroundImages({ weatherCode, setBackgroundAudio }) {
                 setBackgroundAudio(response.data[0].audio_file)
             })
     }, [weatherCode, setBackgroundAudio])
-    console.log(setBackgroundAudio)
 
     return (
         <div className='background-image'>

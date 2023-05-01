@@ -28,12 +28,13 @@ function Home({ token, setAuth }) {
 
     const [play, { pause }] = useSound(backgroundAudio);
 
+
     const playingButton = () => {
         if (isPlaying) {
-            pause(); // this will pause the audio
+            pause();
             setIsPlaying(false);
         } else {
-            play(); // this will play the audio
+            play();
             setIsPlaying(true);
         }
     };
