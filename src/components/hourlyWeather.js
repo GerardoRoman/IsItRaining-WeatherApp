@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
+
 export default function HourlyWeather({ lat, long, setHourlyTemps }) {
     const [forecast, setForecast] = useState([])
     const [todayForecast, setTodayForecast] = useState([])

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-html, body {
+html,
+body {
     overflow: hidden;
 }
 
@@ -19,12 +20,12 @@ html, body {
     height: max-content;
 }
 
-.animal img {
+.animalCanCapture img {
     position: absolute;
-    top: 57%;
-    left: 30%;
+    top: 62%;
+    left: 33%;
     transform: translate(-50%, -65%);
-    width: 60%;
+    width: 50%;
 
     border-radius: 0%;
     transform: scale(1);
@@ -46,6 +47,14 @@ html, body {
         transform: scale(0.95);
         border: 4px solid rgba(0, 0, 0, 0);
     }
+}
+
+.animal img {
+    position: absolute;
+    top: 80%;
+    left: 60%;
+    transform: translate(-50%, -65%);
+    width: 50%;
 }
 
 /* CURRENT WEATHER COMPONENT*/
@@ -302,4 +311,28 @@ html, body {
     display: inline-block;
     padding: 5px 8px;
     border-radius: 12px;
+}
+
+/* MUSIC PLAYER */
+.audioPlayerHome {
+    position: absolute;
+    top: 625px;
+    left: 145px;
+}
+
+.playButton {
+    background: none;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="range"] {
+    background-color: #27ae60;
+}
+
+@media (max-width: 900px) {
+    .component {
+        width: 50%;
+    }
 }
