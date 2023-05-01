@@ -122,7 +122,7 @@ function Animal({ weatherID, token, setCaptureBoolean }) {
 
 
     return (
-        <div className='animal'>
+        <div className='animalCanCapture'>
             {click &&
                 <>
                     <div className="noClickWarningIcon"> 
