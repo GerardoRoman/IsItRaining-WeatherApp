@@ -147,8 +147,8 @@ function Animal({ weatherID, token }) {
             {captureBoolean ? <img src={image} alt='corresponding-weather-animal'
                 onClick={openModal}></img> : <img src={image} alt='corresponding-weather-animal' onClick={setClick}></img>}
 
-            {pointsLeft === 0 ?
-                <Modal
+            {(pointsLeft === 0) ?
+                (<Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
                     style={customStyles}
@@ -169,21 +169,16 @@ function Animal({ weatherID, token }) {
 
                     </div>
                 </Modal >
-                    ?
-                    { pointsLeft === 1 ?
-                        <Modal
-                            isOpen={modalIsOpen}
-                            onRequestClose={closeModal}
-                            style={customStyles}
-                            ariaHideApp={false}
-                        >
-                            <div>
+                    ) : (
+                    (pointsLeft === 1) ?
+                    (
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        ariaHideApp={false}
+                            >
                                 <div>
-                                    <Confetti
-                                        style={customStylesConfetti}
-
-                                    />
-                                </div>
                                 <h2 className="modalTitle">You caught a {animal}!</h2>
                                 <div className="modalImageDiv">
                                     <img className="modalImage" src={image} alt='your-new-animal'></img>
@@ -192,17 +187,16 @@ function Animal({ weatherID, token }) {
                                 <div className="modalChoice">What would you like to do? </div>
                                 <button className="modalButtonLeft" onClick={closeModal}>Release</button>
                                 <button className="modalButtonRight" onClick={handleLevelUp}>Capture</button>
-
                             </div>
-                        </Modal >
-                        :
+                            </Modal >
+                        ) : (
                         <Modal
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}
                             style={customStyles}
                             ariaHideApp={false}
                         >
-                            // <div>
+                            <div>
                                 {/* <div>
                             <Confetti
                                 style={customStylesConfetti}
@@ -218,8 +212,8 @@ function Animal({ weatherID, token }) {
                                 <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
 
                             </div>
-                        </Modal >
-            }}
+                        </Modal >)
+            }
         </div>
 
     )
