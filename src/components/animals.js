@@ -78,13 +78,19 @@ function Animal({ weatherID, token }) {
 
     function openModal() {
         setIsOpen(true);
+        console.log('Modal opened.')
     }
 
     function closeModal() {
         setIsOpen(false);
+        console.log('Modal closed.')
+    }
+
+    const handleClick = () => {
+        setClick(true); 
         setTimeout(() => {
-            setIsOpen(false);
-        }, 3000);
+            setClick(false);
+        }, 10000);
     }
 
 
@@ -102,7 +108,7 @@ function Animal({ weatherID, token }) {
                                 typewriter
                                 .typeString("Try again later.")
                                 .pauseFor(1000)
-                                .typeString(" You JUST caught me...")
+                                .typeString(" You JUST caught me!!")
                                 .start();
                             }}
                             />
@@ -168,58 +174,3 @@ function Animal({ weatherID, token }) {
 }
 
 export default Animal;
-
-// My failed attempts
-
-// useEffect(() => {
-    //     if (showMessage) {
-    //         const timeoutId = setTimeout(() => {
-    //         setShowMessage(false);
-    //         }, 5000);
-    
-    //         return () => {
-    //             clearTimeout(timeoutId);
-    //         };
-    //     }
-    // }, [showMessage]);
-    
-    //     const handleClick = () => {
-    //         setShowMessage(true);
-    //     };
-    // add onClick={handleClick} to noClickWarningIcon div
-
-
-// Emmaline Code
-    // const testDiv = () => {
-    //     // const interval = setInterval(setClick(true), 500);
-    //     // return () => clearInterval(interval) &&
-    //     setClick(true);
-    // }
-
-
-    // useEffect((click) => {
-    //     const interval = setInterval(() => {
-    //         console.log('This will run every second!');
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    // }, [click]);
-
-
-
-    //     const handleLevelUp = (event) => {
-    //         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
-    //             {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Token ${token}`
-    //                 }
-    //             }
-    //         )
-    //             .then(res => {
-    //                 axios.get('https://is-it-raining.herokuapp.com/my-special-animals/')
-    //                 {
-    //                     closeModal()
-    //                     navigate('/animal-lobby')
-    //                 })
-    //     }
-    // };

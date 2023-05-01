@@ -7,9 +7,7 @@ import { Link } from 'react-router-dom'
 import '../styles/home.css'
 import { useNavigate } from 'react-router-dom'
 import BackgroundImages from './background.js'
-import { GiDinosaurRex } from 'react-icons/gi'
-import { IoMdLogOut } from 'react-icons/io'
-import { IoMdLogIn } from 'react-icons/io'
+
 
 function Home({ token, setAuth }) {
     const [lat, setLat] = useState(null)
@@ -25,8 +23,6 @@ function Home({ token, setAuth }) {
                 setLat(position.coords.latitude);
                 setLong(position.coords.longitude);
             });
-            // console.log("Latitude is:", lat)
-            // console.log("Longitude is:", long)
         }
         getData();
     }, [lat, long]);
@@ -43,7 +39,6 @@ function Home({ token, setAuth }) {
         ).then(() => {
             setAuth('', null)
             navigate('/')
-            // console.log('loggedout')
         })
     }
 
@@ -52,33 +47,6 @@ function Home({ token, setAuth }) {
             <CurrentWeather lat={lat} long={long} hourlyTemps={hourlyTemps} token={token} setWeatherCode={setWeatherCode} handleLogout={handleLogout} />
             <HourlyWeather lat={lat} long={long} setHourlyTemps={setHourlyTemps} />
             <BackgroundImages weatherCode={weatherCode} />
-            {/* <div className="musicToggleButton">
-                <Music />
-            </div> */}
-            {/* {token ? (
-                <>
-                    <div className="loggedInNavBar">
-                        <Link to='/animal-lobby'>
-                            <button className='animalLobbyButton'>
-                                <div><GiDinosaurRex /></div>
-                            </button>
-                        </Link>
-                        <div className='logoutButton'>
-                            <button onClick={handleLogout}>
-                                <div><IoMdLogOut /></div>
-                            </button>
-                        </div>
-                    </div>
-                </>
-            ) : (
-                <div className="loggedOutNavBar">
-                    <Link to='/login'>
-                        <button className='loginButton'>
-                            <div><IoMdLogIn /></div>
-                        </button>
-                    </Link>
-                </div>
-            )} */}
         </>
     );
 }
