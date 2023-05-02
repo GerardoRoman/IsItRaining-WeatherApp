@@ -6,7 +6,7 @@ import Animal from './animals.js'
 import Loading from './loading.js'
 import AnimalLoggedOut from './animalsLoggedOut.js'
 import { Link } from 'react-router-dom'
-import { GiDinosaurRex } from 'react-icons/gi'
+import { GiBackpack } from 'react-icons/gi'
 import { IoMdLogOut } from 'react-icons/io'
 import { IoMdLogIn } from 'react-icons/io'
 
@@ -82,7 +82,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                         <div className="loggedInNavBar">
                             <Link to='/animal-lobby'>
                                 <button className='animalLobbyButton'>
-                                    <div><GiDinosaurRex /></div>
+                                    <div><GiBackpack /></div>
                                 </button>
                             </Link>
                             <div className='logoutButton'>

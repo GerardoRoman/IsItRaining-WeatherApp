@@ -5,7 +5,7 @@ import "../styles/specialAnimalLobby.css"
 import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import Modal from 'react-modal';
-import { GiDinosaurRex } from 'react-icons/gi'
+import { GiBackpack } from 'react-icons/gi'
 
 
 
@@ -32,15 +32,19 @@ export default function SpecialAnimalLobby({ token, username }) {
     };
 
     useEffect(() => {
-        axios.get('https://is-it-raining.herokuapp.com/my-special-animals', {
+        axios.get('https://is-it-raining.herokuapp.com/my-animals', {
             headers: {
                 'Authorization': `Token ${token}`
             }
         }).then((response) => {
             const animalMap = response.data
+            console.log(response.data)
             const animalArray = animalMap.map((response) => {
-                return ([response.animal.name, response.animal.image, response.animal.id])
+                const specialAnimal = response.animal.special_animal
+                console.log(specialAnimal)
+                return ([specialAnimal[1]])
             })
+            console.log(animalArray)
             setYourAnimals(animalArray)
         })
 
@@ -73,22 +77,17 @@ export default function SpecialAnimalLobby({ token, username }) {
     return (
         <>
             <div>
-                {/* <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
-                    <div className='profile-icon'>
-                        <CgProfile />
-                    </div>
-                </IconContext.Provider> */}
 
                 <h2>Special Animal Inventory</h2>
 
-                <div className='divForAnimalLobbyMap'>
-                    <div className='animalLobbyMap'>
+                <div className='divForSpecialAnimalLobbyMap'>
+                    <div className='specialAnimalLobbyMap'>
                         {
                             yourAnimals.map((data =>
                                 <>
-                                    <div className='animalLobbyCard'>
-                                        <div className='animalImage'>
-                                            <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
+                                    <div className='specialAnimalLobbyCard'>
+                                        <div className='specialAnimalImage'>
+                                            <img src={data[1]} alt={data} onClick={handleClick}></img>
                                             {console.log(data[1])}
                                             <Modal
                                                 isOpen={modalIsOpen}
@@ -120,7 +119,7 @@ export default function SpecialAnimalLobby({ token, username }) {
                     </Link>
                     <Link to='/animal-lobby'>
                             <button className='animalLobbyButton'>
-                                <div><GiDinosaurRex /></div>
+                                <div><GiBackpack /></div>
                             </button>
                     </Link>
                 </div>
