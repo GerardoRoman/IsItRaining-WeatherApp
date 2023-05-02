@@ -10,6 +10,7 @@ const Registration = ({ setAuth }) => {
     const [userName, setUserName] = useState('')
     const [passWord, setPassWord] = useState('')
     const [error, setError] = useState('')
+    const [issue, setIssue] = useState('')
     const navigate = useNavigate();
 
 
@@ -28,7 +29,11 @@ const Registration = ({ setAuth }) => {
                     const token = res.data.auth_token;
                     setAuth(token, userName);
                     navigate("/");
-                });
+                })
+        }).catch(error => {
+            setIssue(error.message)
+            console.log(error.message)
+            console.log(error)
         })
     }
 
@@ -77,6 +82,11 @@ const Registration = ({ setAuth }) => {
                         <div className="disclaimerPassword">
                             <p>* password must be a minimum of 8 characters *</p>
                         </div>
+                        {issue &&
+                            <div className="errorPassword">
+                                Issue with username or password. Try again.
+                            </div>
+                        }
                         <div>
                             <button className="submitButtonRegister" type='submit'>Submit!</button>
                         </div>
