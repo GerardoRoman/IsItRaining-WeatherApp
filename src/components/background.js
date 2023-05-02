@@ -12,8 +12,6 @@ function BackgroundImages({ weatherCode }) {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         height: '100vh',
-        // width: '130%',
-
     }
 
     useEffect(() => {

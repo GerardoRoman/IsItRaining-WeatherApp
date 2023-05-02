@@ -34,7 +34,7 @@ function Animal({ weatherID, token }) {
 
     const customStylesConfetti = {
         width: '280px',
-        height: '327px',
+        height: '305px',
     }
 
     useEffect(() => {

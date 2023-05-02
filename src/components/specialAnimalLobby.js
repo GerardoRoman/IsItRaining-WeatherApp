@@ -47,7 +47,7 @@ export default function SpecialAnimalLobby({ token }) {
             const animalMap = response.data
             const animalArray = animalMap.map((response) => {
                 console.log(response.specialAnimal)
-                return ([response.special_animal.special_name, response.special_animal.image])
+                return ([response.special_animal.special_name, response.special_animal.image, response.special_animal.id])
             })
             setYourAnimals(animalArray)
         })
@@ -102,18 +102,18 @@ export default function SpecialAnimalLobby({ token }) {
 
                 <div className='divForSpecialAnimalLobbyMap'>
                     <div className='specialAnimalLobbyMap'>
-                        {
-                            yourAnimals.map((data =>
-                                <>
-                                    <div className='specialAnimalLobbyCard'>
-                                        <div className='specialAnimalImage'>
+                        <>
+                            {
+                                yourAnimals.map((data =>
+                                    <div className='animalLobbyCard' key={data[2]}>
+                                        <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             {console.log(data[1])}
                                         </div>
                                     </div>
-                                </>
-                            ))
-                        }
+                                ))
+                            }
+                        </>
                         <Modal
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}
