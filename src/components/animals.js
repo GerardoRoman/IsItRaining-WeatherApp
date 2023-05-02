@@ -172,7 +172,7 @@ function Animal({ weatherID, token }) {
                                     isOpen={modalIsOpen}
                                     onRequestClose={closeModal}
                                     style={customStyles}
-                                    ariaHideApp={false}
+                                // ariaHideApp={false}
                                 >
                                     <div>
                                         <h2 className="modalTitle">You caught a {animal}!</h2>
