@@ -164,3 +164,27 @@ h2 {
 .ReactModal__Overlay {
     opacity: 0px;
 }
+
+/* MUSIC PLAYER
+.audioPlayerHome {
+    position: absolute;
+    left: 170px;
+}
+
+.playButton {
+    position: absolute;
+    background: none;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="range"] {
+    background-color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .component {
+        width: 50%;
+    }
+} */

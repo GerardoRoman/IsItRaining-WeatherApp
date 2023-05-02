@@ -6,17 +6,23 @@ import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import Modal from 'react-modal';
 import { GiDinosaurRex } from 'react-icons/gi'
+import useSound from "use-sound";
+import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
+import { IconContext } from "react-icons";
+import lobbySong from '../assets/music/lobbySong.wav'
 
 
 
 
 
-export default function SpecialAnimalLobby({ token, username }) {
+export default function SpecialAnimalLobby({ token }) {
     const [animalList, setAnimalList] = useState([])
     const [yourAnimals, setYourAnimals] = useState([])
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [clickedImage, setClickedImage] = useState([])
     const [clickedName, setClickedName] = useState([])
+    const [isPlaying, setIsPlaying] = useState(false);
+
 
     const customStyles = {
         content: {
@@ -57,7 +63,18 @@ export default function SpecialAnimalLobby({ token, username }) {
             .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
     }
 
+    const [play, { pause }] = useSound(lobbySong);
 
+
+    const playingButton = () => {
+        if (isPlaying) {
+            pause();
+            setIsPlaying(false);
+        } else {
+            play();
+            setIsPlaying(true);
+        }
+    };
 
     function closeModal() {
         setIsOpen(false);
@@ -73,12 +90,6 @@ export default function SpecialAnimalLobby({ token, username }) {
     return (
         <>
             <div>
-                {/* <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
-                    <div className='profile-icon'>
-                        <CgProfile />
-                    </div>
-                </IconContext.Provider> */}
-
                 <h2>Special Animal Inventory</h2>
 
                 <div className='divForAnimalLobbyMap'>
@@ -113,16 +124,41 @@ export default function SpecialAnimalLobby({ token, username }) {
                     <img src={specialAnimalLobbyBackground} alt='special-lobby-background'></img>
                 </div>
                 <div className='animalLobbyNavBar'>
-                    <Link to='/'>
-                        <button className='backToWeather'>
-                            <div><BsFillCloudSunFill /></div>
-                        </button>
-                    </Link>
-                    <Link to='/animal-lobby'>
+                    <div>
+                        <Link to='/'>
+                            <button className='backToWeather'>
+                                <div><BsFillCloudSunFill /></div>
+                            </button>
+                        </Link>
+                        <Link to='/animal-lobby'>
                             <button className='animalLobbyButton'>
                                 <div><GiDinosaurRex /></div>
                             </button>
-                    </Link>
+                        </Link>
+                    </div>
+                    <div className="audioPlayerSpecialLobby">
+                        <button className="playButton">
+                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                            </IconContext.Provider>
+                        </button>
+                        {!isPlaying ? (
+                            <button className="playButton" onClick={playingButton}>
+                                <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    <AiFillPlayCircle />
+                                </IconContext.Provider>
+                            </button>
+                        ) : (
+                            <button className="playButton" onClick={playingButton}>
+                                <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    <AiFillPauseCircle />
+                                </IconContext.Provider>
+                            </button>
+                        )}
+                        <button className="playButton">
+                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                            </IconContext.Provider>
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
