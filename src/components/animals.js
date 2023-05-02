@@ -39,7 +39,7 @@ function Animal({ weatherID, token }) {
 
     useEffect(() => {
         if (weatherID && token) {
-            axios.get(`https://is-it-raining.herokuapp.com/weather-animal/300/`,
+            axios.get(`https://is-it-raining.herokuapp.com/weather-animal/${weatherID}/`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
