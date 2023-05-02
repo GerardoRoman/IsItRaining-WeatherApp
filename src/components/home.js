@@ -39,6 +39,8 @@ function Home({ token, setAuth }) {
                 setLat(position.coords.latitude);
                 setLong(position.coords.longitude);
             });
+            // console.log("Latitude is:", lat)
+            // console.log("Longitude is:", long)
         }
         getData();
     }, [lat, long]);
