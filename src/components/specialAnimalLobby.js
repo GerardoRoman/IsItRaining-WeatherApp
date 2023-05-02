@@ -105,7 +105,7 @@ export default function SpecialAnimalLobby({ token }) {
                         <>
                             {
                                 yourAnimals.map((data =>
-                                    <div className='animalLobbyCard' key={data.special}>
+                                    <div className='animalLobbyCard' key={data[2]}>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             {console.log(data[1])}
