@@ -99,7 +99,9 @@ export default function AnimalLobby({ token, username }) {
     return (
         <>
             <div>
-                <h2>Animal Inventory</h2>
+                <h2 className="AnimalLobbyHeader">Animal Inventory</h2>
+                <h2 className="AnimalLobbyHeaderShadow">Animal Inventory</h2>
+
 
                 <div className='divForAnimalLobbyMap'>
                     <div className='animalLobbyMap'>

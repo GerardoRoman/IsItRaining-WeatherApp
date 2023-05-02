@@ -95,8 +95,9 @@ export default function SpecialAnimalLobby({ token }) {
         <>
             <div>
 
-                <h2>Mega Beasts</h2>
-                <h4>Level Up!</h4>
+                <h2 className="specialAnimalLobbyHeader">Mega Beasts</h2>
+                <h2 className="specialAnimalLobbyHeaderShadow">Mega Beasts</h2>
+                <h4 className="specialAnimalLobbytagLine">Level Up!</h4>
 
                 <div className='divForSpecialAnimalLobbyMap'>
                     <div className='specialAnimalLobbyMap'>
