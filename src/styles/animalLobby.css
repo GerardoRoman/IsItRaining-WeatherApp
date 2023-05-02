@@ -174,10 +174,6 @@ h2 {
     margin-top: 10px;
 }
 
-.ReactModal__Overlay {
-    opacity: 0px;
-}
-
 /* MUSIC PLAYER
 .audioPlayerHome {
     position: absolute;
