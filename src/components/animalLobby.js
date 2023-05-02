@@ -13,7 +13,6 @@ import { IconContext } from "react-icons";
 import lobbySong from '../assets/music/lobbySong.wav'
 
 
-
 export default function AnimalLobby({ token, username }) {
     const [animalList, setAnimalList] = useState([])
     const [yourAnimals, setYourAnimals] = useState([])
@@ -71,13 +70,11 @@ export default function AnimalLobby({ token, username }) {
         setIsOpen(false);
     }
 
-    // const [progress, setProgress] = useState(0)
 
     const handleClick = (event) => {
         console.log(event.target);
         setClickedImage(event.target.src);
         setClickedName(event.target.alt);
-        // setProgress(Math.round((data[3] / 10) * 100))
         setIsOpen(true);
     }
 
@@ -132,17 +129,7 @@ export default function AnimalLobby({ token, username }) {
                         <div className="modalImageDivAL">
                             <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
                         </div>
-                        {/* <div className='modal-progress-bar'>
-                                        <Line percent={data[4] * 10}
-                                            strokeWidth="3"
-                                            strokeColor="#BF00FF"
-                                            strokeLinecap="square"
-                                            trailWidth="3"
-                                            trailColor="#f3f3f3" />
-                                    </div> */}
-                        {/* <div className='delete-animal-button'>
-                                        <button onClick={() => deleteAnimal(data[2])}>Delete</button>
-                                    </div> */}
+            
                         <button className="modalButtonAL" onClick={closeModal}>Back</button>
                     </Modal>
                 </div>

@@ -12,16 +12,14 @@ function BackgroundImages({ weatherCode }) {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         height: '100vh',
-        // width: '130%',
-
     }
 
     useEffect(() => {
         if (weatherCode) {
-            axios.get(`https://is-it-raining.herokuapp.com/background/?code=${weatherCode}`)
-                .then((response) => {
-                    setImage(response.data[0].background_image)
-                })
+        axios.get(`https://is-it-raining.herokuapp.com/background/?code=${weatherCode}`)
+            .then((response) => {
+                setImage(response.data[0].background_image)
+            })
         }
     }, [weatherCode])
 
