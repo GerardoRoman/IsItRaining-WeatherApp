@@ -10,7 +10,6 @@ import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import Thunderstorms from '../assets/music/Thunderstorms.wav'
-import { GiBackpack } from 'react-icons/gi'
 
 
 
@@ -93,7 +92,8 @@ export default function SpecialAnimalLobby({ token }) {
         <>
             <div>
 
-                <h2>Special Animal Inventory</h2>
+                <h2>Mega Beasts</h2>
+                <h4>Level Up!</h4>
 
                 <div className='divForSpecialAnimalLobbyMap'>
                     <div className='specialAnimalLobbyMap'>
@@ -135,7 +135,7 @@ export default function SpecialAnimalLobby({ token }) {
                         </Link>
                         <Link to='/animal-lobby'>
                             <button className='animalLobbyButton'>
-                                <div><GiBackpack /></div>
+                                <div><GiDinosaurRex /></div>
                             </button>
                         </Link>
                     </div>
