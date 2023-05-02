@@ -61,8 +61,8 @@ function Animal({ weatherID, token }) {
 
     // console.log(token)
     // console.log(specialImg)
-    // console.log(captureBoolean)
-    // console.log(pointsLeft)
+    console.log(captureBoolean)
+    console.log(pointsLeft)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -79,13 +79,14 @@ function Animal({ weatherID, token }) {
                 if (pointsLeft > 1) {
                     navigate('/animal-lobby')
                 }
+                navigate('/special-animal-lobby')
             })
     };
 
 
-    const handleNavToSpecialAnimals = (event) => {
-        navigate('/special-animal-lobby')
-    }
+    // const handleNavToSpecialAnimals = (event) => {
+    //     navigate('/special-animal-lobby')
+    // }
 
     const handlePointChange = (event) => {
         setPointsLeft(0)
@@ -139,7 +140,7 @@ function Animal({ weatherID, token }) {
             <div className={captureBoolean ? "animalCanCapture" : "animal"}> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
 
             {
-                (pointsLeft === 0) ?
+                (pointsLeft === 0 && captureBoolean) ?
                     (<Modal
                         isOpen={pointsLeft === 0}
                         onRequestClose={closeModal}
@@ -157,7 +158,7 @@ function Animal({ weatherID, token }) {
                             <div className="modalImageDiv">
                                 <img className="modalImage" src={specialImg} alt='your-new-animal'></img>
                             </div>
-                            <button className="modalButtonRight" onClick={handleNavToSpecialAnimals}>Capture</button>
+                            <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
 
                         </div>
                     </Modal >
