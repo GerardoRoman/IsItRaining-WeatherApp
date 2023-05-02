@@ -5,7 +5,7 @@ import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import Modal from 'react-modal'
-import { GiDinosaurBones } from 'react-icons/gi'
+import { TbCrown } from 'react-icons/tb'
 import { Line } from 'rc-progress'
 import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
@@ -110,11 +110,12 @@ export default function AnimalLobby({ token, username }) {
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             <Line percent={data[4] * 10}
-                                                strokeWidth="3"
+                                                strokeWidth="5"
                                                 strokeColor="#BF00FF"
-                                                strokeLinecap="square"
-                                                trailWidth="3"
-                                                trailColor="#f3f3f3" />
+                                                strokeLinecap="butt"
+                                                trailWidth="5"
+                                                trailColor="#f3f3f3"
+                                                />
                                         </div>
                                     </div>
                                 </>
@@ -132,14 +133,14 @@ export default function AnimalLobby({ token, username }) {
                                     <div className="modalImageDivAL">
                                         <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
                                     </div>
-                                    <div className='modal-progress-bar'>
+                                    {/* <div className='modal-progress-bar'>
                                         <Line percent={data[4] * 10}
                                             strokeWidth="3"
                                             strokeColor="#BF00FF"
                                             strokeLinecap="square"
                                             trailWidth="3"
                                             trailColor="#f3f3f3" />
-                                    </div>
+                                    </div> */}
                                     <div className='delete-animal-button'>
                                         <button onClick={() => deleteAnimal(data[2])}>Delete</button>
                                     </div>
@@ -186,7 +187,7 @@ export default function AnimalLobby({ token, username }) {
                     </Link>
                     <Link to='/special-animal-lobby'>
                         <button className='specialAnimalLobbyButton'>
-                            <div><GiDinosaurBones /></div>
+                            <div><TbCrown /></div>
                         </button>
                     </Link>
                 </div>
