@@ -5,7 +5,7 @@ import "../styles/animalLobby.css"
 import { Link } from 'react-router-dom'
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import Modal from 'react-modal'
-import { GiDinosaurBones } from 'react-icons/gi'
+import { TbCrown } from 'react-icons/tb'
 import { Line } from 'rc-progress'
 import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
@@ -107,28 +107,32 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
-                                            <Line percent={data[4] * 10}
-                                                strokeWidth="3"
-                                                strokeColor="#BF00FF"
-                                                strokeLinecap="square"
-                                                trailWidth="3"
-                                                trailColor="#f3f3f3" />
+                                            <div className="progressBar">
+                                                <Line percent={data[4] * 10}
+                                                    strokeWidth="6"
+                                                    strokeColor="#BF00FF"
+                                                    strokeLinecap="butt"
+                                                    trailWidth="5"
+                                                    trailColor="#f3f3f3"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
-                        <Modal
-                            isOpen={modalIsOpen}
-                            onRequestClose={closeModal}
-                            ariaHideApp={false}
-                            style={customStyles}
-                        >
-                            <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                            <div className="modalImageDivAL">
-                                <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                            </div>
-                            {/* <div className='modal-progress-bar'>
+                    </div>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        ariaHideApp={false}
+                        style={customStyles}
+                    >
+                        <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                        <div className="modalImageDivAL">
+                            <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                        </div>
+                        {/* <div className='modal-progress-bar'>
                                         <Line percent={data[4] * 10}
                                             strokeWidth="3"
                                             strokeColor="#BF00FF"
@@ -136,14 +140,11 @@ export default function AnimalLobby({ token, username }) {
                                             trailWidth="3"
                                             trailColor="#f3f3f3" />
                                     </div> */}
-                            {/* <div className='delete-animal-button'>
+                        {/* <div className='delete-animal-button'>
                                         <button onClick={() => deleteAnimal(data[2])}>Delete</button>
                                     </div> */}
-                            <button className="modalButtonAL" onClick={closeModal}>Back</button>
-                        </Modal>
-                        ))
-
-                    </div>
+                        <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                    </Modal>
                 </div>
                 <div className='lobbyBackgroundImage'>
                     <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
@@ -157,7 +158,7 @@ export default function AnimalLobby({ token, username }) {
                         </Link>
                         <Link to='/special-animal-lobby'>
                             <button className='specialAnimalLobbyButton'>
-                                <div><GiDinosaurBones /></div>
+                                <div><TbCrown /></div>
                             </button>
                         </Link>
                     </div>

@@ -133,7 +133,13 @@ function Animal({ weatherID, token }) {
                 }
             </>
 
-            <div className={captureBoolean ? "animalCanCapture" : "animal"}> <div className="pulseColors"></div> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
+            {/* <div className={captureBoolean ? "animalCanCapture" : "animal"}> <div className="pulseColors"></div> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div> */}
+
+            {captureBoolean ?
+                <div className="animalCanCapture"> <div className="pulseColors"></div> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
+                :
+                <div className="animal"><img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
+            }
 
 
             {

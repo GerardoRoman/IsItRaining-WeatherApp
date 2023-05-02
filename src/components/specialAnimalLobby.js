@@ -10,6 +10,7 @@ import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import lobbySong from '../assets/music/lobbySong.wav'
+import { GiBackpack } from 'react-icons/gi'
 
 
 
@@ -38,15 +39,19 @@ export default function SpecialAnimalLobby({ token }) {
     };
 
     useEffect(() => {
-        axios.get('https://is-it-raining.herokuapp.com/my-special-animals', {
+        axios.get('https://is-it-raining.herokuapp.com/my-animals', {
             headers: {
                 'Authorization': `Token ${token}`
             }
         }).then((response) => {
             const animalMap = response.data
+            console.log(response.data)
             const animalArray = animalMap.map((response) => {
-                return ([response.animal.name, response.animal.image, response.animal.id])
+                const specialAnimal = response.animal.special_animal
+                console.log(specialAnimal)
+                return ([specialAnimal[1]])
             })
+            console.log(animalArray)
             setYourAnimals(animalArray)
         })
 
@@ -92,14 +97,14 @@ export default function SpecialAnimalLobby({ token }) {
             <div>
                 <h2>Special Animal Inventory</h2>
 
-                <div className='divForAnimalLobbyMap'>
-                    <div className='animalLobbyMap'>
+                <div className='divForSpecialAnimalLobbyMap'>
+                    <div className='specialAnimalLobbyMap'>
                         {
                             yourAnimals.map((data =>
                                 <>
-                                    <div className='animalLobbyCard'>
-                                        <div className='animalImage'>
-                                            <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
+                                    <div className='specialAnimalLobbyCard'>
+                                        <div className='specialAnimalImage'>
+                                            <img src={data[1]} alt={data} onClick={handleClick}></img>
                                             {console.log(data[1])}
                                             <Modal
                                                 isOpen={modalIsOpen}
@@ -132,7 +137,7 @@ export default function SpecialAnimalLobby({ token }) {
                         </Link>
                         <Link to='/animal-lobby'>
                             <button className='animalLobbyButton'>
-                                <div><GiDinosaurRex /></div>
+                                <div><GiBackpack /></div>
                             </button>
                         </Link>
                     </div>
