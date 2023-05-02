@@ -143,7 +143,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 ) : (
                     <>
                         <div>
-                            <AnimalLoggedOut weatherID={weatherID} setIsPlaying={setIsPlaying} />
+                            <AnimalLoggedOut weatherID={weatherID} handleMusicToggle={handleMusicToggle} />
                         </div>
                         <div className="loggedOutNavBar">
                             <Link to='/login'>

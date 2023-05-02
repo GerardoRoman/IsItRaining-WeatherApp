@@ -8,7 +8,7 @@ import Confetti from 'react-confetti';
 import Typewriter from 'typewriter-effect'
 
 
-function Animal({ weatherID, token, setIsPlaying }) {
+function Animal({ weatherID, token, setIsPlaying, handleMusicToggle }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
     const [variation, setVariation] = useState([])
@@ -74,6 +74,7 @@ function Animal({ weatherID, token, setIsPlaying }) {
             .then(res => {
                 setPointsLeft(res.data.points)
                 closeModal()
+                handleMusicToggle()
                 navigate('/animal-lobby')
 
             })
@@ -91,6 +92,7 @@ function Animal({ weatherID, token, setIsPlaying }) {
             .then(res => {
                 setPointsLeft(res.data.points)
                 closeModal()
+                handleMusicToggle()
                 navigate('/special-animal-lobby')
             })
     };
