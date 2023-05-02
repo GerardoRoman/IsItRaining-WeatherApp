@@ -45,14 +45,13 @@ export default function SpecialAnimalLobby({ token }) {
         }).then((response) => {
             const animalMap = response.data
             const animalArray = animalMap.map((response) => {
-                console.log(response.specialAnimal)
                 return ([response.special_animal.special_name, response.special_animal.image, response.special_animal.id])
             })
             setYourAnimals(animalArray)
         })
 
     }, [])
-
+    console.log(yourAnimals)
 
     function deleteAnimal(animalId) {
         console.log(animalId)
@@ -103,7 +102,6 @@ export default function SpecialAnimalLobby({ token }) {
                                     <div className='animalLobbyCard' key={data[2]}>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
-                                            {console.log(data[1])}
                                         </div>
                                     </div>
                                 ))
