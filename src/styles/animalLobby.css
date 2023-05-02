@@ -36,6 +36,7 @@ h2 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     font-size: 37px;
+    margin-top: 35px;
 }
 
 /* Animal Display */
@@ -43,8 +44,9 @@ h2 {
 .divForAnimalLobbyMap {
     position: absolute;
     width: 355px;
-    height: 75%;
+    height: 68%;
     margin-left: 10px;
+    margin-top: 10px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: rgba(163, 163, 163, 0.6);
@@ -60,7 +62,6 @@ h2 {
 .animalLobbyMap {
     display: flex;
     position: absolute;
-
     flex-direction: row;
     flex-wrap: wrap;
     width: 350px;
