@@ -3,7 +3,7 @@ import axios from 'axios'
 import defaultImage from '../assets/backgroundImages/dinos_2_by_cleopatrawolf_dfvrbgi.png'
 
 
-function BackgroundImages({ weatherCode, setBackgroundAudio }) {
+function BackgroundImages({ weatherCode }) {
     const [image, setImage] = useState('')
 
 
@@ -17,12 +17,13 @@ function BackgroundImages({ weatherCode, setBackgroundAudio }) {
     }
 
     useEffect(() => {
+        if (weatherCode) {
         axios.get(`https://is-it-raining.herokuapp.com/background/?code=${weatherCode}`)
             .then((response) => {
                 setImage(response.data[0].background_image)
-                setBackgroundAudio(response.data[0].audio_file)
             })
-    }, [weatherCode, setBackgroundAudio])
+        }
+    }, [weatherCode])
 
     return (
         <div className='background-image'>
