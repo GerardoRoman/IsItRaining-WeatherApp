@@ -9,7 +9,7 @@ import { GiDinosaurRex } from 'react-icons/gi'
 import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
-import lobbySong from '../assets/music/lobbySong.wav'
+// import lobbySong from '../assets/music/lobbySong.wav'
 import { GiBackpack } from 'react-icons/gi'
 
 
@@ -39,19 +39,16 @@ export default function SpecialAnimalLobby({ token }) {
     };
 
     useEffect(() => {
-        axios.get('https://is-it-raining.herokuapp.com/my-animals', {
+        axios.get('https://is-it-raining.herokuapp.com/my-special-animals', {
             headers: {
                 'Authorization': `Token ${token}`
             }
         }).then((response) => {
             const animalMap = response.data
-            console.log(response.data)
             const animalArray = animalMap.map((response) => {
-                const specialAnimal = response.animal.special_animal
-                console.log(specialAnimal)
-                return ([specialAnimal[1]])
+                console.log(response.specialAnimal)
+                return ([response.special_animal.special_name, response.special_animal.image])
             })
-            console.log(animalArray)
             setYourAnimals(animalArray)
         })
 
@@ -68,18 +65,18 @@ export default function SpecialAnimalLobby({ token }) {
             .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
     }
 
-    const [play, { pause }] = useSound(lobbySong);
+    // const [play, { pause }] = useSound(lobbySong);
 
 
-    const playingButton = () => {
-        if (isPlaying) {
-            pause();
-            setIsPlaying(false);
-        } else {
-            play();
-            setIsPlaying(true);
-        }
-    };
+    // const playingButton = () => {
+    //     if (isPlaying) {
+    //         pause();
+    //         setIsPlaying(false);
+    //     } else {
+    //         play();
+    //         setIsPlaying(true);
+    //     }
+    // };
 
     function closeModal() {
         setIsOpen(false);
@@ -95,34 +92,40 @@ export default function SpecialAnimalLobby({ token }) {
     return (
         <>
             <div>
+                {/* <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
+                    <div className='profile-icon'>
+                        <CgProfile />
+                    </div>
+                </IconContext.Provider> */}
+
                 <h2>Special Animal Inventory</h2>
 
-                <div className='divForSpecialAnimalLobbyMap'>
-                    <div className='specialAnimalLobbyMap'>
+                <div className='divForAnimalLobbyMap'>
+                    <div className='animalLobbyMap'>
                         {
                             yourAnimals.map((data =>
                                 <>
-                                    <div className='specialAnimalLobbyCard'>
-                                        <div className='specialAnimalImage'>
-                                            <img src={data[1]} alt={data} onClick={handleClick}></img>
+                                    <div className='animalLobbyCard'>
+                                        <div className='animalImage'>
+                                            <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             {console.log(data[1])}
-                                            <Modal
-                                                isOpen={modalIsOpen}
-                                                onRequestClose={closeModal}
-                                                ariaHideApp={false}
-                                                style={customStyles}
-                                            >
-                                                <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                                                <div className="modalImageDivAL">
-                                                    <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                                                </div>
-                                                <button className="modalButtonAL" onClick={closeModal}>Back</button>
-                                            </Modal>
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={closeModal}
+                            ariaHideApp={false}
+                            style={customStyles}
+                        >
+                            <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                            <div className="modalImageDivAL">
+                                <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                            </div>
+                            <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                        </Modal>
                     </div>
                 </div>
                 <div className='lobbyBackgroundImage'>
@@ -141,7 +144,7 @@ export default function SpecialAnimalLobby({ token }) {
                             </button>
                         </Link>
                     </div>
-                    <div className="audioPlayerSpecialLobby">
+                    {/* <div className="audioPlayerSpecialLobby">
                         <button className="playButton">
                             <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
                             </IconContext.Provider>
@@ -163,7 +166,7 @@ export default function SpecialAnimalLobby({ token }) {
                             <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
                             </IconContext.Provider>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
