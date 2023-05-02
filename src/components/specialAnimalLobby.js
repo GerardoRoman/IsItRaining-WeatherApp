@@ -32,19 +32,16 @@ export default function SpecialAnimalLobby({ token, username }) {
     };
 
     useEffect(() => {
-        axios.get('https://is-it-raining.herokuapp.com/my-animals', {
+        axios.get('https://is-it-raining.herokuapp.com/my-special-animals', {
             headers: {
                 'Authorization': `Token ${token}`
             }
         }).then((response) => {
             const animalMap = response.data
-            console.log(response.data)
             const animalArray = animalMap.map((response) => {
-                const specialAnimal = response.animal.special_animal
-                console.log(specialAnimal)
-                return ([specialAnimal[1]])
+            console.log(response.specialAnimal)
+            return([response.special_animal.special_name, response.special_animal.image])
             })
-            console.log(animalArray)
             setYourAnimals(animalArray)
         })
 
@@ -77,18 +74,28 @@ export default function SpecialAnimalLobby({ token, username }) {
     return (
         <>
             <div>
+                {/* <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
+                    <div className='profile-icon'>
+                        <CgProfile />
+                    </div>
+                </IconContext.Provider> */}
 
                 <h2>Special Animal Inventory</h2>
 
-                <div className='divForSpecialAnimalLobbyMap'>
-                    <div className='specialAnimalLobbyMap'>
+                <div className='divForAnimalLobbyMap'>
+                    <div className='animalLobbyMap'>
                         {
                             yourAnimals.map((data =>
                                 <>
-                                    <div className='specialAnimalLobbyCard'>
-                                        <div className='specialAnimalImage'>
-                                            <img src={data[1]} alt={data} onClick={handleClick}></img>
+                                    <div className='animalLobbyCard'>
+                                        <div className='animalImage'>
+                                            <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             {console.log(data[1])}
+                                        </div>
+                                    </div>
+                                </>
+                            ))
+                        }
                                             <Modal
                                                 isOpen={modalIsOpen}
                                                 onRequestClose={closeModal}
@@ -101,11 +108,6 @@ export default function SpecialAnimalLobby({ token, username }) {
                                                 </div>
                                                 <button className="modalButtonAL" onClick={closeModal}>Back</button>
                                             </Modal>
-                                        </div>
-                                    </div>
-                                </>
-                            ))
-                        }
                     </div>
                 </div>
                 <div className='lobbyBackgroundImage'>
