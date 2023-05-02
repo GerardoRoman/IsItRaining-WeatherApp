@@ -45,7 +45,7 @@ export default function AnimalLobby({ token, username }) {
             const animalMap = response.data
             console.log(response.data)
             const animalArray = animalMap.map((response) => {
-                return ([response.animal.name, response.animal.image, response.animal.id, response.animal.points_left_until_max, response.points])
+                return ([response.animal.name, response.animal.image, response.animal.id, response.animal.points_left_until_max, response.points, response.animal.id])
             })
             setYourAnimals(animalArray)
         })
@@ -101,10 +101,10 @@ export default function AnimalLobby({ token, username }) {
 
                 <div className='divForAnimalLobbyMap'>
                     <div className='animalLobbyMap'>
-                        {
-                            yourAnimals.map((data =>
-                                <>
-                                    <div className='animalLobbyCard'>
+                        <>
+                            {
+                                yourAnimals.map((data =>
+                                    <div className='animalLobbyCard' key={data[5]}>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
                                             <div className="progressBar">
@@ -118,9 +118,9 @@ export default function AnimalLobby({ token, username }) {
                                             </div>
                                         </div>
                                     </div>
-                                </>
-                            ))
-                        }
+                                ))
+                            }
+                        </>
                     </div>
                     <Modal
                         isOpen={modalIsOpen}
