@@ -31,8 +31,6 @@ export default function AnimalLoggedOut({ weatherID }) {
                     // console.log(response.data.random_image)
                     setAnimal(response.data.name)
                     setImage(response.data.image)
-                    console.log(response.data.points_left_until_max)
-                    console.log(response.data.can_capture)
                 })
         }
     }, [weatherID])
@@ -44,11 +42,6 @@ export default function AnimalLoggedOut({ weatherID }) {
     function closeModal() {
         setIsOpen(false);
     }
-
-    function testFunc() {
-        console.log('passed')
-    }
-
 
     return (
         <>

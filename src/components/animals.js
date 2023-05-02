@@ -39,7 +39,7 @@ function Animal({ weatherID, token }) {
 
     useEffect(() => {
         if (weatherID && token) {
-            axios.get(`https://is-it-raining.herokuapp.com/weather-animal/${weatherID}/`,
+            axios.get(`https://is-it-raining.herokuapp.com/weather-animal/300/`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -58,8 +58,9 @@ function Animal({ weatherID, token }) {
     }, [weatherID, token])
 
 
+    console.log(captureBoolean)
+    console.log(pointsLeft)
 
-    console.log(token)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -73,10 +74,11 @@ function Animal({ weatherID, token }) {
             .then(res => {
                 setPointsLeft(res.data.points)
                 closeModal()
-                if (pointsLeft > 1) {
+                if (pointsLeft < 2 && pointsLeft === 'null') {
+                    navigate('/special-animal-lobby')
+                } else {
                     navigate('/animal-lobby')
                 }
-                navigate('/special-animal-lobby')
             })
     };
 
