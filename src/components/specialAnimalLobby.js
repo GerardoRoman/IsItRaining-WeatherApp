@@ -87,6 +87,10 @@ export default function SpecialAnimalLobby({ token }) {
         setIsOpen(true);
     }
 
+    const handleMusicToggle = () => {
+        pause()
+    }
+
     return (
         <>
             <div>
@@ -127,12 +131,12 @@ export default function SpecialAnimalLobby({ token }) {
                 <div className='animalLobbyNavBar'>
                     <div>
                         <Link to='/'>
-                            <button className='backToWeather'>
+                            <button className='backToWeather' onClick={handleMusicToggle}>
                                 <div><BsFillCloudSunFill /></div>
                             </button>
                         </Link>
                         <Link to='/animal-lobby'>
-                            <button className='animalLobbyButton'>
+                            <button className='animalLobbyButton' onClick={handleMusicToggle}>
                                 <div><GiDinosaurRex /></div>
                             </button>
                         </Link>
