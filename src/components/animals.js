@@ -59,10 +59,10 @@ function Animal({ weatherID, token }) {
 
 
 
-    // console.log(token)
+    console.log(token)
     // console.log(specialImg)
-    console.log(captureBoolean)
-    console.log(pointsLeft)
+    // console.log(captureBoolean)
+    // console.log(pointsLeft)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -83,10 +83,6 @@ function Animal({ weatherID, token }) {
             })
     };
 
-
-    // const handleNavToSpecialAnimals = (event) => {
-    //     navigate('/special-animal-lobby')
-    // }
 
     const handlePointChange = (event) => {
         setPointsLeft(0)
@@ -137,7 +133,14 @@ function Animal({ weatherID, token }) {
                 }
             </>
 
-            <div className={captureBoolean ? "animalCanCapture" : "animal"}> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
+            {/* <div className={captureBoolean ? "animalCanCapture" : "animal"}> <div className="pulseColors"></div> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div> */}
+
+            {captureBoolean ?
+                <div className="animalCanCapture"> <div className="pulseColors"></div> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
+                :
+                <div className="animal"><img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
+            }
+
 
             {
                 (pointsLeft === 0 && captureBoolean) ?

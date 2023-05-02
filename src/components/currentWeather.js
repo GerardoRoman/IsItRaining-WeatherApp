@@ -9,13 +9,20 @@ import { Link } from 'react-router-dom'
 import { GiBackpack } from 'react-icons/gi'
 import { IoMdLogOut } from 'react-icons/io'
 import { IoMdLogIn } from 'react-icons/io'
+import catchum from '../assets/music/catchum.wav'
+import sunshine from '../assets/music/sunshine.wav'
+import rain from '../assets/music/rain.wav'
+import useSound from "use-sound";
+import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
+import { IconContext } from "react-icons";
 
 
-export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode, handleLogout, setCaptureBoolean }) {
+export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeatherCode, handleLogout }) {
     const [data, setData] = useState([])
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
-    const [catchum, setCatchum] = useState('')
+    const [isPlaying, setIsPlaying] = useState(false);
+
 
     useEffect(() => {
         if (lat && long) {
@@ -34,6 +41,20 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
 
     const high = Math.max(...hourlyTemps)
     const low = Math.min(...hourlyTemps)
+
+    const [play, { pause }] = useSound(catchum);
+
+
+    const playingButton = () => {
+        if (isPlaying) {
+            pause();
+            setIsPlaying(false);
+        } else {
+            play();
+            setIsPlaying(true);
+        }
+    };
+
 
     return (
         (typeof data.main != 'undefined') ? (
@@ -77,7 +98,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 {token ? (
                     <>
                         <div>
-                            <Animal weatherID={weatherID} token={token} setCaptureBoolean={setCaptureBoolean} />
+                            <Animal weatherID={weatherID} token={token} />
                         </div>
                         <div className="loggedInNavBar">
                             <Link to='/animal-lobby'>
@@ -88,6 +109,31 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                             <div className='logoutButton'>
                                 <button onClick={handleLogout}>
                                     <div><IoMdLogOut /></div>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="audioPlayer">
+                            <div className="audioPlayerHome">
+                                <button className="playButton">
+                                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    </IconContext.Provider>
+                                </button>
+                                {!isPlaying ? (
+                                    <button className="playButton" onClick={playingButton}>
+                                        <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                            <AiFillPlayCircle />
+                                        </IconContext.Provider>
+                                    </button>
+                                ) : (
+                                    <button className="playButton" onClick={playingButton}>
+                                        <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                            <AiFillPauseCircle />
+                                        </IconContext.Provider>
+                                    </button>
+                                )}
+                                <button className="playButton">
+                                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    </IconContext.Provider>
                                 </button>
                             </div>
                         </div>

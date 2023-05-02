@@ -10,7 +10,7 @@ import { Line } from 'rc-progress'
 import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
-import catchum from '../assets/music/catchum.wav'
+import lobbySong from '../assets/music/lobbySong.wav'
 
 
 
@@ -21,7 +21,6 @@ export default function AnimalLobby({ token, username }) {
     const [clickedImage, setClickedImage] = useState([])
     const [clickedName, setClickedName] = useState([])
     const [isPlaying, setIsPlaying] = useState(false);
-    const [lobbySong, setLobbySong] = useState([])
 
 
     const customStyles = {
@@ -49,7 +48,6 @@ export default function AnimalLobby({ token, username }) {
                 return ([response.animal.name, response.animal.image, response.animal.id, response.animal.points_left_until_max, response.points])
             })
             setYourAnimals(animalArray)
-            setLobbySong(response.data[0].animal_lobby_song)
         })
 
     }, [])
@@ -109,31 +107,32 @@ export default function AnimalLobby({ token, username }) {
                                     <div className='animalLobbyCard'>
                                         <div className='animalImage'>
                                             <img src={data[1]} alt={data[0]} onClick={handleClick}></img>
-                                            <Line percent={data[4] * 10}
-                                                strokeWidth="5"
-                                                strokeColor="#BF00FF"
-                                                strokeLinecap="butt"
-                                                trailWidth="5"
-                                                trailColor="#f3f3f3"
+                                            <div className="progressBar">
+                                                <Line percent={data[4] * 10}
+                                                    strokeWidth="6"
+                                                    strokeColor="#BF00FF"
+                                                    strokeLinecap="butt"
+                                                    trailWidth="5"
+                                                    trailColor="#f3f3f3"
                                                 />
+                                            </div>
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
-                        {
-                            yourAnimals.map((data =>
-                                <Modal
-                                    isOpen={modalIsOpen}
-                                    onRequestClose={closeModal}
-                                    ariaHideApp={false}
-                                    style={customStyles}
-                                >
-                                    <h2 className="modalAnimalNameeAL">{clickedName}</h2>
-                                    <div className="modalImageDivAL">
-                                        <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
-                                    </div>
-                                    {/* <div className='modal-progress-bar'>
+                    </div>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        ariaHideApp={false}
+                        style={customStyles}
+                    >
+                        <h2 className="modalAnimalNameeAL">{clickedName}</h2>
+                        <div className="modalImageDivAL">
+                            <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
+                        </div>
+                        {/* <div className='modal-progress-bar'>
                                         <Line percent={data[4] * 10}
                                             strokeWidth="3"
                                             strokeColor="#BF00FF"
@@ -141,17 +140,29 @@ export default function AnimalLobby({ token, username }) {
                                             trailWidth="3"
                                             trailColor="#f3f3f3" />
                                     </div> */}
-                                    <div className='delete-animal-button'>
+                        {/* <div className='delete-animal-button'>
                                         <button onClick={() => deleteAnimal(data[2])}>Delete</button>
-                                    </div>
-                                    <button className="modalButtonAL" onClick={closeModal}>Back</button>
-                                </Modal>
-                            ))
-                        }
-                    </div>
+                                    </div> */}
+                        <button className="modalButtonAL" onClick={closeModal}>Back</button>
+                    </Modal>
                 </div>
-                <div className="audioPlayer">
-                    <div className="audioPlayerHome">
+                <div className='lobbyBackgroundImage'>
+                    <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
+                </div>
+                <div className='animalLobbyNavBar'>
+                    <div>
+                        <Link to='/'>
+                            <button className='backToWeather'>
+                                <div><BsFillCloudSunFill /></div>
+                            </button>
+                        </Link>
+                        <Link to='/special-animal-lobby'>
+                            <button className='specialAnimalLobbyButton'>
+                                <div><TbCrown /></div>
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="audioPlayer">
                         <button className="playButton">
                             <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
                             </IconContext.Provider>
@@ -174,22 +185,6 @@ export default function AnimalLobby({ token, username }) {
                             </IconContext.Provider>
                         </button>
                     </div>
-                </div>
-
-                <div className='lobbyBackgroundImage'>
-                    <img src={animalLobbyBackgroundImage} alt='profile-background'></img>
-                </div>
-                <div className='animalLobbyNavBar'>
-                    <Link to='/'>
-                        <button className='backToWeather'>
-                            <div><BsFillCloudSunFill /></div>
-                        </button>
-                    </Link>
-                    <Link to='/special-animal-lobby'>
-                        <button className='specialAnimalLobbyButton'>
-                            <div><TbCrown /></div>
-                        </button>
-                    </Link>
                 </div>
             </div>
         </>
