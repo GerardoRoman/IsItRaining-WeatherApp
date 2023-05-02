@@ -46,7 +46,7 @@ h2 {
     width: 355px;
     height: 68%;
     margin-left: 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     overflow-y: auto;
     overflow-x: hidden;
     background-color: rgba(163, 163, 163, 0.6);
@@ -59,7 +59,7 @@ h2 {
     width: 0px;
 }
 
-.specialAnimalLobbyMap {
+.animalLobbyMap {
     display: flex;
     position: absolute;
     flex-direction: row;

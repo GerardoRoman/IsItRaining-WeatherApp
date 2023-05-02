@@ -72,13 +72,13 @@ h2 {
 }
 
 .specialAnimalImage {
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
 }
 
 .specialAnimalImage img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 /* Navbar */

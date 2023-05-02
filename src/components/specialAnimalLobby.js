@@ -92,11 +92,6 @@ export default function SpecialAnimalLobby({ token }) {
     return (
         <>
             <div>
-                {/* <IconContext.Provider value={{ style: { fontSize: '75px', color: "black" } }}>
-                    <div className='profile-icon'>
-                        <CgProfile />
-                    </div>
-                </IconContext.Provider> */}
 
                 <h2>Special Animal Inventory</h2>
 

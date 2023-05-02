@@ -60,9 +60,6 @@ function Animal({ weatherID, token }) {
 
 
     console.log(token)
-    // console.log(specialImg)
-    // console.log(captureBoolean)
-    // console.log(pointsLeft)
 
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
@@ -133,7 +130,6 @@ function Animal({ weatherID, token }) {
                 }
             </>
 
-            {/* <div className={captureBoolean ? "animalCanCapture" : "animal"}> <div className="pulseColors"></div> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div> */}
 
             {captureBoolean ?
                 <div className="animalCanCapture"> <div className="pulseColors"></div> <img src={image} alt='corresponding-weather-animal' onClick={handleClick}></img> </div>
