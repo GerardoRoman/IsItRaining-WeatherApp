@@ -221,8 +221,9 @@ body {
 .loggedOutNavBar {
     position: absolute;
     width: 375px;
-    height: 35px;
-    top: 635px;
+    height: 55px;
+    bottom: 0;
+    /* top: 635px; */
     background-color: rgba(0, 0, 0, 0.4);
 
 }
@@ -230,13 +231,13 @@ body {
 
 .loginButton {
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 4px;
+    left: 3px;
     background-color: rgba(0, 0, 0, 0.01);
     color: rgb(248, 246, 243);
     border: none;
-    height: 15px;
-    width: 15px;
+    height: 17px;
+    width: 17px;
 }
 
 .loginButton svg {
@@ -248,17 +249,18 @@ body {
 .loggedInNavBar {
     position: absolute;
     width: 375px;
-    height: 35px;
-    top: 635px;
+    height: 55px;
+    /* top: 635px; */
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
 .animalLobbyButton {
-    width: 15px;
+    width: 17px;
     height: 15px;
     position: absolute;
-    right: 24px;
-    top: 2px;
+    right: 39px;
+    top: 7px;
     background-color: rgba(0, 0, 0, 0.01);
     color: rgb(248, 246, 243);
     border: none;
@@ -271,13 +273,13 @@ body {
 
 .logoutButton button {
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 4px;
+    left: 3px;
     background-color: rgba(0, 0, 0, 0.01);
     color: rgb(248, 246, 243);
     border: none;
-    height: 15px;
-    width: 15px;
+    height: 17px;
+    width: 17px;
 }
 
 .logoutButton svg {

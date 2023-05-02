@@ -86,8 +86,9 @@ h2 {
 .animalLobbyNavBar {
     position: absolute;
     width: 375px;
-    height: 39px;
-    top: 635px;
+    height: 55px;
+    /* top: 635px; */
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -108,11 +109,11 @@ h2 {
 }
 
 .specialAnimalLobbyButton {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 20px;
     position: absolute;
-    right: 24px;
-    top: 2px;
+    right: 48px;
+    top: 4px;
     background-color: rgba(0, 0, 0, 0.01);
     color: rgb(248, 246, 243);
     border: none;
