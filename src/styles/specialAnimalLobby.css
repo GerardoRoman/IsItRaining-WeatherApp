@@ -87,17 +87,18 @@ h2 {
 .animalLobbyNavBar {
     position: absolute;
     width: 375px;
-    height: 39px;
-    top: 635px;
+    height: 55px;
+    bottom: 0;
+    /* top: 635px; */
     background-color: rgba(0, 0, 0, 0.4);
 }
 
 .backToWeather {
-    width: 15px;
+    width: 17px;
     height: 15px;
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 5px;
+    left: 5px;
     background-color: rgba(0, 0, 0, 0.01);
     color: rgb(248, 246, 243);
     border: none;

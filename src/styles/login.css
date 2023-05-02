@@ -168,7 +168,8 @@ h1 span:before {
 .loginNavBar {
     position: absolute;
     width: 375px;
-    height: 32px;
-    top: 635px;
+    height: 55px;
+    bottom: 0;
+    /* top: 635px; */
     background-color: rgba(0, 0, 0, 0.4);
 }
