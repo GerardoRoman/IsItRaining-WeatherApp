@@ -9,7 +9,7 @@ import { GiDinosaurRex } from 'react-icons/gi'
 import useSound from "use-sound";
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
-// import lobbySong from '../assets/music/lobbySong.wav'
+import Thunderstorms from '../assets/music/Thunderstorms.wav'
 import { GiBackpack } from 'react-icons/gi'
 
 
@@ -65,18 +65,18 @@ export default function SpecialAnimalLobby({ token }) {
             .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
     }
 
-    // const [play, { pause }] = useSound(lobbySong);
+    const [play, { pause }] = useSound(Thunderstorms);
 
 
-    // const playingButton = () => {
-    //     if (isPlaying) {
-    //         pause();
-    //         setIsPlaying(false);
-    //     } else {
-    //         play();
-    //         setIsPlaying(true);
-    //     }
-    // };
+    const playingButton = () => {
+        if (isPlaying) {
+            pause();
+            setIsPlaying(false);
+        } else {
+            play();
+            setIsPlaying(true);
+        }
+    };
 
     function closeModal() {
         setIsOpen(false);
@@ -144,7 +144,7 @@ export default function SpecialAnimalLobby({ token }) {
                             </button>
                         </Link>
                     </div>
-                    {/* <div className="audioPlayerSpecialLobby">
+                    <div className="audioPlayerSpecialLobby">
                         <button className="playButton">
                             <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
                             </IconContext.Provider>
@@ -166,7 +166,7 @@ export default function SpecialAnimalLobby({ token }) {
                             <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
                             </IconContext.Provider>
                         </button>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </>
