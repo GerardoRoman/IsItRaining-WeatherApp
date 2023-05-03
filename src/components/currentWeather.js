@@ -117,24 +117,24 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                         <div className="audioPlayer">
                             <div className="audioPlayerHome">
                                 <button className="playButton">
-                                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                                     </IconContext.Provider>
                                 </button>
                                 {!isPlaying ? (
                                     <button className="playButton" onClick={playingButton}>
-                                        <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                        <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                                             <AiFillPlayCircle />
                                         </IconContext.Provider>
                                     </button>
                                 ) : (
                                     <button className="playButton" onClick={playingButton}>
-                                        <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                        <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                                             <AiFillPauseCircle />
                                         </IconContext.Provider>
                                     </button>
                                 )}
                                 <button className="playButton">
-                                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                    <IconContext.Provider value={{ size: "3.5em",  color: "#FFFFFF" }}>
                                     </IconContext.Provider>
                                 </button>
                             </div>

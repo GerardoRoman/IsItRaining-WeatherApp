@@ -165,8 +165,9 @@ h1 span {
 .registerNavBar {
     position: absolute;
     width: 375px;
-    height: 32px;
-    top: 635px;
+    height: 55px;
+    bottom: 0;
+    /* top: 635px; */
     background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -177,11 +178,11 @@ h1 span {
     background-color: rgba(0, 0, 0, 0.01);
     color: rgb(248, 246, 243);
     border: none;
-    height: 15px;
-    width: 15px;
+    height: 18px;
+    width: 18px;
 }
 
 .backToLogin svg {
-    width: 900%;
-    height: 900%;
+    width: 800%;
+    height: 800%;
 }
