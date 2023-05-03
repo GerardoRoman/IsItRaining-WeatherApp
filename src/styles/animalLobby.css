@@ -57,8 +57,7 @@ body {
     position: absolute;
     width: 355px;
     height: 68%;
-    margin-left: 10px;
-    /* margin-top: 10px; */
+    margin-left: 4px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: rgba(163, 163, 163, 0.6);
@@ -76,7 +75,7 @@ body {
     position: absolute;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 350px;
+    width: 355px;
     padding-left: 8px;
     gap: 28px;
     justify-content: space-between;
