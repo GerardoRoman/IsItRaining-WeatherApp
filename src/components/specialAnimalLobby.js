@@ -87,12 +87,17 @@ export default function SpecialAnimalLobby({ token }) {
         setIsOpen(true);
     }
 
+    const handleMusicToggle = () => {
+        pause()
+    }
+
     return (
         <>
             <div>
 
-                <h2>Mega Beasts</h2>
-                <h4>Level Up!</h4>
+                <h2 className="specialAnimalLobbyHeader">Mega Beasts</h2>
+                <h2 className="specialAnimalLobbyHeaderShadow">Mega Beasts</h2>
+                <h4 className="specialAnimalLobbytagLine">Level Up!</h4>
 
                 <div className='divForSpecialAnimalLobbyMap'>
                     <div className='specialAnimalLobbyMap'>
@@ -127,12 +132,12 @@ export default function SpecialAnimalLobby({ token }) {
                 <div className='animalLobbyNavBar'>
                     <div>
                         <Link to='/'>
-                            <button className='backToWeather'>
+                            <button className='backToWeather' onClick={handleMusicToggle}>
                                 <div><BsFillCloudSunFill /></div>
                             </button>
                         </Link>
                         <Link to='/animal-lobby'>
-                            <button className='animalLobbyButton'>
+                            <button className='animalLobbyButton' onClick={handleMusicToggle}>
                                 <div><GiDinosaurRex /></div>
                             </button>
                         </Link>

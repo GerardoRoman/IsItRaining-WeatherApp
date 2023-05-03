@@ -8,7 +8,7 @@ import Confetti from 'react-confetti';
 import Typewriter from 'typewriter-effect'
 
 
-function Animal({ weatherID, token }) {
+function Animal({ weatherID, token, setIsPlaying, handleMusicToggle }) {
     const [animal, setAnimal] = useState('')
     const [image, setImage] = useState('')
     const [variation, setVariation] = useState([])
@@ -74,14 +74,28 @@ function Animal({ weatherID, token }) {
             .then(res => {
                 setPointsLeft(res.data.points)
                 closeModal()
-                if (pointsLeft < 2 && pointsLeft === 'null') {
-                    navigate('/special-animal-lobby')
-                } else {
-                    navigate('/animal-lobby')
-                }
+                handleMusicToggle()
+                navigate('/animal-lobby')
+
             })
     };
 
+    const handleLevelUp = (event) => {
+        axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                }
+            }
+        )
+            .then(res => {
+                setPointsLeft(res.data.points)
+                closeModal()
+                handleMusicToggle()
+                navigate('/special-animal-lobby')
+            })
+    };
 
     const handlePointChange = (event) => {
         setPointsLeft(0)
@@ -159,7 +173,7 @@ function Animal({ weatherID, token }) {
                             <div className="modalImageDiv">
                                 <img className="modalImage" src={specialImg} alt='your-new-animal'></img>
                             </div>
-                            <button className="modalButtonRight" onClick={handleCapture}>Capture</button>
+                            <button className="modalButtonRight" onClick={handleLevelUp}>Capture</button>
 
                         </div>
                     </Modal >
