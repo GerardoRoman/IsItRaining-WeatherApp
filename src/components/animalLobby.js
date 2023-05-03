@@ -158,24 +158,24 @@ export default function AnimalLobby({ token, username }) {
                     </div>
                     <div className="audioPlayer">
                         <button className="playButton">
-                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                            <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                             </IconContext.Provider>
                         </button>
                         {!isPlaying ? (
                             <button className="playButton" onClick={playingButton}>
-                                <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                                     <AiFillPlayCircle />
                                 </IconContext.Provider>
                             </button>
                         ) : (
                             <button className="playButton" onClick={playingButton}>
-                                <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                                <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                                     <AiFillPauseCircle />
                                 </IconContext.Provider>
                             </button>
                         )}
                         <button className="playButton">
-                            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+                            <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                             </IconContext.Provider>
                         </button>
                     </div>

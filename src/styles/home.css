@@ -319,16 +319,18 @@ body {
 /* MUSIC PLAYER */
 .audioPlayerHome {
     position: absolute;
-    top: 625px;
+    top: 612px;
     left: 145px;
 }
 
 .playButton {
     background: none;
     border: none;
+    margin-top: 4px;
     align-items: center;
     justify-content: center;
 }
+
 
 input[type="range"] {
     background-color: #27ae60;
