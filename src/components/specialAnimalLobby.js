@@ -51,17 +51,6 @@ export default function SpecialAnimalLobby({ token }) {
         })
 
     }, [])
-    console.log(yourAnimals)
-
-    function deleteAnimal(animalId) {
-        console.log(animalId)
-        axios.delete(`https://is-it-raining.herokuapp.com/captured/${animalId}`, {
-            headers: {
-                'Authorization': `Token ${token}`
-            }
-        })
-            .then(() => setAnimalList((animalList) => animalList.filter((animal) => animal.id !== animalId)))
-    }
 
     const [play, { pause }] = useSound(Thunderstorms);
 
@@ -81,7 +70,6 @@ export default function SpecialAnimalLobby({ token }) {
     }
 
     const handleClick = (event) => {
-        console.log(event.target);
         setClickedImage(event.target.src);
         setClickedName(event.target.alt);
         setIsOpen(true);

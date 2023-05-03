@@ -58,10 +58,6 @@ function Animal({ weatherID, token, setIsPlaying, handleMusicToggle }) {
     }, [weatherID, token])
 
 
-    console.log(captureBoolean)
-    console.log(pointsLeft)
-
-
     const handleCapture = (event) => {
         axios.post(`https://is-it-raining.herokuapp.com/captured/${animal}/${variation}/`, {},
             {

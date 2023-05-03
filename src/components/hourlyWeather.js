@@ -48,7 +48,7 @@ export default function HourlyWeather({ lat, long, setHourlyTemps }) {
                     <div className="hourlyWeatherMap" >
                         {
                             forecast.map((data => (
-                                <div className="hourlyWeatherCard" key={data.id}>
+                                <div className="hourlyWeatherCard" key={data[3]}>
                                     <>
                                         <div className="hourlyTime">
                                             {moment(data[1]).format('h:mma')}

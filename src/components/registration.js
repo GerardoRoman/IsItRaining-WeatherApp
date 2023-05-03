@@ -32,8 +32,6 @@ const Registration = ({ setAuth }) => {
                 })
         }).catch(error => {
             setIssue(error.message)
-            console.log(error.message)
-            console.log(error)
         })
     }
 

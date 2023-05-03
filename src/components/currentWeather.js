@@ -22,6 +22,8 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
     const [weatherIcon, setWeatherIcon] = useState([])
     const [weatherID, setWeatherID] = useState([])
     const [isPlaying, setIsPlaying] = useState(false);
+    const [boolean, setBoolean] = useState('')
+
 
 
     useEffect(() => {
@@ -100,7 +102,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 {token ? (
                     <>
                         <div>
-                            <Animal weatherID={weatherID} token={token} handleMusicToggle={handleMusicToggle} />
+                            <Animal weatherID={weatherID} token={token} handleMusicToggle={handleMusicToggle} setBoolean={setBoolean} />
                         </div>
                         <div className="loggedInNavBar">
                             <Link to='/animal-lobby'>
@@ -134,7 +136,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                                     </button>
                                 )}
                                 <button className="playButton">
-                                    <IconContext.Provider value={{ size: "3.5em",  color: "#FFFFFF" }}>
+                                    <IconContext.Provider value={{ size: "3.5em", color: "#FFFFFF" }}>
                                     </IconContext.Provider>
                                 </button>
                             </div>
