@@ -150,6 +150,7 @@ export default function AnimalLobby({ token, username }) {
                                 <div><BsFillCloudSunFill /></div>
                             </button>
                         </Link>
+                        
                         <Link to='/special-animal-lobby'>
                             <button className='specialAnimalLobbyButton' onClick={handleMusicToggle}>
                                 <div><TbCrown /></div>
