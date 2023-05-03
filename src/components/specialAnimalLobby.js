@@ -12,9 +12,6 @@ import { IconContext } from "react-icons";
 import Thunderstorms from '../assets/music/Thunderstorms.wav'
 
 
-
-
-
 export default function SpecialAnimalLobby({ token }) {
     const [animalList, setAnimalList] = useState([])
     const [yourAnimals, setYourAnimals] = useState([])
