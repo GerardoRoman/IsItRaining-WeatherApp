@@ -73,7 +73,7 @@ body {
     position: absolute;
     width: 355px;
     height: 68%;
-    margin-left: 4px;
+    margin-left: 10px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: rgba(209, 212, 213, 0.5);

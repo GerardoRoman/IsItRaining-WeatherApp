@@ -42,7 +42,6 @@ export default function AnimalLobby({ token, username }) {
             }
         }).then((response) => {
             const animalMap = response.data
-            console.log(response.data)
             const animalArray = animalMap.map((response) => {
                 return ([response.animal.name, response.animal.image, response.animal.id, response.animal.points_left_until_max, response.points, response.animal.id])
             })
@@ -51,34 +50,17 @@ export default function AnimalLobby({ token, username }) {
 
     }, [])
 
-
-    function deleteAnimal(animalId) {
-        axios.delete(`https://is-it-raining.herokuapp.com/my-animals/${animalId}`, {
-            headers: {
-                'Authorization': `Token ${token}`
-            }
-        }).then((response) => {
-            console.log(response.data)
-            setYourAnimals(yourAnimals.filter(animal => animal[2] !== animalId))
-        }).catch((error) => {
-            console.error(error)
-        })
-    }
-
-
     function closeModal() {
         setIsOpen(false);
     }
 
 
     const handleClick = (event) => {
-        console.log(event.target);
         setClickedImage(event.target.src);
         setClickedName(event.target.alt);
         setIsOpen(true);
     }
 
-    console.log(lobbySong)
     const [play, { pause }] = useSound(lobbySong);
 
 
