@@ -37,7 +37,6 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
         }
     }, [lat, long, weatherID])
 
-    // console.log(weatherID)
 
     const high = Math.max(...hourlyTemps)
     const low = Math.min(...hourlyTemps)
@@ -55,6 +54,9 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
         }
     };
 
+    const handleMusicToggle = () => {
+        pause()
+    }
 
     return (
         (typeof data.main != 'undefined') ? (
@@ -98,11 +100,11 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 {token ? (
                     <>
                         <div>
-                            <Animal weatherID={weatherID} token={token} />
+                            <Animal weatherID={weatherID} token={token} handleMusicToggle={handleMusicToggle} />
                         </div>
                         <div className="loggedInNavBar">
                             <Link to='/animal-lobby'>
-                                <button className='animalLobbyButton'>
+                                <button className='animalLobbyButton' onClick={handleMusicToggle}>
                                     <div><GiDinosaurRex /></div>
                                 </button>
                             </Link>
@@ -141,7 +143,7 @@ export default function CurrentWeather({ lat, long, hourlyTemps, token, setWeath
                 ) : (
                     <>
                         <div>
-                            <AnimalLoggedOut weatherID={weatherID} />
+                            <AnimalLoggedOut weatherID={weatherID} handleMusicToggle={handleMusicToggle} />
                         </div>
                         <div className="loggedOutNavBar">
                             <Link to='/login'>

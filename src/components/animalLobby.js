@@ -91,10 +91,17 @@ export default function AnimalLobby({ token, username }) {
             setIsPlaying(true);
         }
     };
+
+    const handleMusicToggle = () => {
+        pause()
+    }
+
     return (
         <>
             <div>
-                <h2>Animal Inventory</h2>
+                <h2 className="AnimalLobbyHeader">Animal Inventory</h2>
+                <h2 className="AnimalLobbyHeaderShadow">Animal Inventory</h2>
+
 
                 <div className='divForAnimalLobbyMap'>
                     <div className='animalLobbyMap'>
@@ -129,7 +136,7 @@ export default function AnimalLobby({ token, username }) {
                         <div className="modalImageDivAL">
                             <img className="modalImageAL" src={clickedImage} alt='your-new-animal'></img>
                         </div>
-            
+
                         <button className="modalButtonAL" onClick={closeModal}>Back</button>
                     </Modal>
                 </div>
@@ -139,12 +146,12 @@ export default function AnimalLobby({ token, username }) {
                 <div className='animalLobbyNavBar'>
                     <div>
                         <Link to='/'>
-                            <button className='backToWeather'>
+                            <button className='backToWeather' onClick={handleMusicToggle}>
                                 <div><BsFillCloudSunFill /></div>
                             </button>
                         </Link>
                         <Link to='/special-animal-lobby'>
-                            <button className='specialAnimalLobbyButton'>
+                            <button className='specialAnimalLobbyButton' onClick={handleMusicToggle}>
                                 <div><TbCrown /></div>
                             </button>
                         </Link>
